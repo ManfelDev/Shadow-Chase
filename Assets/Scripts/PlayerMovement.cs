@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Create a variable to hold the move speed
-    [SerializeField] private float moveSpeed = 100.0f;
-    // Jump float
-    [SerializeField] private float jumpForce = 90.0f;
-
-    // Create a variable to hold the rigidbody component
-    private Rigidbody2D rb;
-
-    // Create a variable to hold the ground check
+    [SerializeField] public float moveSpeed = 70.0f;
+    [SerializeField] public float jumpForce = 90.0f;
     private bool isGrounded = true;
+
+    private Rigidbody2D rb;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -25,24 +21,40 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Put the current velocity into a variable
-        Vector2 currentVelocity = rb.velocity;
+        // Move the player horizontally
+        MoveHorizontally();
 
+        // Check if the player is grounded and the jump button is pressed
+        if (isGrounded && Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    // Move the player horizontally
+    private void MoveHorizontally()
+    {
+        Vector2 currentVelocity = rb.velocity;
         // Set the x velocity to the horizontal input times the move speed
         currentVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
+        rb.velocity = currentVelocity;
+        animator.SetFloat("Speed", Mathf.Abs(currentVelocity.x));
 
-        // Player jump with jump button with rb gravity
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            currentVelocity.y = jumpForce;
-            isGrounded = false;
-        }
+        // Flip the player sprite if needed
+        if (currentVelocity.x < 0) transform.rotation = Quaternion.Euler(0, 180, 0);
+        else if (currentVelocity.x > 0) transform.rotation = Quaternion.identity;
+    }
 
+    // Make the player jump
+    private void Jump()
+    {
+        Vector2 currentVelocity = rb.velocity;
+        // Calculate the velocity needed to achieve the desired jump height
+        currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
         // Apply gravity
         currentVelocity.y -= rb.gravityScale * Time.deltaTime;
-
-        // Set the rigidbody's velocity to the current velocity
         rb.velocity = currentVelocity;
+        animator.SetBool("IsJumping", true);
     }
 
     // When the player lands on the ground
@@ -52,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Platforms")
         {
             isGrounded = true;
+            animator.SetBool("IsJumping", false);
         }
     }
 
