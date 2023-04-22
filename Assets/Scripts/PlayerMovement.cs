@@ -26,8 +26,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool        onGround = false;
     
+    [HideInInspector]
+    public float        speedX;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -43,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Update character horizontal velocity
         Vector2 currentVelocity = rb.velocity;
-        float speedX = Input.GetAxis("Horizontal");
+        speedX = Input.GetAxis("Horizontal");
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the player is grounded and the jump button is pressed
