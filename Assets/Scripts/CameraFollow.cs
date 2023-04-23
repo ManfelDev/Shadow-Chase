@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] BoxCollider2D cameraBounds;
+    [SerializeField] private BoxCollider2D cameraBounds;
+    [SerializeField] private Transform     target;
+    [SerializeField] private Vector3       offset;
+    [SerializeField] private float         smoothSpeed;
 
-    public Transform target;
-    public Vector3 offset;
-    public float smoothSpeed;
-
-    private Vector3 velocity = Vector3.zero;
-
+    private Vector3        velocity = Vector3.zero;
     private PlayerMovement playerMovement;
 
     new Camera camera;
@@ -28,12 +26,12 @@ public class CameraFollow : MonoBehaviour
         Vector3 desiredPosition = target.position + offset;
 
         // Negate the offset.x value if the player is moving left
-        if (playerMovement.speedX < 0 && transform.position.x > target.position.x)
+        if (playerMovement.GetPlayerSpeedX() < 0 && transform.position.x > target.position.x)
         {
             offset.x = -Mathf.Abs(offset.x);
         }
         // Set the offset.x value if the player is moving right
-        else if (playerMovement.speedX > 0 && transform.position.x < target.position.x)
+        else if (playerMovement.GetPlayerSpeedX() > 0 && transform.position.x < target.position.x)
         {
             offset.x = Mathf.Abs(offset.x);
         }

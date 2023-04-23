@@ -4,30 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    public float        moveSpeed = 70.0f;
-    [SerializeField]
-    public float        jumpForce = 90.0f;
-    [SerializeField]
-    private Transform   groundDetector;
-    [SerializeField]
-    private float       groundDetectorRadius = 2;
-    [SerializeField]
-    private float       groundDetectorExtraRadius = 6.0f;
-    [SerializeField]
-    private LayerMask   groundMask;
-    [SerializeField]
-    private Collider2D  groundCollider;
-    [SerializeField]
-    private Collider2D  airCollider;
+    [SerializeField] private float      moveSpeed = 80.0f;
+    [SerializeField] private float      jumpForce = 5.0f;
+    [SerializeField] private Transform  groundDetector;
+    [SerializeField] private float      groundDetectorRadius = 2.0f;
+    [SerializeField] private float      groundDetectorExtraRadius = 6.0f;
+    [SerializeField] private LayerMask  groundMask;
+    [SerializeField] private Collider2D groundCollider;
+    [SerializeField] private Collider2D airCollider;
 
-    private             Rigidbody2D rb;
-    private             Animator animator;
-
+    private Rigidbody2D rb;
+    private Animator    animator;
     private bool        onGround = false;
-    
-    [HideInInspector]
-    public float        speedX;
+    private float       speedX;
     
     // Start is called before the first frame update
     void Awake()
@@ -97,5 +86,10 @@ public class PlayerMovement : MonoBehaviour
                 else onGround = false;
             }
         }
+    }
+
+    public int GetPlayerSpeedX()
+    {
+        return (int)speedX;
     }
 }
