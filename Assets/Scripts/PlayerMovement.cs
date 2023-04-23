@@ -51,19 +51,13 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = currentVelocity;
 
         // Flip the character if needed
-        if (speedX < 0)
+        if (speedX < 0 && transform.right.x > 0)
         {
-            if (transform.right.x > 0)
-            {
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else if (speedX > 0)
+        else if (speedX > 0 && transform.right.x < 0)
         {
-            if (transform.right.x < 0)
-            {
-                transform.rotation = Quaternion.identity;
-            }
+            transform.rotation = Quaternion.identity;
         }
 
         // Change visuals
