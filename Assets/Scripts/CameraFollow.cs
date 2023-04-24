@@ -10,14 +10,14 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float         smoothSpeed;
 
     private Vector3        velocity = Vector3.zero;
-    private PlayerMovement playerMovement;
+    private FollowMouse    followMouse;
 
-    new Camera camera;
+    private new Camera     camera;
 
     void Awake()
     {
-        playerMovement = target.GetComponent<PlayerMovement>();
         camera = GetComponent<Camera>();
+        followMouse = target.GetComponentInChildren<FollowMouse>();
     }
 
     void FixedUpdate()
@@ -25,15 +25,15 @@ public class CameraFollow : MonoBehaviour
         // Calculate the desired position
         Vector3 desiredPosition = target.position + offset;
 
-        // Negate the offset.x value if the player is moving left
-        if (playerMovement.GetPlayerSpeedX() < 0 && transform.position.x > target.position.x)
-        {
-            offset.x = -Mathf.Abs(offset.x);
-        }
         // Set the offset.x value if the player is moving right
-        else if (playerMovement.GetPlayerSpeedX() > 0 && transform.position.x < target.position.x)
+        if (followMouse.PointingRight())
         {
             offset.x = Mathf.Abs(offset.x);
+        }
+        // Negate the offset.x value if the player is moving left
+        else if (!followMouse.PointingRight())
+        {
+            offset.x = -Mathf.Abs(offset.x);
         }
 
         // Smoothly move the camera towards the desired position

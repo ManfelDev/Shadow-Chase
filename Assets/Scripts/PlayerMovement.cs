@@ -16,13 +16,16 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator    animator;
     private bool        onGround = false;
+    private bool        isBackwards = false;
     private float       speedX;
+    private FollowMouse followMouse;
     
     // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        followMouse = GetComponentInChildren<FollowMouse>();
     }
 
     // Update is called once per frame
@@ -39,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the player is grounded and the jump button is pressed
-        if (onGround && Input.GetButtonDown("Jump"))
+        if (onGround && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
         {
             // Calculate the velocity needed to achieve the desired jump height
             currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
@@ -50,19 +53,24 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement
         rb.velocity = currentVelocity;
 
-        // Flip the character if needed
-        if (speedX < 0 && transform.right.x > 0)
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else if (speedX > 0 && transform.right.x < 0)
-        {
+        // If the player is pointing right does nothing
+        if (followMouse.PointingRight())
             transform.rotation = Quaternion.identity;
-        }
+        // If the player is pointing left, rotate everything 180 degrees
+        else if (!followMouse.PointingRight())
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+
+        // Check if the player is moving backwards
+        if (speedX >= 0 && !followMouse.PointingRight() ||
+            speedX <= 0 && followMouse.PointingRight())
+            isBackwards = true;
+        else
+            isBackwards = false;
 
         // Change visuals
         animator.SetFloat("Speed", Mathf.Abs(speedX));
         animator.SetBool("onGround", onGround);
+        animator.SetBool("isBackwards", isBackwards);
     }
 
     void DetectGround()
