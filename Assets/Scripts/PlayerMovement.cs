@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float      moveSpeed = 80.0f;
+    [SerializeField] private float      crouchSpeed = 40.0f;
     [SerializeField] private float      jumpForce = 5.0f;
     [SerializeField] private Transform  groundDetector;
     [SerializeField] private float      groundDetectorRadius = 2.0f;
@@ -12,12 +13,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask  groundMask;
     [SerializeField] private Collider2D groundCollider;
     [SerializeField] private Collider2D airCollider;
+    [SerializeField] private Collider2D crouchedCollider;
 
     private Rigidbody2D rb;
     private Animator    animator;
     private bool        onGround = false;
     private bool        isBackwards = false;
+    private bool        isCrouched = false;
     private float       speedX;
+    private float       originalMoveSpeed;
     private FollowMouse followMouse;
     
     // Start is called before the first frame update
@@ -26,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         followMouse = GetComponentInChildren<FollowMouse>();
+        originalMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -33,12 +38,27 @@ public class PlayerMovement : MonoBehaviour
     {
         DetectGround();
 
-        groundCollider.enabled = onGround;
+        groundCollider.enabled = onGround && !isCrouched;
         airCollider.enabled = !onGround;
+        crouchedCollider.enabled = onGround && isCrouched;
 
         // Update character horizontal velocity
         Vector2 currentVelocity = rb.velocity;
         speedX = Input.GetAxis("Horizontal");
+
+        // Crouch when S is pressed
+        if (Input.GetKey(KeyCode.S))
+        {
+            isCrouched = true;
+            moveSpeed = crouchSpeed;
+        }
+        else if (!Input.GetKeyUp(KeyCode.S))
+        {
+            isCrouched = false;
+            moveSpeed = originalMoveSpeed;
+        }
+
+        // Apply movement
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the player is grounded and the jump button is pressed
@@ -71,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(speedX));
         animator.SetBool("onGround", onGround);
         animator.SetBool("isBackwards", isBackwards);
+        animator.SetBool("isCrouched", isCrouched);
     }
 
     void DetectGround()
@@ -88,10 +109,5 @@ public class PlayerMovement : MonoBehaviour
                 else onGround = false;
             }
         }
-    }
-
-    public int GetPlayerSpeedX()
-    {
-        return (int)speedX;
     }
 }
