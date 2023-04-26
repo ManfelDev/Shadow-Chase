@@ -16,10 +16,11 @@ GameObject:
   - component: {fileID: 4842346693877871582}
   - component: {fileID: 4842346693877871581}
   - component: {fileID: 4842346693877871580}
-  - component: {fileID: 1504824864}
+  - component: {fileID: -7145238562130431422}
+  - component: {fileID: 2172467868603015404}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   groundCollider: {fileID: 4842346693877871578}
   airCollider: {fileID: 4842346693877871582}
   crouchedCollider: {fileID: 6719262598499489154}
---- !u!114 &1504824864
+--- !u!114 &-7145238562130431422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,6 +231,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8967355249736792041}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
+--- !u!114 &2172467868603015404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842346693877871575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9792f52310dc7420a8165ad8a798ac90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  startingAmmo: 12
+  healBar: {fileID: 0}
 --- !u!1 &4842346694540083632
 GameObject:
   m_ObjectHideFlags: 0
