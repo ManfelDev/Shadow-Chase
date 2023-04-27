@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class EnemyAlarm : MonoBehaviour
 {
-    public bool isOn = false;
-
-    public bool CheckAlarm()
-    {
-        return isOn;
-    }
+    [SerializeField] private bool alarm = false;
+    public bool IsON { get => alarm; }
 }

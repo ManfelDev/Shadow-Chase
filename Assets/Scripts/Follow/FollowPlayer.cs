@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    [SerializeField] private bool isAlarmed = false;
-
     private Vector2 targetPosition;
     private Vector2 playerPosition;
     private Vector2 restPosition;
     private float angle;
     private EnemyMovement enemyMovement;
+    private EnemyAlarm alarm;
 
     void Awake()
     {
         enemyMovement = GetComponentInParent<EnemyMovement>();
+        alarm = FindObjectOfType<EnemyAlarm>();
     }
     // Update is called once per frame
     void Update()
@@ -27,7 +27,7 @@ public class FollowPlayer : MonoBehaviour
         restPosition.y -= 5f;
         restPosition.x += 5f * enemyMovement.GetEnemySpeedX();
 
-        if (isAlarmed)
+        if (alarm.IsON)
             targetPosition = playerPosition;
         else
             targetPosition = restPosition;
@@ -53,15 +53,5 @@ public class FollowPlayer : MonoBehaviour
             return true;
         else
             return false;
-    }
-
-    public bool GetEnemyAlarmed()
-    {
-        return (bool)isAlarmed;
-    }
-
-    public void TriggerAlarm()
-    {
-        isAlarmed = true;
     }
 }

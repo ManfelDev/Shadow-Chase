@@ -9,20 +9,19 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private float      detectionRadius;
     [SerializeField] private AudioClip  shootSound;
-    [SerializeField] private float fireRate = 0.15f;
+    [SerializeField] private float      fireRate = 0.15f;
 
     private AudioSource  audioSource;
-    private Vector2 playerPosition;
-    private Vector2 selfPosition;
-    private float lastShot;
-    private FollowPlayer followPlayer;
+    private Vector2      playerPosition;
+    private Vector2      selfPosition;
+    private float        lastShot;
+    private EnemyAlarm alarm;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = shootSound;
-        followPlayer = GetComponentInChildren<FollowPlayer>();
-        Debug.Log(followPlayer.GetEnemyAlarmed());
+        alarm = FindObjectOfType<EnemyAlarm>();
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class EnemyShoot : MonoBehaviour
         playerPosition = GameObject.FindWithTag("Player").transform.position;
         selfPosition = transform.position;
 
-        if (DetectPlayer() && Time.time - lastShot >= fireRate && followPlayer.GetEnemyAlarmed())
+        if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON)
         {
             Shoot();
             lastShot = Time.time;
