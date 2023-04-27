@@ -5,4 +5,9 @@ using UnityEngine;
 public class EnemyAlarm : MonoBehaviour
 {
     public bool isOn = false;
+
+    public bool CheckAlarm()
+    {
+        return isOn;
+    }
 }

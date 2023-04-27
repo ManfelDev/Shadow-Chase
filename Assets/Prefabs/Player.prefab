@@ -232,6 +232,7 @@ MonoBehaviour:
   firePoint: {fileID: 8967355249736792041}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
   shootSound: {fileID: 8300000, guid: f8d904b900360224eb37198db202f5f5, type: 3}
+  fireRate: 0.25
 --- !u!82 &1117756899835076669
 AudioSource:
   m_ObjectHideFlags: 0
@@ -243,7 +244,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
