@@ -55,6 +55,8 @@ public class EnemyMovement : MonoBehaviour
 
         // Update character horizontal velocity
         Vector2 currentVelocity = rb.velocity;
+
+        // Inverts the speed when it walks past a limit
         if (canMove)
         {
             if ((selfPosition.x <= limit1Position.x && walkLimits < 0) || (selfPosition.x <= limit2Position.x && walkLimits > 0))
@@ -66,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
         }
         currentVelocity.x = speedX * moveSpeed;
 
-        // Check if the enemy is grounded and the jump button is pressed
+        // Check if the enemy is grounded, if the player is higher than itself and if it can jump
         if (onGround && (((selfPosition.y + 20f) < playerPosition.y) && canJump))
         {
             // Calculate the velocity needed to achieve the desired jump height
@@ -81,13 +83,14 @@ public class EnemyMovement : MonoBehaviour
         // If the enemy is pointing right does nothing
         if (followPlayer.PointingRight())
             transform.rotation = Quaternion.identity;
+
         // If the enemy is pointing left, rotate everything 180 degrees
         else if (!followPlayer.PointingRight())
             transform.rotation = Quaternion.Euler(0, 180, 0);
 
         // Check if the enemy is moving backwards
-        if (speedX >= 0 && !followPlayer.PointingRight() ||
-            speedX <= 0 && followPlayer.PointingRight())
+        if ((speedX >= 0 && !followPlayer.PointingRight() ||
+            speedX <= 0 && followPlayer.PointingRight()))
             isBackwards = true;
         else
             isBackwards = false;
@@ -120,6 +123,7 @@ public class EnemyMovement : MonoBehaviour
         return (int)speedX;
     }
 
+    //Draws indicators on the editor to check the walk limits of the enemy
     private void OnDrawGizmos()
     {
         if(groundDetector != null)

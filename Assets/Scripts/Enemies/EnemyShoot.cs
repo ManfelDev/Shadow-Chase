@@ -8,11 +8,22 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float      detectionRadius;
+    [SerializeField] private AudioClip  shootSound;
 
+    private AudioSource  audioSource;
     private Vector2 playerPosition;
     private Vector2 selfPosition;
     private float lastShot;
-    private float fireRate = 0.5f;
+    private float fireRate = 0.15f;
+    private FollowPlayer followPlayer;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSound;
+        followPlayer = GetComponentInChildren<FollowPlayer>();
+        Debug.Log(followPlayer.GetEnemyAlarmed());
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,12 +31,14 @@ public class EnemyShoot : MonoBehaviour
         playerPosition = GameObject.FindWithTag("Player").transform.position;
         selfPosition = transform.position;
 
-        if (DetectPlayer() && Time.time - lastShot >= fireRate)
+        if (DetectPlayer() && Time.time - lastShot >= fireRate && followPlayer.GetEnemyAlarmed())
         {
             Shoot();
             lastShot = Time.time;
         }
     }
+
+    
 
     public bool DetectPlayer()
     {
@@ -42,6 +55,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            audioSource.Play();
     }
 }
