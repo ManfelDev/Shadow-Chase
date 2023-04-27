@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    private Vector2 targetPosition;
-    private float angle;
+    [SerializeField] private bool isAlarmed = false;
 
+    private Vector2 targetPosition;
+    private Vector2 playerPosition;
+    private Vector2 restPosition;
+    private float angle;
+    private EnemyMovement enemyMovement;
+
+    void Awake()
+    {
+        enemyMovement = GetComponentInParent<EnemyMovement>();
+    }
     // Update is called once per frame
     void Update()
     {
         // Get the position of the player in world coordinates
-        targetPosition = GameObject.FindWithTag("Player").transform.position;
-        targetPosition.y += 20f;
+        playerPosition = GameObject.FindWithTag("Player").transform.position;
+        playerPosition.y += 20f;
+
+        restPosition = transform.position;
+        restPosition.y -= 5f;
+        restPosition.x += 5f * enemyMovement.GetEnemySpeedX();
+
+        if (isAlarmed)
+            targetPosition = playerPosition;
+        else
+            targetPosition = restPosition;
 
         // Calculate the angle between the arm and the target
         Vector2 direction = targetPosition - (Vector2)transform.position;
@@ -35,5 +53,15 @@ public class FollowPlayer : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public bool GetEnemyAlarmed()
+    {
+        return (bool)isAlarmed;
+    }
+
+    public void TriggerAlarm()
+    {
+        isAlarmed = true;
     }
 }
