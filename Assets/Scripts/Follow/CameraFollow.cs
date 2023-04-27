@@ -17,11 +17,15 @@ public class CameraFollow : MonoBehaviour
     void Awake()
     {
         camera = GetComponent<Camera>();
-        followMouse = target.GetComponentInChildren<FollowMouse>();
+        followMouse = FindObjectOfType<FollowMouse>();
     }
 
     void FixedUpdate()
     {
+        // Return if the target is null
+        if (target == null) 
+            return;
+
         // Calculate the desired position
         Vector3 desiredPosition = target.position + offset;
 

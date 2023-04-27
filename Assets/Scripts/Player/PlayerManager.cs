@@ -10,7 +10,6 @@ public class PlayerManager : MonoBehaviour
     private int currentHealth;
     private int currentAmmo;
 
-
     // Get and set ammo
     public int Ammo { get => currentAmmo; set => currentAmmo = value; }
 
