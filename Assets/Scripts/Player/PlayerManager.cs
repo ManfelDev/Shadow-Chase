@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private HealBar healBar;
     private int currentHealth;
     private int currentAmmo;
-    
+
 
     // Get and set ammo
     public int Ammo { get => currentAmmo; set => currentAmmo = value; }

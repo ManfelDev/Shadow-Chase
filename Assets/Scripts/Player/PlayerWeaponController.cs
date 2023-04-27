@@ -13,7 +13,7 @@ public class PlayerWeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<PlayerManager>();
+        player = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
