@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class HealBar : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    [SerializeField] private Slider   slider;
     [SerializeField] private Gradient gradient;
-    [SerializeField] private Image fill;
+    [SerializeField] private Image    fill;
 
     // Set the max heal of the player
     public void SetMaxHeal(int heal)
