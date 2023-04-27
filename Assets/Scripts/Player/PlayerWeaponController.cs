@@ -7,10 +7,10 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private AudioClip  shootSound;
+    [SerializeField] private float fireRate = 0.25f;
 
     private AudioSource  audioSource;
-
-    private bool isShooting;
+    private float lastShot;
     private PlayerManager player;
 
     // Start is called before the first frame update
@@ -24,11 +24,10 @@ public class PlayerWeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !isShooting && player.Ammo > 0)
+        if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= fireRate && player.Ammo > 0)
         {
-            isShooting = true;
             Shoot();
-            isShooting = false;
+            lastShot = Time.time;
         }
     }
 

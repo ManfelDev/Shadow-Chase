@@ -9,12 +9,12 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private float      detectionRadius;
     [SerializeField] private AudioClip  shootSound;
+    [SerializeField] private float fireRate = 0.15f;
 
     private AudioSource  audioSource;
     private Vector2 playerPosition;
     private Vector2 selfPosition;
     private float lastShot;
-    private float fireRate = 0.15f;
     private FollowPlayer followPlayer;
 
     void Start()
