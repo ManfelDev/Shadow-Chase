@@ -6,6 +6,9 @@ public class PlayerWeaponController : MonoBehaviour
 {
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private AudioClip  shootSound;
+
+    private AudioSource  audioSource;
 
     private bool isShooting;
     private PlayerManager player;
@@ -14,6 +17,8 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerManager>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = shootSound;
     }
 
     // Update is called once per frame
@@ -32,5 +37,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
         player.Ammo--;
+        audioSource.Play();
     }
 }
