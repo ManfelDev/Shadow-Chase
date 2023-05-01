@@ -7,9 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float      moveSpeed = 80.0f;
     [SerializeField] private float      crouchSpeed = 40.0f;
     [SerializeField] private float      jumpForce = 5.0f;
-    [SerializeField] private Transform  groundDetector;
     [SerializeField] private float      groundDetectorRadius = 2.0f;
     [SerializeField] private float      groundDetectorExtraRadius = 6.0f;
+    [SerializeField] private float      coyoteTime = 0.1f;
+    [SerializeField] private int        maxJumps = 1;
+    [SerializeField] private Transform  groundDetector;
     [SerializeField] private LayerMask  groundMask;
     [SerializeField] private Collider2D groundCollider;
     [SerializeField] private Collider2D airCollider;
@@ -22,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     private bool        isCrouched = false;
     private float       speedX;
     private float       originalMoveSpeed;
+    private float       lastGroundTime;
+    private float       lastJumpTime;
+    private int         nJumps = 0;
     private FollowMouse followMouse;
     
     // Start is called before the first frame update
@@ -36,15 +41,34 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update character horizontal velocity
+        Vector2 currentVelocity = rb.velocity;
+        speedX = Input.GetAxis("Horizontal");
+
         DetectGround();
+
+        if (onGround)
+        {
+            lastGroundTime = Time.time;
+        }
+        if ((Time.time - lastGroundTime) <= coyoteTime)
+        {
+            if (currentVelocity.y <= 0)
+            {
+                nJumps = maxJumps;
+            }
+        }
+        else
+        {
+            if (nJumps == maxJumps)
+            {
+                nJumps = 0;
+            }
+        }
 
         groundCollider.enabled = onGround && !isCrouched;
         airCollider.enabled = !onGround;
         crouchedCollider.enabled = onGround && isCrouched;
-
-        // Update character horizontal velocity
-        Vector2 currentVelocity = rb.velocity;
-        speedX = Input.GetAxis("Horizontal");
 
         // Crouch when S is pressed
         if (Input.GetKey(KeyCode.S))
@@ -61,13 +85,19 @@ public class PlayerMovement : MonoBehaviour
         // Apply movement
         currentVelocity.x = speedX * moveSpeed;
 
-        // Check if the player is grounded and the jump button is pressed
-        if (onGround && (Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)))
+        if (Input.GetButtonDown("Jump") && (nJumps > 0))
         {
             // Calculate the velocity needed to achieve the desired jump height
             currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
             // Apply gravity
             currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+            lastJumpTime = Time.time;
+            lastGroundTime = 0;
+            nJumps--;
+        }
+        else
+        {
+            lastJumpTime = 0;
         }
 
         // Apply movement

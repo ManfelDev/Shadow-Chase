@@ -208,9 +208,11 @@ MonoBehaviour:
   moveSpeed: 80
   crouchSpeed: 40
   jumpForce: 5
-  groundDetector: {fileID: 4842346694540083633}
   groundDetectorRadius: 2
   groundDetectorExtraRadius: 6
+  coyoteTime: 0.1
+  maxJumps: 1
+  groundDetector: {fileID: 4842346694540083633}
   groundMask:
     serializedVersion: 2
     m_Bits: 64

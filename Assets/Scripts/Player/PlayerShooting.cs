@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeaponController : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private AudioClip  shootSound;
-    [SerializeField] private float fireRate = 0.25f;
 
-    private AudioSource  audioSource;
-    private float lastShot;
+    private AudioSource   audioSource;
+    private float         lastShot;
     private PlayerManager player;
+    private WeaponsClass  currentWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,14 @@ public class PlayerWeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= fireRate && player.Ammo > 0)
+        // Check player current weapon
+        if (currentWeapon != player.CurrentWeapon)
+        {
+            currentWeapon = player.CurrentWeapon;
+        }
+        
+        // Check if the player has shot
+        if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= currentWeapon.FireRate && player.Ammo > 0)
         {
             Shoot();
             lastShot = Time.time;

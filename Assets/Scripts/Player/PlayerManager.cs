@@ -5,16 +5,15 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private int     maxHealth = 100;
-    [SerializeField] private int     startingAmmo = 12;
     [SerializeField] private HealBar healBar;
-    private int currentHealth;
-    private int currentAmmo;
+    private int          currentHealth;
+    private WeaponsClass currentWeapon;
 
     // Get and set ammo
-    public int Ammo { get => currentAmmo; set => currentAmmo = value; }
+    public int Ammo { get; set; }
 
-    // Get pistol max ammo
-    public int PistolMaxAmmo { get => 12;}
+    // Get current weapon
+    public WeaponsClass CurrentWeapon { get { return currentWeapon; } }
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +22,9 @@ public class PlayerManager : MonoBehaviour
         currentHealth = maxHealth;
         healBar.SetMaxHeal(maxHealth);
 
-        // Ammo setup
-        currentAmmo = startingAmmo;
+        // Weapon setup
+        currentWeapon = WeaponsClass.Pistol;
+        Ammo = currentWeapon.MaxAmmo;
     }
 
     // Take damage
@@ -34,4 +34,11 @@ public class PlayerManager : MonoBehaviour
 
         healBar.SetHeal(currentHealth);
     }
+
+    // Change weapon
+    // public void ChangeWeapon(WeaponsClass newWeapon)
+    // {
+    //    currentWeapon = newWeapon;
+    //    Ammo = currentWeapon.MaxAmmo;
+    // }
 }
