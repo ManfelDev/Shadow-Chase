@@ -948,7 +948,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  startingAmmo: 12
   healBar: {fileID: 321262579}
 --- !u!4 &1106647276
 Transform:

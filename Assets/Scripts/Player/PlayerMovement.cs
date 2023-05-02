@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float      moveSpeed = 80.0f;
+    [SerializeField] private float      walkSpeed = 80.0f;
+    [SerializeField] private float      runSpeed = 120.0f;
     [SerializeField] private float      crouchSpeed = 40.0f;
     [SerializeField] private float      jumpForce = 5.0f;
+    [SerializeField] private float      coyoteTime = 0.1f;
     [SerializeField] private float      groundDetectorRadius = 2.0f;
     [SerializeField] private float      groundDetectorExtraRadius = 6.0f;
-    [SerializeField] private float      coyoteTime = 0.1f;
     [SerializeField] private int        maxJumps = 1;
     [SerializeField] private Transform  groundDetector;
     [SerializeField] private LayerMask  groundMask;
@@ -17,17 +18,31 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Collider2D airCollider;
     [SerializeField] private Collider2D crouchedCollider;
 
-    private Rigidbody2D rb;
-    private Animator    animator;
     private bool        onGround = false;
     private bool        isBackwards = false;
     private bool        isCrouched = false;
+    private bool        isJumping = false;
     private float       speedX;
     private float       originalMoveSpeed;
     private float       lastGroundTime;
     private float       lastJumpTime;
+    private float       moveSpeed;
     private int         nJumps = 0;
+    private string      currentState;
     private FollowMouse followMouse;
+    private Rigidbody2D rb;
+    private Animator    animator;
+    private EnemyAlarm  enemyAlarm;
+
+    // Animation states
+    private const string IDLE = "Player_Idle";
+    private const string WALK = "Player_Walk";
+    private const string JUMP = "Player_Jump";
+    private const string CROUCH_WALK = "Player_CrouchWalk";
+    private const string CROUCH_IDLE = "Player_CrouchIdle";
+    private const string WALK_BACKWARDS = "Player_WalkBackwards";
+    private const string CROUCH_BACKWARDS = "Player_CrouchBackwards";
+    private const string RUN = "Player_Run";
     
     // Start is called before the first frame update
     void Awake()
@@ -35,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         followMouse = GetComponentInChildren<FollowMouse>();
-        originalMoveSpeed = moveSpeed;
+        enemyAlarm = FindObjectOfType<EnemyAlarm>();
     }
 
     // Update is called once per frame
@@ -76,11 +91,18 @@ public class PlayerMovement : MonoBehaviour
             isCrouched = true;
             moveSpeed = crouchSpeed;
         }
-        else if (!Input.GetKeyUp(KeyCode.S))
-        {
+        else
             isCrouched = false;
-            moveSpeed = originalMoveSpeed;
-        }
+
+        // Move speed if alarm is off and not crouched
+        if (!enemyAlarm.IsON && !isCrouched)
+            moveSpeed = walkSpeed;
+        // Move speed if alarm is on and not crouched
+        else if (enemyAlarm.IsON && !isCrouched)
+            if (isBackwards)
+                moveSpeed = walkSpeed;
+            else
+                moveSpeed = runSpeed;
 
         // Apply movement
         currentVelocity.x = speedX * moveSpeed;
@@ -91,9 +113,11 @@ public class PlayerMovement : MonoBehaviour
             currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
             // Apply gravity
             currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+            // Update jump variables
             lastJumpTime = Time.time;
             lastGroundTime = 0;
             nJumps--;
+            isJumping = true;
         }
         else
         {
@@ -116,12 +140,45 @@ public class PlayerMovement : MonoBehaviour
             isBackwards = true;
         else
             isBackwards = false;
+    }
 
-        // Change visuals
-        animator.SetFloat("Speed", Mathf.Abs(speedX));
-        animator.SetBool("onGround", onGround);
-        animator.SetBool("isBackwards", isBackwards);
-        animator.SetBool("isCrouched", isCrouched);
+    void FixedUpdate()
+    {
+        // Update animations
+        if (onGround)
+        {
+            if (speedX != 0)
+            {
+                if (isCrouched)
+                {
+                    if (isBackwards)
+                        ChangeAnimationState(CROUCH_BACKWARDS);
+                    else
+                        ChangeAnimationState(CROUCH_WALK);
+                }
+                else
+                {
+                    if (isBackwards)
+                        ChangeAnimationState(WALK_BACKWARDS);
+                    else if (enemyAlarm.IsON)
+                        ChangeAnimationState(RUN);
+                    else
+                        ChangeAnimationState(WALK);
+                }
+            }
+            else
+            {
+                if (isCrouched)
+                    ChangeAnimationState(CROUCH_IDLE);
+                else
+                    ChangeAnimationState(IDLE);
+            }
+        }
+        else if (isJumping && !onGround)
+        {
+            ChangeAnimationState(JUMP);
+            isJumping = false;
+        }
     }
 
     void DetectGround()
@@ -139,5 +196,13 @@ public class PlayerMovement : MonoBehaviour
                 else onGround = false;
             }
         }
+    }
+
+    void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+
+        animator.Play(newState);
+        currentState = newState;
     }
 }
