@@ -140,10 +140,7 @@ public class PlayerMovement : MonoBehaviour
             isBackwards = true;
         else
             isBackwards = false;
-    }
 
-    void FixedUpdate()
-    {
         // Update animations
         if (onGround)
         {
