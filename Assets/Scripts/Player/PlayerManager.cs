@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private int     maxHealth = 100;
-    [SerializeField] private HealBar healBar;
+    [SerializeField] private HealthBar healthBar;
     private int          currentHealth;
     private WeaponsClass currentWeapon;
 
@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     {
         // Health bar setup
         currentHealth = maxHealth;
-        healBar.SetMaxHeal(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
 
         // Weapon setup
         currentWeapon = WeaponsClass.Pistol;
@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
     {
         currentHealth -= damage;
 
-        healBar.SetHeal(currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     // Change weapon

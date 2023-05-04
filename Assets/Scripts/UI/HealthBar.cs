@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealBar : MonoBehaviour
+public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
     [SerializeField] private Gradient gradient;
     [SerializeField] private Image fill;
 
-    // Set the max heal of the player
-    public void SetMaxHeal(int heal)
+    // Set the max health of the player
+    public void SetMaxHealth(int health)
     {
-        slider.maxValue = heal;
-        slider.value = heal;
+        slider.maxValue = health;
+        slider.value = health;
 
-        // Set the color of the heal bar
+        // Set the color of the health bar
         fill.color = gradient.Evaluate(1f);
     }
-    // Set the heal of the player
-    public void SetHeal(int heal)
+    // Set the health of the player
+    public void SetHealth(int health)
     {
-        slider.value = heal;
+        slider.value = health;
 
         // Set the color of the heal bar
         fill.color = gradient.Evaluate(slider.normalizedValue);
