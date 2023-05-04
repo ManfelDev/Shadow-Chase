@@ -21,6 +21,8 @@ public class EnemyMovement : MonoBehaviour
     private bool        onGround = false;
     private bool        isBackwards = false;
     private float       speedX;
+    private string      currentState;
+    private EnemyAlarm alarm;
     private FollowPlayer followPlayer;
     private Vector2 playerPosition;
     private Vector2 selfPosition;
@@ -32,14 +34,15 @@ public class EnemyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        alarm = FindObjectOfType<EnemyAlarm>();
         followPlayer = GetComponentInChildren<FollowPlayer>();
+
         selfPosition = transform.position;
+        limit1Position.x = (selfPosition.x + walkLimits);
+        limit2Position.x = (selfPosition.x - walkLimits);
+
         if (canMove)
-        {
             speedX = 1;
-            limit1Position.x = (selfPosition.x + walkLimits);
-            limit2Position.x = (selfPosition.x - walkLimits);
-        }
 
     }
 
@@ -65,16 +68,30 @@ public class EnemyMovement : MonoBehaviour
             else if ((selfPosition.x >= limit1Position.x && walkLimits > 0) || (selfPosition.x >= limit2Position.x && walkLimits < 0))
                 speedX = -1;
 
+            ChangeAnimationState("Walk");
         }
+        // Stops the enemy if they're not supposed to move
+        else
+            speedX = 0;
+
+        // Changes the animation to idle whenever the enemy is not moving
+        if (speedX == 0)
+        {
+            ChangeAnimationState("Idle");
+        }
+
+        // Calculate movement
         currentVelocity.x = speedX * moveSpeed;
 
-        // Check if the enemy is grounded, if the player is higher than itself and if it can jump
-        if (onGround && (((selfPosition.y + 20f) < playerPosition.y) && canJump))
+        // Check if the enemy is grounded and alarmed, if the player is higher than itself and if it can jump
+        if (onGround && alarm.IsON && (((selfPosition.y + 20f) < playerPosition.y) && canJump))
         {
             // Calculate the velocity needed to achieve the desired jump height
             currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
             // Apply gravity
             currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+
+            ChangeAnimationState("Jump");
         }
 
         // Apply movement
@@ -123,6 +140,16 @@ public class EnemyMovement : MonoBehaviour
         return (int)speedX;
     }
 
+    public bool CheckIfCanMove()
+    {
+        return canMove;
+    }
+
+    public bool CheckIfCanJump()
+    {
+        return canJump;
+    }
+
     //Draws indicators on the editor to check the walk limits of the enemy
     private void OnDrawGizmos()
     {
@@ -133,5 +160,14 @@ public class EnemyMovement : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(transform.position - transform.right * walkLimits, 3);
         }
+    }
+
+// Changes the character's animation
+    private void ChangeAnimationState(string newState)
+    {
+        if (currentState == newState) return;
+
+        animator.Play(newState);
+        currentState = newState;
     }
 }

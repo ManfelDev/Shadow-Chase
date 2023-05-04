@@ -202,4 +202,9 @@ public class PlayerMovement : MonoBehaviour
         animator.Play(newState);
         currentState = newState;
     }
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
 }
