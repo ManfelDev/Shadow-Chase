@@ -36,13 +36,13 @@ public class EnemyMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         alarm = FindObjectOfType<EnemyAlarm>();
         followPlayer = GetComponentInChildren<FollowPlayer>();
+
         selfPosition = transform.position;
+        limit1Position.x = (selfPosition.x + walkLimits);
+        limit2Position.x = (selfPosition.x - walkLimits);
+
         if (canMove)
-        {
             speedX = 1;
-            limit1Position.x = (selfPosition.x + walkLimits);
-            limit2Position.x = (selfPosition.x - walkLimits);
-        }
 
     }
 
@@ -68,7 +68,19 @@ public class EnemyMovement : MonoBehaviour
             else if ((selfPosition.x >= limit1Position.x && walkLimits > 0) || (selfPosition.x >= limit2Position.x && walkLimits < 0))
                 speedX = -1;
 
+            ChangeAnimationState("Walk");
         }
+        // Stops the enemy if they're not supposed to move
+        else
+            speedX = 0;
+
+        // Changes the animation to idle whenever the enemy is not moving
+        if (speedX == 0)
+        {
+            ChangeAnimationState("Idle");
+        }
+
+        // Calculate movement
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the enemy is grounded and alarmed, if the player is higher than itself and if it can jump
@@ -78,6 +90,8 @@ public class EnemyMovement : MonoBehaviour
             currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
             // Apply gravity
             currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+
+            ChangeAnimationState("Jump");
         }
 
         // Apply movement
