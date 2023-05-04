@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyShoot : MonoBehaviour
 {
+    [SerializeField] private EnemyManager enemyManager;
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float      detectionRadius;
@@ -54,7 +55,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot()
     {
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
-            audioSource.Play();
+        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        audioSource.Play();
     }
 }
