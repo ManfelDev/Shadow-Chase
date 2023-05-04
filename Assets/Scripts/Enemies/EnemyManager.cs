@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

@@ -6,17 +6,17 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private Transform  firePoint;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private float      detectionRadius;
-    [SerializeField] private AudioClip  shootSound;
-    [SerializeField] private float      fireRate = 0.15f;
+    [SerializeField] private Transform    firePoint;
+    [SerializeField] private GameObject   bullet;
+    [SerializeField] private float        detectionRadius;
+    [SerializeField] private AudioClip    shootSound;
+    [SerializeField] private float        fireRate = 0.15f;
 
     private AudioSource  audioSource;
     private Vector2      playerPosition;
     private Vector2      selfPosition;
     private float        lastShot;
-    private EnemyAlarm alarm;
+    private EnemyAlarm   alarm;
 
     void Start()
     {
@@ -38,8 +38,6 @@ public class EnemyShoot : MonoBehaviour
         }
     }
 
-    
-
     public bool DetectPlayer()
     {
         float playerDistance_x = playerPosition.x - selfPosition.x;
@@ -55,7 +53,12 @@ public class EnemyShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        Bullets bulletScript = newBullet.GetComponent<Bullets>();
+        if (bulletScript != null)
+        {
+            bulletScript.Shooter = gameObject;
+        }
         audioSource.Play();
     }
 }

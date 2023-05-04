@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private int     maxHealth = 100;
-    [SerializeField] private HealthBar healthBar;
-    private int          currentHealth;
-    private WeaponsClass currentWeapon;
+    [SerializeField] private int        maxHealth = 100;
+    [SerializeField] private HealthBar  healthBar;
+    [SerializeField] private GameObject player;
+    private int              currentHealth;
+    private WeaponsClass     currentWeapon;
+    private SpriteRenderer[] spriteRenderers;
 
     // Get and set ammo
     public int Ammo { get; set; }
@@ -25,6 +27,9 @@ public class PlayerManager : MonoBehaviour
         // Weapon setup
         currentWeapon = WeaponsClass.Pistol;
         Ammo = currentWeapon.MaxAmmo;
+
+        // Get all sprite renderers
+        spriteRenderers = player.GetComponentsInChildren<SpriteRenderer>();
     }
 
     // Take damage
@@ -33,6 +38,27 @@ public class PlayerManager : MonoBehaviour
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);
+
+        StartCoroutine(Blink());
+    }
+
+    // Coroutine to make player blink red for a second
+    private IEnumerator Blink()
+    {
+        // Set all SpriteRenderer components to red
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.color = Color.red;
+        }
+
+        // Wait for a second
+        yield return new WaitForSeconds(0.3f);
+
+        // Set all SpriteRenderer components back to their original color
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            spriteRenderer.color = Color.white;
+        }
     }
 
     // Change weapon

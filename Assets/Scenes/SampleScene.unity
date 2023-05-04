@@ -948,7 +948,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healBar: {fileID: 321262579}
+  healthBar: {fileID: 321262579}
+  player: {fileID: 1362469265}
 --- !u!4 &1106647276
 Transform:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,7 @@ GameObject:
   - component: {fileID: 1246231760}
   m_Layer: 6
   m_Name: Platforms
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1430,7 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bba37cf7836a45468b6afa29ea04850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarm: 0
+  alarm: 1
 --- !u!4 &1319746416
 Transform:
   m_ObjectHideFlags: 0
@@ -1522,6 +1523,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360058264}
   m_CullTransparentMesh: 1
+--- !u!1 &1362469265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4842346693877871575, guid: b9cec4811506b488686061254487baca, type: 3}
+  m_PrefabInstance: {fileID: 4842346695328103872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1504824857 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4842346693877871577, guid: b9cec4811506b488686061254487baca, type: 3}

@@ -41,7 +41,12 @@ public class PlayerShooting : MonoBehaviour
     // Shoot bullet 
     void Shoot()
     {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        Bullets bulletScript = newBullet.GetComponent<Bullets>();
+        if (bulletScript != null)
+        {
+            bulletScript.Shooter = gameObject;
+        }
         player.Ammo--;
         audioSource.Play();
     }
