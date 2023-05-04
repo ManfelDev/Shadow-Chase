@@ -8,11 +8,13 @@ public class FollowPlayer : MonoBehaviour
     private Vector2 playerPosition;
     private Vector2 restPosition;
     private float angle;
+    private PlayerMovement playerMovement;
     private EnemyMovement enemyMovement;
     private EnemyAlarm alarm;
 
     void Awake()
     {
+        playerMovement = FindObjectOfType<PlayerMovement>();
         enemyMovement = GetComponentInParent<EnemyMovement>();
         alarm = FindObjectOfType<EnemyAlarm>();
     }
@@ -20,12 +22,21 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         // Get the position of the player in world coordinates
-        playerPosition = GameObject.FindWithTag("Player").transform.position;
+        playerPosition = playerMovement.GetPosition();
         playerPosition.y += 20f;
 
-        restPosition = transform.position;
-        restPosition.y -= 5f;
-        restPosition.x += 5f * enemyMovement.GetEnemySpeedX();
+        if (enemyMovement.GetEnemySpeedX() != 0)
+        {
+            restPosition = transform.position;
+            restPosition.y -= 5f;
+            restPosition.x += 5f * enemyMovement.GetEnemySpeedX();
+        }
+        else
+        {
+            restPosition = transform.position;
+            restPosition.y -= 5f;
+            restPosition.x -= 5f;
+        }
 
         if (alarm.IsON)
             targetPosition = playerPosition;

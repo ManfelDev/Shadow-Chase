@@ -20,7 +20,7 @@ public class WeaponsClass
     {
         get
         {
-            return new WeaponsClass(0.25f, 10, 12);
+            return new WeaponsClass(0.25f, 25, 12);
         }
     }
 
@@ -29,7 +29,7 @@ public class WeaponsClass
     {
         get
         {
-            return new WeaponsClass(0.1f, 20, 30);
+            return new WeaponsClass(0.1f, 10, 40);
         }
     }
 }
