@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  healBar: {fileID: 679891106}
+  healthBar: {fileID: 679891106}
 --- !u!4 &1115156088
 Transform:
   m_ObjectHideFlags: 0

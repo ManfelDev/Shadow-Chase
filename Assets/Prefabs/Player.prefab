@@ -128,8 +128,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.389595, y: 16.18132}
-  m_Size: {x: 13.27919, y: 32.124634}
+  m_Offset: {x: 0.072647095, y: 16.18132}
+  m_Size: {x: 10.354706, y: 32.124634}
   m_Direction: 0
 --- !u!70 &6719262598499489154
 CapsuleCollider2D:
@@ -144,8 +144,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1, y: 14}
-  m_Size: {x: 10, y: 28}
+  m_Offset: {x: 0.5, y: 13}
+  m_Size: {x: 11, y: 26}
   m_Direction: 0
 --- !u!61 &4842346693877871582
 BoxCollider2D:
@@ -205,12 +205,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c1c6cf4f8e74955bc8384a74d5ba49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 80
+  walkSpeed: 80
+  runSpeed: 120
   crouchSpeed: 40
   jumpForce: 5
+  coyoteTime: 0.1
   groundDetectorRadius: 2
   groundDetectorExtraRadius: 6
-  coyoteTime: 0.1
   maxJumps: 1
   groundDetector: {fileID: 4842346694540083633}
   groundMask:
@@ -234,7 +235,6 @@ MonoBehaviour:
   firePoint: {fileID: 8967355249736792041}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
   shootSound: {fileID: 8300000, guid: f8d904b900360224eb37198db202f5f5, type: 3}
-  fireRate: 0.25
 --- !u!82 &1117756899835076669
 AudioSource:
   m_ObjectHideFlags: 0
