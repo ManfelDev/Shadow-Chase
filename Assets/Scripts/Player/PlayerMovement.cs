@@ -207,4 +207,15 @@ public class PlayerMovement : MonoBehaviour
     {
         return transform.position;
     }
+
+    private void OnDrawGizmos()
+    {
+        if (groundDetector == null) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(groundDetector.position, groundDetectorRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundDetector.position - Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
+        Gizmos.DrawSphere(groundDetector.position + Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
+    }
 }

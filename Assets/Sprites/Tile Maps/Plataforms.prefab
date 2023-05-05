@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 5307877004996160475}
   - component: {fileID: 1132985637484910975}
   m_Layer: 0
-  m_Name: Plataformas
+  m_Name: Plataforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
