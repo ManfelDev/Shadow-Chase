@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382318, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: canMove
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_RootOrder
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 679891106}
+  player: {fileID: 1331099800}
 --- !u!4 &1115156088
 Transform:
   m_ObjectHideFlags: 0
@@ -1596,6 +1597,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290889163}
   m_CullTransparentMesh: 1
+--- !u!1 &1331099800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4842346693877871575, guid: b9cec4811506b488686061254487baca, type: 3}
+  m_PrefabInstance: {fileID: 4842346695328103872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490893835
 GameObject:
   m_ObjectHideFlags: 0
