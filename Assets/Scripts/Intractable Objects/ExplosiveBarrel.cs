@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ExplosiveBarrel : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private float      explosionRadius;
-    [SerializeField] private int        explosionDamage;
+    [SerializeField] private GameObject  explosionPrefab;
+    [SerializeField] private float       explosionRadius;
+    [SerializeField] private int         explosionDamage;
+    [SerializeField] private AudioClip   explosionSound;
+    [SerializeField] private AudioSource audioSource; // Use the audioSource from LevelManager
 
     private PlayerManager player;
     private EnemyManager  enemy;
@@ -49,6 +51,9 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
+            audioSource.clip = explosionSound;
+            audioSource.Play();
+
             Destroy(collision.gameObject);
             Explosion();
             ExplosionAnimation();

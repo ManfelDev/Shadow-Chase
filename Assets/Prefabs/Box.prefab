@@ -175,3 +175,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenBox: {fileID: 21300000, guid: c161fef18ca364ba288924fbc62b6857, type: 3}
   brokenBoxCollider: {fileID: 8267880458737901482}
+  breakSound: {fileID: 8300000, guid: f60468241565a0d4eb4f41cd9bf42d47, type: 3}
+  audioSource: {fileID: 0}

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int          maxHealth = 100;
+    [SerializeField] private AudioClip    hurtSound;
+    [SerializeField] private AudioClip    deathSound;
+    [SerializeField] private AudioSource  audioSource; // Use the SECOND audio source in the enemy prefab
+
     private int          currentHealth;
     private WeaponsClass currentWeapon;
+    private Animator     animator;
+    private bool         dead = false;
 
     // Get current weapon
     public WeaponsClass CurrentWeapon { get { return currentWeapon; } }
@@ -19,13 +25,17 @@ public class EnemyManager : MonoBehaviour
 
         // Weapon setup
         currentWeapon = WeaponsClass.AK;
+
+        // Animations setup
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            dead = true;
+            currentHealth = 0;
         }
 
         else if (currentHealth > maxHealth)
@@ -37,7 +47,16 @@ public class EnemyManager : MonoBehaviour
     // Take damage
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        if (!dead)
+        {
+            if (damage < currentHealth)
+                audioSource.clip = hurtSound;
+            else
+                audioSource.clip = deathSound;
+
+            audioSource.Play();
+            currentHealth -= damage;
+        }
     }
 
     public int GetMaxHealth()
@@ -48,5 +67,10 @@ public class EnemyManager : MonoBehaviour
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public bool GetDead()
+    {
+        return dead;
     }
 }
