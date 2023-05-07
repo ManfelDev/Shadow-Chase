@@ -17,12 +17,14 @@ public class EnemyShoot : MonoBehaviour
     private Vector2      selfPosition;
     private float        lastShot;
     private EnemyAlarm   alarm;
+    private PlayerManager playerManager;
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = shootSound;
         alarm = FindObjectOfType<EnemyAlarm>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class EnemyShoot : MonoBehaviour
         playerPosition = GameObject.FindWithTag("Player").transform.position;
         selfPosition = transform.position;
 
-        if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON)
+        if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
         {
             Shoot();
             lastShot = Time.time;
