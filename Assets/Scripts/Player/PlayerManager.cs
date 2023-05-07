@@ -9,10 +9,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private int              currentHealth;
     private WeaponsClass     currentWeapon;
+    private PlayerMovement   playerMovement;
+    private PlayerShooting   playerShooting;
     private SpriteRenderer[] spriteRenderers;
 
     // Get and set ammo
     public int Ammo { get; set; }
+    // Get player's current health
+    public int CurrentHealth { get => currentHealth; }
 
     // Get current weapon
     public WeaponsClass CurrentWeapon { get { return currentWeapon; } }
@@ -30,6 +34,33 @@ public class PlayerManager : MonoBehaviour
 
         // Get all sprite renderers
         spriteRenderers = player.GetComponentsInChildren<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            // Get player movement script
+            playerMovement = player.GetComponent<PlayerMovement>();
+            // Get player shooting script
+            playerShooting = player.GetComponent<PlayerShooting>();
+
+            // Change animation to death
+            playerMovement.ChangeAnimationState("Player_Death");
+            // Turn of player movement
+            playerMovement.enabled = false;
+            // Turn off player shooting
+            playerShooting.enabled = false;
+            // Turn off player's sprite renderer
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+            {
+                // All sprite renderers except the player's body
+                if (spriteRenderer.gameObject.name != "Player")
+                {
+                    spriteRenderer.enabled = false;
+                }
+            }
+        }
     }
 
     // Take damage
