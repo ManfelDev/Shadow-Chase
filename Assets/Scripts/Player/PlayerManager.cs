@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     public int CurrentHealth { get => currentHealth; }
 
     // Get current weapon
-    public WeaponsClass CurrentWeapon { get { return currentWeapon; } }
+    public WeaponsClass CurrentWeapon { get => currentWeapon; }
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +61,12 @@ public class PlayerManager : MonoBehaviour
                 }
             }
         }
+
+        // Can't have more ammo than the weapon's max ammo
+        if (Ammo > currentWeapon.MaxAmmo)
+        {
+            Ammo = currentWeapon.MaxAmmo;
+        }
     }
 
     // Take damage
@@ -93,9 +99,9 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Change weapon
-    // public void ChangeWeapon(WeaponsClass newWeapon)
-    // {
-    //    currentWeapon = newWeapon;
-    //    Ammo = currentWeapon.MaxAmmo;
-    // }
+    public void ChangeWeapon(WeaponsClass newWeapon)
+    {
+        currentWeapon = newWeapon;
+        Ammo = currentWeapon.MaxAmmo;
+    }
 }
