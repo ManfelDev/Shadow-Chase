@@ -8,11 +8,12 @@ public class ExplosiveBarrel : MonoBehaviour
     [SerializeField] private float       explosionRadius;
     [SerializeField] private int         explosionDamage;
     [SerializeField] private AudioClip   explosionSound;
-    [SerializeField] private AudioSource audioSource; // Use the audioSource from LevelManager
 
     private PlayerManager player;
     private EnemyManager  enemy;
     private Box           box;
+
+    private AudioSource audioSource { get => FindObjectOfType<ObjectsSoundManager>().AudioSource; }
 
     private void Explosion()
     {

@@ -456,10 +456,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Box
       objectReference: {fileID: 0}
-    - target: {fileID: 8267880458737901483, guid: 236e5b06e75514353a1f8a41ac0272fe, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1115156089}
     - target: {fileID: 8267880458737901486, guid: 236e5b06e75514353a1f8a41ac0272fe, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -778,14 +774,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7099577415367382318, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
-      propertyPath: canJump
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099577415367382318, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
-      propertyPath: canMove
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -834,10 +822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 8734340318480276080, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
-      propertyPath: levelManagerAudioSource
-      value: 
-      objectReference: {fileID: 1115156089}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
 --- !u!1 &967947694
@@ -1053,6 +1037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1115156088}
   - component: {fileID: 1115156087}
+  - component: {fileID: 1115156091}
   - component: {fileID: 1115156089}
   - component: {fileID: 1115156090}
   m_Layer: 0
@@ -1287,6 +1272,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1115156091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115156086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd61df25b3808b4cafb6bdaa7c24d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 1115156089}
 --- !u!1 &1155747113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,10 +2119,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1865248028518549438, guid: 36b152fc9361bb747aa4c72b0d1af283, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 1115156089}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b152fc9361bb747aa4c72b0d1af283, type: 3}
 --- !u!1 &1805663035
