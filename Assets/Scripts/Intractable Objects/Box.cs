@@ -5,7 +5,7 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     // Set a sprite image for the box
-    [SerializeField] private Sprite        brokenBox;
+    [SerializeField] private Sprite        brokenBoxSprite;
     [SerializeField] private BoxCollider2D brokenBoxCollider;
     [SerializeField] private AudioClip     breakSound;
     [SerializeField] private AudioSource   audioSource; // Use the audioSource from LevelManager
@@ -29,7 +29,7 @@ public class Box : MonoBehaviour
     {
         if (HitPoints == 1)
         {
-            spriteRenderer.sprite = brokenBox;
+            spriteRenderer.sprite = brokenBoxSprite;
             boxCollider.enabled = false;
             brokenBoxCollider.enabled = true;
         }

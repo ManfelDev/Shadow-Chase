@@ -14,7 +14,6 @@ public class ExplosiveBarrel : MonoBehaviour
     private EnemyManager  enemy;
     private Box           box;
 
-
     private void Explosion()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);

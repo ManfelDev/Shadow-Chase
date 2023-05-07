@@ -195,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void ChangeAnimationState(string newState)
+    public void ChangeAnimationState(string newState)
     {
         if (currentState == newState) return;
 
