@@ -5,13 +5,13 @@ using UnityEngine;
 public class Box : MonoBehaviour
 {
     // Set a sprite image for the box
-    [SerializeField] private Sprite brokenBox;
+    [SerializeField] private Sprite        brokenBox;
     [SerializeField] private BoxCollider2D brokenBoxCollider;
 
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D  boxCollider;
     private SpriteRenderer spriteRenderer;
 
-    public int HitPoints { get; private set; } = 2;
+    public int HitPoints { get; set ; } = 2;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,6 +30,10 @@ public class Box : MonoBehaviour
             boxCollider.enabled = false;
             brokenBoxCollider.enabled = true;
         }
+        else if (HitPoints == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +41,7 @@ public class Box : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Destroy(collision.gameObject);
-
             HitPoints--;
-            if (HitPoints == 0)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 }

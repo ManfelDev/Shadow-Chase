@@ -4,42 +4,56 @@ using UnityEngine;
 
 public class ExplosiveBarrel : MonoBehaviour
 {
-    [SerializeField] private float explosionRadius;
-    [SerializeField] private int explosionDamage;
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private float      explosionRadius;
+    [SerializeField] private int        explosionDamage;
+
+    private PlayerManager player;
+    private EnemyManager  enemy;
+    private Box           box;
+
+
+    private void Explosion()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
+            {
+                // Damage player
+                player = FindObjectOfType<PlayerManager>();
+                player.TakeDamage(explosionDamage);
+            }
+            else if (collider.CompareTag("Enemy"))
+            {
+                // Damage enemy
+                enemy = collider.GetComponent<EnemyManager>();
+                enemy.TakeDamage(explosionDamage);
+            }
+            else if (collider.CompareTag("Box"))
+            {
+                // Damage box
+                box = collider.GetComponent<Box>();
+                box.HitPoints = 0;
+            }
+        }
+    }
+
+    private void ExplosionAnimation()
+    {
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(explosion, 1);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
             Destroy(collision.gameObject);
-            Explode();
+            Explosion();
+            ExplosionAnimation();
+            Destroy(gameObject);
         }
-    }
-
-    private void Explode()
-    {
-        // Find all colliders within the explosion radius
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-
-        // Loop through all colliders and damage any player or enemy within the explosion radius
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.CompareTag("Player"))
-            {
-                // Get the player manager and damage them
-                PlayerManager player = collider.gameObject.GetComponent<PlayerManager>();
-                player.TakeDamage(explosionDamage);
-            }
-            else if (collider.CompareTag("Enemy"))
-            {
-                // Get the enemy manager and damage them
-                EnemyManager enemy = collider.gameObject.GetComponent<EnemyManager>();
-                enemy.TakeDamage(explosionDamage);
-            }
-        }
-
-        // Destroy the barrel game object
-        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
