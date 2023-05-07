@@ -8,10 +8,11 @@ public class Box : MonoBehaviour
     [SerializeField] private Sprite        brokenBoxSprite;
     [SerializeField] private BoxCollider2D brokenBoxCollider;
     [SerializeField] private AudioClip     breakSound;
-    [SerializeField] private AudioSource   audioSource; // Use the audioSource from LevelManager
 
-    private BoxCollider2D  boxCollider;
-    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D      boxCollider;
+    private SpriteRenderer     spriteRenderer;
+
+    private AudioSource audioSource { get => FindObjectOfType<ObjectsSoundManager>().AudioSource; }
 
     public int HitPoints { get; set ; } = 2;
 
