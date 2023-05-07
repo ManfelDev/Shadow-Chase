@@ -7,12 +7,14 @@ public class WeaponsClass
     public float FireRate { get; private set; }
     public float Damage { get; private set; }
     public int MaxAmmo { get; private set; }
+    public string Tag { get; private set; }
 
-    public WeaponsClass(float fireRate, int damage, int maxAmmo)
+    public WeaponsClass(float fireRate, int damage, int maxAmmo, string tag)
     {
         FireRate = fireRate;
         Damage = damage;
         MaxAmmo = maxAmmo;
+        Tag = tag;
     }
 
     // Weapon (Pistol) with a get
@@ -20,7 +22,7 @@ public class WeaponsClass
     {
         get
         {
-            return new WeaponsClass(0.25f, 25, 12);
+            return new WeaponsClass(0.25f, 25, 12, "Pistol");
         }
     }
 
@@ -29,7 +31,7 @@ public class WeaponsClass
     {
         get
         {
-            return new WeaponsClass(0.1f, 10, 40);
+            return new WeaponsClass(0.1f, 10, 40, "AK");
         }
     }
 }

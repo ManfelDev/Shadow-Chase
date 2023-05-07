@@ -9,6 +9,8 @@ TagManager:
   - Box
   - Barrel
   - Bullet
+  - Pistol
+  - AK
   layers:
   - Default
   - TransparentFX
