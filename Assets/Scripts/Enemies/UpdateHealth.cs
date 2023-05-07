@@ -6,6 +6,7 @@ public class UpdateHealth : MonoBehaviour
 {
     private EnemyManager enemyManager;
     private EnemyMovement enemyMovement;
+    private FollowPlayer followPlayer;
     private float maxScale;
     private Vector3 localScale;
     private Vector3 localPosition;
@@ -15,6 +16,7 @@ public class UpdateHealth : MonoBehaviour
     {
         enemyManager = GetComponentInParent<EnemyManager>();
         enemyMovement = GetComponentInParent<EnemyMovement>();
+        followPlayer = GameObject.FindObjectOfType<FollowPlayer>();
 
         localScale = transform.localScale;
         maxScale = localScale.x;
@@ -25,7 +27,19 @@ public class UpdateHealth : MonoBehaviour
     void Update()
     {
         localScale.x = (float) maxScale * enemyManager.GetCurrentHealth() / enemyManager.GetMaxHealth();
-        localPosition.x = (float) -enemyMovement.GetEnemySpeedX() * (maxScale - localScale.x) / 2;
+
+        if (enemyMovement.GetEnemySpeedX() != 0)
+        {
+            localPosition.x = (float) -enemyMovement.GetEnemySpeedX() * (maxScale - localScale.x) / 2;
+        }
+        else
+        {
+            localPosition.x = (float) (maxScale - localScale.x) / 2;
+            if (followPlayer.PointingRight())
+            {
+                localPosition.x *= -1;
+            }
+        }
 
         transform.localScale = localScale;
         transform.localPosition = localPosition;

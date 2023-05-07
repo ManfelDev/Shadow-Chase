@@ -7,6 +7,8 @@ public class Box : MonoBehaviour
     // Set a sprite image for the box
     [SerializeField] private Sprite        brokenBoxSprite;
     [SerializeField] private BoxCollider2D brokenBoxCollider;
+    [SerializeField] private AudioClip     breakSound;
+    [SerializeField] private AudioSource   audioSource; // Use the audioSource from LevelManager
 
     private BoxCollider2D  boxCollider;
     private SpriteRenderer spriteRenderer;
@@ -19,6 +21,7 @@ public class Box : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         brokenBoxCollider.enabled = false;
+        audioSource.clip = breakSound;
     }
 
     // Update is called once per frame
@@ -42,6 +45,7 @@ public class Box : MonoBehaviour
         {
             Destroy(collision.gameObject);
             HitPoints--;
+            audioSource.Play();
         }
     }
 }

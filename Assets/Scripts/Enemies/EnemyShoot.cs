@@ -11,8 +11,8 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private float        detectionRadius;
     [SerializeField] private AudioClip    shootSound;
     [SerializeField] private float        fireRate = 0.15f;
+    [SerializeField] private AudioSource  audioSource;
 
-    private AudioSource  audioSource;
     private Vector2      playerPosition;
     private Vector2      selfPosition;
     private float        lastShot;
@@ -21,7 +21,6 @@ public class EnemyShoot : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         audioSource.clip = shootSound;
         alarm = FindObjectOfType<EnemyAlarm>();
         playerManager = FindObjectOfType<PlayerManager>();
