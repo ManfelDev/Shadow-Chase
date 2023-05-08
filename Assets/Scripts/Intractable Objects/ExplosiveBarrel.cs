@@ -13,7 +13,7 @@ public class ExplosiveBarrel : MonoBehaviour
     private EnemyManager  enemy;
     private Box           box;
 
-    private AudioSource audioSource { get => FindObjectOfType<ObjectsSoundManager>().AudioSource; }
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     private void Explosion()
     {
@@ -51,8 +51,7 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            audioSource.clip = explosionSound;
-            audioSource.Play();
+            audioSource.PlayOneShot(explosionSound, 1f);
 
             Destroy(collision.gameObject);
             Explosion();

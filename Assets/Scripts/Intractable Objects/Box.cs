@@ -12,7 +12,7 @@ public class Box : MonoBehaviour
     private BoxCollider2D      boxCollider;
     private SpriteRenderer     spriteRenderer;
 
-    private AudioSource audioSource { get => FindObjectOfType<ObjectsSoundManager>().AudioSource; }
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     public int HitPoints { get; set ; } = 2;
 
@@ -45,8 +45,7 @@ public class Box : MonoBehaviour
         {
             Destroy(collision.gameObject);
             HitPoints--;
-            audioSource.clip = breakSound;
-            audioSource.Play();
+            audioSource.PlayOneShot(breakSound, 1f);
         }
     }
 }

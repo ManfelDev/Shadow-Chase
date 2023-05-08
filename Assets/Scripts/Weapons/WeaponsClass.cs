@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class WeaponsClass
 {
-    public float FireRate { get; private set; }
-    public float Damage { get; private set; }
-    public int MaxAmmo { get; private set; }
+    public float  FireRate { get; private set; }
+    public float  Damage { get; private set; }
+    public int    MaxAmmo { get; private set; }
     public string Tag { get; private set; }
 
     public WeaponsClass(float fireRate, int damage, int maxAmmo, string tag)
