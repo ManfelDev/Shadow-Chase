@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CatchableWeapons : MonoBehaviour
 {
+    [SerializeField] private AudioClip pickUpSound;
     private PlayerManager playerManager;
+
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     // Check the weapon by the tag of the weapon
     private WeaponsClass CatchableWeapon
@@ -46,6 +49,9 @@ public class CatchableWeapons : MonoBehaviour
                 // Set the player's ammo to the weapon's max ammo
                 playerManager.Ammo = (int)(CatchableWeapon.MaxAmmo/2);
             }
+
+            // Play pick up sound
+            audioSource.PlayOneShot(pickUpSound, 1f);
 
             // Destroy the weapon
             Destroy(gameObject);

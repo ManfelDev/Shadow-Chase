@@ -9,7 +9,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject   player;
     [SerializeField] private AudioClip    hurtSound;
     [SerializeField] private AudioClip    deathSound;
-    [SerializeField] private AudioSource  audioSource; // Use the SECOND audio source on levelManager
 
     private int              currentHealth;
     private WeaponsClass     currentWeapon;
@@ -18,12 +17,13 @@ public class PlayerManager : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
 
     // Get and set ammo
-    public int Ammo { get; set; }
+    public int          Ammo { get; set; }
     // Get player's current health
-    public int CurrentHealth { get => currentHealth; }
-
+    public int          CurrentHealth { get => currentHealth; }
     // Get current weapon
     public WeaponsClass CurrentWeapon { get => currentWeapon; }
+    // Get sound manager's audio source
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     // Start is called before the first frame update
     void Start()
@@ -77,11 +77,10 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (damage < currentHealth)
-            audioSource.clip = hurtSound;
+            audioSource.PlayOneShot(hurtSound, 1f);
         else
-            audioSource.clip = deathSound;
-
-        audioSource.Play();
+            audioSource.PlayOneShot(deathSound, 1f);
+            
         currentHealth -= damage;
 
         healthBar.SetHealth(currentHealth);

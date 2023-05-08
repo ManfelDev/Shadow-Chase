@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UpdateHealth : MonoBehaviour
 {
-    private EnemyManager enemyManager;
+    private EnemyManager  enemyManager;
     private EnemyMovement enemyMovement;
-    private FollowPlayer followPlayer;
-    private float maxScale;
-    private Vector3 localScale;
-    private Vector3 localPosition;
+    private FollowPlayer  followPlayer;
+    private float         maxScale;
+    private Vector3       localScale;
+    private Vector3       localPosition;
 
     // Start is called before the first frame update
     void Start()

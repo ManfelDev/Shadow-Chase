@@ -7,9 +7,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int          maxHealth = 100;
     [SerializeField] private AudioClip    hurtSound;
     [SerializeField] private AudioClip    deathSound;
-    [SerializeField] private AudioSource  audioSource; // Use the SECOND audio source in the enemy prefab
     
-    private AudioSource audioSource2 { get => FindObjectOfType<ObjectsSoundManager>().AudioSource; } // Temporary AudioSource for death sounds
     private int          currentHealth;
     private WeaponsClass currentWeapon;
     private Animator     animator;
@@ -17,6 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     // Get current weapon
     public WeaponsClass CurrentWeapon { get { return currentWeapon; } }
+
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +35,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            audioSource2.clip = deathSound;
-            audioSource2.Play();
+            audioSource.PlayOneShot(deathSound, 1f);
             dead = true;
             Destroy(gameObject);
         }
@@ -53,11 +52,8 @@ public class EnemyManager : MonoBehaviour
         if (!dead)
         {
             if (damage < currentHealth)
-                audioSource.clip = hurtSound;
-            else
-                audioSource.clip = deathSound;
+                audioSource.PlayOneShot(hurtSound, 1f);
 
-            audioSource.Play();
             currentHealth -= damage;
         }
     }

@@ -11,17 +11,17 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] private float        detectionRadius;
     [SerializeField] private AudioClip    shootSound;
     [SerializeField] private float        fireRate = 0.15f;
-    [SerializeField] private AudioSource  audioSource;
 
-    private Vector2      playerPosition;
-    private Vector2      selfPosition;
-    private float        lastShot;
-    private EnemyAlarm   alarm;
+    private Vector2       playerPosition;
+    private Vector2       selfPosition;
+    private float         lastShot;
+    private EnemyAlarm    alarm;
     private PlayerManager playerManager;
+
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
     void Start()
     {
-        audioSource.clip = shootSound;
         alarm = FindObjectOfType<EnemyAlarm>();
         playerManager = FindObjectOfType<PlayerManager>();
     }
@@ -60,6 +60,6 @@ public class EnemyShoot : MonoBehaviour
         {
             bulletScript.Shooter = gameObject;
         }
-        audioSource.Play();
+        audioSource.PlayOneShot(shootSound, 1f);
     }
 }

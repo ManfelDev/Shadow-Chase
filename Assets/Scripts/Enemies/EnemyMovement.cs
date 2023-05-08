@@ -16,19 +16,19 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Collider2D groundCollider;
     [SerializeField] private Collider2D airCollider;
 
-    private Rigidbody2D rb;
-    private Animator    animator;
-    private bool        onGround = false;
-    private bool        isBackwards = false;
-    private float       speedX;
-    private string      currentState;
-    private EnemyAlarm alarm;
+    private Rigidbody2D  rb;
+    private Animator     animator;
+    private bool         onGround = false;
+    private bool         isBackwards = false;
+    private float        speedX;
+    private string       currentState;
+    private EnemyAlarm   alarm;
     private EnemyManager enemyManager;
     private FollowPlayer followPlayer;
-    private Vector2 playerPosition;
-    private Vector2 selfPosition;
-    private Vector2 limit1Position;
-    private Vector2 limit2Position;
+    private Vector2      playerPosition;
+    private Vector2      selfPosition;
+    private Vector2      limit1Position;
+    private Vector2      limit2Position;
     
     // Start is called before the first frame update
     void Awake()

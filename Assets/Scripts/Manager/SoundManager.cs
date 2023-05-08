@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectsSoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
 
@@ -13,5 +13,12 @@ public class ObjectsSoundManager : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.playOnAwake = false; // disable auto-play
+    }
+
+    // Play a sound clip
+    public void PlaySound(AudioClip clip, float volume = 1f)
+    {
+        audioSource.PlayOneShot(clip, volume);
     }
 }
