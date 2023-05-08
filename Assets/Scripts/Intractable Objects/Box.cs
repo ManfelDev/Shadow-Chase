@@ -22,7 +22,6 @@ public class Box : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
         brokenBoxCollider.enabled = false;
-        audioSource.clip = breakSound;
     }
 
     // Update is called once per frame
@@ -46,6 +45,7 @@ public class Box : MonoBehaviour
         {
             Destroy(collision.gameObject);
             HitPoints--;
+            audioSource.clip = breakSound;
             audioSource.Play();
         }
     }

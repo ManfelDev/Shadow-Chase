@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private AudioClip  shootSound;
+    [SerializeField] private AudioClip  blankShootSound;
 
     private AudioSource   audioSource;
     private float         lastShot;
@@ -18,7 +19,6 @@ public class PlayerShooting : MonoBehaviour
     {
         player = FindObjectOfType<PlayerManager>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = shootSound;
     }
 
     // Update is called once per frame
@@ -36,6 +36,12 @@ public class PlayerShooting : MonoBehaviour
             Shoot();
             lastShot = Time.time;
         }
+        else if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= currentWeapon.FireRate)
+        {
+            audioSource.clip = blankShootSound;
+            audioSource.Play();
+            lastShot = Time.time;
+        }
     }
 
     // Shoot bullet 
@@ -48,6 +54,7 @@ public class PlayerShooting : MonoBehaviour
             bulletScript.Shooter = gameObject;
         }
         player.Ammo--;
+        audioSource.clip = shootSound;
         audioSource.Play();
     }
 }
