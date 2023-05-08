@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8e29097120abc40bf8be464aeadfa9b4
+guid: f3b9fc2c988819d41b0927128e6871f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,7 +105,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: plataforma_0
+      name: TileMapBackground_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2321614ed5f0ee4aa251f1568225502
+      internalID: 1298589096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBackground_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0cd025f4a3cf44b95cd2cae8b198ab
+      internalID: 51707568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBackground_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f512881ba74e604f948970e730b122c
+      internalID: -1597939456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBackground_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3605aa0094b9eee4e83220b75de6c124
+      internalID: 614730829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBackground_4
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fb36d9742de54d5384214e0f01db216
-      internalID: 547758831
+      spriteID: 2228d42fe99b92a41b867f747bed83f6
+      internalID: 164683798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plataforma_1
+      name: TileMapBackground_5
       rect:
         serializedVersion: 2
         x: 32
@@ -140,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f75222ef2eb6482490e9d0a06911f8a
-      internalID: -1011209014
+      spriteID: 572e2fe8e87936e4281fd9d9272102e9
+      internalID: -44675633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: plataforma_2
+      name: TileMapBackground_6
       rect:
         serializedVersion: 2
         x: 64
@@ -161,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35df2c213074348f2a5ec50aa729f79d
-      internalID: -1291061836
+      spriteID: dca5cddf70fd48149a7da525ead399fc
+      internalID: 615316381
       vertices: []
       indices: 
       edges: []
@@ -178,9 +262,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      plataforma_0: 547758831
-      plataforma_1: -1011209014
-      plataforma_2: -1291061836
+      TileMapBackground_2: -1597939456
+      TileMapBackground_0: 1298589096
+      TileMapBackground_5: -44675633
+      TileMapBackground_1: 51707568
+      TileMapBackground_6: 615316381
+      TileMapBackground_3: 614730829
+      TileMapBackground_4: 164683798
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

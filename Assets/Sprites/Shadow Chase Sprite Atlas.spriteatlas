@@ -1,0 +1,190 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shadow Chase Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: dc9b4e52686bf4206895e784cca9466c, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -550064792, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: -424166437, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: -646745207, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: 2089387171, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: 1793656852, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: 1434841357, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
+  - {fileID: 21300000, guid: 88a942a0765c64fea88aee6a6d885a36, type: 3}
+  - {fileID: 21300000, guid: 4fecd751c25b145c9a50fa57dcb468bd, type: 3}
+  - {fileID: 21300000, guid: c161fef18ca364ba288924fbc62b6857, type: 3}
+  - {fileID: 21300000, guid: c50c17126b7ae3d458538f09dbadd2dc, type: 3}
+  - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
+  - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
+  - {fileID: 21300000, guid: 73446d765c33445b69e1ab813ca860dc, type: 3}
+  - {fileID: 1923798449, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: 539552260, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: 55146552, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: 1297670585, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: -1641228151, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: 1096648698, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: -1546565942, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
+  - {fileID: -925233377, guid: d95427f65e3d18a45a58ed6d1ebd4f65, type: 3}
+  - {fileID: -195004246, guid: d95427f65e3d18a45a58ed6d1ebd4f65, type: 3}
+  - {fileID: 1960328495, guid: d95427f65e3d18a45a58ed6d1ebd4f65, type: 3}
+  - {fileID: 523232047, guid: d95427f65e3d18a45a58ed6d1ebd4f65, type: 3}
+  - {fileID: -1319014062, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: 1534450687, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: -1178217823, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: 121019513, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: 483757081, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: -1037350964, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: -1691620868, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: 2014106380, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: -251425848, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: 910792054, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: 1442339275, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: 1900663129, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: -1590039821, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: -1256954853, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: 1903054150, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -552519507, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: 431925961, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -881024967, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -1686972316, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -106147530, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -1494036381, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: -189094765, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: 21300000, guid: 520537e77fd5e46ca9243c994065fdd7, type: 3}
+  - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
+  - {fileID: -1406578760, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
+  - {fileID: 1548242419, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
+  - {fileID: -147171642, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
+  - {fileID: 503188617, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
+  - {fileID: 21300000, guid: 5610e7ca17fbe4b07af5b95220badc5f, type: 3}
+  - {fileID: 21300000, guid: 11de378bb014b44e5a9321b41a7eb8c6, type: 3}
+  - {fileID: -829836220, guid: 82b60abbce3504ed5b38944fdc024cda, type: 3}
+  - {fileID: 621435093, guid: 82b60abbce3504ed5b38944fdc024cda, type: 3}
+  - {fileID: 615316381, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: 164683798, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: -44675633, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: -1597939456, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: 614730829, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: 1298589096, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: 51707568, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
+  - {fileID: -2017637827, guid: cb70018c1a7b04c2d940d13509cda47a, type: 3}
+  - {fileID: 931684453, guid: cb70018c1a7b04c2d940d13509cda47a, type: 3}
+  - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
+  - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - explosion px_5
+  - explosion px_4
+  - explosion px_1
+  - explosion px_0
+  - explosion px_3
+  - explosion px_2
+  - heart (1)
+  - left_arm
+  - box_broken
+  - enemy 1
+  - pistol
+  - left_arm_enemy
+  - current_weapon_1 (1)
+  - death animation px_6
+  - death animation px_4
+  - death animation px_5
+  - death animation px_2
+  - death animation px_3
+  - death animation px_0
+  - death animation px_1
+  - enemy 1 walk animation spritesheet_0
+  - enemy 1 walk animation spritesheet_1
+  - enemy 1 walk animation spritesheet_2
+  - enemy 1 walk animation spritesheet_3
+  - animation walk_7
+  - animation walk_6
+  - animation walk_5
+  - animation walk_4
+  - animation walk_3
+  - animation walk_2
+  - animation walk_1
+  - animation walk_0
+  - crouch walking animation_5
+  - crouch walking animation_4
+  - crouch walking animation_3
+  - crouch walking animation_2
+  - crouch walking animation_1
+  - crouch walking animation_0
+  - animation run_2
+  - animation run_5
+  - animation run_4
+  - animation run_7
+  - animation run_6
+  - animation run_1
+  - animation run_0
+  - animation run_3
+  - Character
+  - explosive barrel
+  - jump animation_0
+  - jump animation_1
+  - jump animation_2
+  - jump animation_3
+  - enemy_right_arm
+  - box
+  - animation idle_0
+  - animation idle_1
+  - TileMapBackground_6
+  - TileMapBackground_4
+  - TileMapBackground_5
+  - TileMapBackground_2
+  - TileMapBackground_3
+  - TileMapBackground_0
+  - TileMapBackground_1
+  - Intractable_Objects_0
+  - Intractable_Objects_1
+  - right_arm
+  - HP_Bar_1 (1)
+  m_RenderDataMap: {}
+  m_Tag: Shadow Chase Sprite Atlas
+  m_IsVariant: 0
