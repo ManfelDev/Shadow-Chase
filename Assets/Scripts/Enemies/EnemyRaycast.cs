@@ -7,15 +7,20 @@ public class EnemyRaycast : MonoBehaviour
     [SerializeField] private float      detectionRadius = 80.0f;
     [SerializeField] private float      countdownTimer = 3.0f;
     [SerializeField] private float      countdownTicks = 0.1f;
+    [SerializeField] private GameObject playerDetector;
 
-    private EnemyAlarm   alarm;
-    private GameObject   player;
-    private Vector2      playerPosition;
-    private Vector2      enemyToPlayer;
-    private float        playerDistance;
-    private float        countdown;
-    private float        lastTick;
-    private Vector2      selfPosition;
+    private EnemyAlarm    alarm;
+    private EnemyMovement enemyMovement;
+    private GameObject    player;
+    private Vector2       playerPosition;
+    private Vector2       enemyToPlayer;
+    private float         playerDistance;
+    private float         countdown;
+    private float         lastTick;
+    private Vector2       selfPosition;
+    private RaycastHit2D  raycast;
+    private float         direction;
+    private Collider2D[] playerColliders;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +29,16 @@ public class EnemyRaycast : MonoBehaviour
 
         selfPosition = transform.position;
         // Updates its own position to its eyes
-        selfPosition.y += 30f;
+        selfPosition.y += 20f;
 
         // Identifies the player
         player = GameObject.FindWithTag("Player");
+        playerColliders = player.GetComponents<Collider2D>();
 
         // Initializes countdown
         countdown = countdownTimer;
+
+        enemyMovement = GetComponentInParent<EnemyMovement>();
     }
 
     // Update is called once per frame
@@ -48,48 +56,66 @@ public class EnemyRaycast : MonoBehaviour
         enemyToPlayer = selfPosition - playerPosition;
         playerDistance = Mathf.Sqrt((enemyToPlayer.x * enemyToPlayer.x) + (enemyToPlayer.y * enemyToPlayer.y));
 
-        if (playerDistance <= detectionRadius)
+        //if (playerDistance <= detectionRadius)
+        if (true)
         {
-            // Send a raycast from the enemy towards the player
-            RaycastHit2D raycast = Physics2D.Raycast(selfPosition, playerPosition - selfPosition);
+            // Send a raycast from the enemy's PlayerDetector towards the player
+            if (enemyMovement.GetEnemySpeedX() != 0)
+                direction = enemyMovement.GetEnemySpeedX();
+            else
+                direction = -1;
+
+            raycast = Physics2D.Raycast(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), detectionRadius);
 
             // If the raycast detects the player, lowers the alarm countdown
-            if (raycast.collider.CompareTag("Player"))
+            if (CheckRaycastCollision())
             {
+                Debug.Log(raycast.transform.position);
+
                 if (Time.time > lastTick + countdownTicks)
                 {
-                    countdown -= countdownTicks;
+                    //countdown -= countdownTicks;
                     lastTick = Time.time;
                 }
-            }
-            // If the raycast doesn't detect the player, raises the alarm countdown
-            else if (countdown < countdownTimer)
-            {
-                if (Time.time > lastTick + countdownTicks)
-                {
-                    countdown += countdownTicks;
-                    lastTick = Time.time;
-                }
-
-                // The countdown caps at the set limit
-                if (countdown > countdownTimer)
-                    countdown = countdownTimer;
+                Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
             }
 
+            else
+                Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.green);
         }
+        // If the raycast doesn't detect the player, raises the alarm countdown
+        else if (countdown < countdownTimer)
+        {
+            if (Time.time > lastTick + countdownTicks)
+            {
+                countdown += countdownTicks;
+                lastTick = Time.time;
+            }
 
+            // The countdown caps at the set limit
+            if (countdown > countdownTimer)
+                countdown = countdownTimer;
+        }
+        
         if (countdown <= 0)
             alarm.Trigger();
-        
-        Debug.Log(countdown);
     }
 
     // Draw gizmos to visualize the detection radius
     void OnDrawGizmosSelected()
     {
+        // Draw detection radius
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(selfPosition, detectionRadius);
-        // Draw raycast
-        Gizmos.DrawLine(selfPosition, playerPosition - selfPosition);
+        //Gizmos.DrawWireSphere(selfPosition, detectionRadius);
+    }
+
+    private bool CheckRaycastCollision()
+    {
+        foreach (Collider2D c in playerColliders)
+        {
+            if (c == raycast.collider)
+                return true;
+        }
+        return false;
     }
 }
