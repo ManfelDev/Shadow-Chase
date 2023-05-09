@@ -22,7 +22,6 @@ public class Bullets : MonoBehaviour
     {
         rigidBody.velocity = transform.right * bulletSpeed;
         player = FindObjectOfType<PlayerManager>();
-        enemy = FindObjectOfType<EnemyManager>();
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)
@@ -35,12 +34,14 @@ public class Bullets : MonoBehaviour
         // Check if the bullet hit an enemy
         else if (hitInfo.CompareTag("Enemy") && shooter.CompareTag("Player"))
         {
+            enemy = hitInfo.GetComponent<EnemyManager>();
             enemy.TakeDamage((int)player.CurrentWeapon.Damage);
             Destroy(gameObject);
         }
         // Check if the bullet hit the player
         else if (hitInfo.CompareTag("Player") && shooter.CompareTag("Enemy"))
         {
+            enemy = shooter.GetComponent<EnemyManager>();
             player.TakeDamage((int)enemy.CurrentWeapon.Damage);
             Destroy(gameObject);
         }
