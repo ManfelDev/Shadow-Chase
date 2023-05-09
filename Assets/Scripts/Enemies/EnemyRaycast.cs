@@ -11,19 +11,19 @@ public class EnemyRaycast : MonoBehaviour
     private EnemyAlarm   alarm;
     private GameObject   player;
     private Vector2      playerPosition;
-    private Vector2      selfPosition;
     private Vector2      enemyToPlayer;
     private float        playerDistance;
     private float        countdown;
     private float        lastTick;
+    private Vector2      selfPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         alarm = FindObjectOfType<EnemyAlarm>();
 
-        // Updates its own position to its eyes
         selfPosition = transform.position;
+        // Updates its own position to its eyes
         selfPosition.y += 30f;
 
         // Identifies the player
@@ -40,6 +40,10 @@ public class EnemyRaycast : MonoBehaviour
         playerPosition = player.transform.position;
         playerPosition.y += 20f;
 
+        // Update the enemy's position to the center of their eyes
+        selfPosition = transform.position;
+        selfPosition.y += 30f;
+
         // Calculate if the player is within detection range
         enemyToPlayer = selfPosition - playerPosition;
         playerDistance = Mathf.Sqrt((enemyToPlayer.x * enemyToPlayer.x) + (enemyToPlayer.y * enemyToPlayer.y));
@@ -47,7 +51,7 @@ public class EnemyRaycast : MonoBehaviour
         if (playerDistance <= detectionRadius)
         {
             // Send a raycast from the enemy towards the player
-            RaycastHit2D raycast = Physics2D.Raycast(selfPosition, selfPosition - playerPosition);
+            RaycastHit2D raycast = Physics2D.Raycast(selfPosition, playerPosition - selfPosition);
 
             // If the raycast detects the player, lowers the alarm countdown
             if (raycast.collider.CompareTag("Player"))
@@ -78,5 +82,14 @@ public class EnemyRaycast : MonoBehaviour
             alarm.Trigger();
         
         Debug.Log(countdown);
+    }
+
+    // Draw gizmos to visualize the detection radius
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(selfPosition, detectionRadius);
+        // Draw raycast
+        Gizmos.DrawLine(selfPosition, playerPosition - selfPosition);
     }
 }
