@@ -55,6 +55,8 @@ public class PlayerManager : MonoBehaviour
             playerMovement.enabled = false;
             // Turn off player shooting
             playerShooting.enabled = false;
+            // Take of rigid body material
+            player.GetComponent<Rigidbody2D>().sharedMaterial = null;
             // Turn off player's sprite renderer
             foreach (SpriteRenderer spriteRenderer in spriteRenderers)
             {
