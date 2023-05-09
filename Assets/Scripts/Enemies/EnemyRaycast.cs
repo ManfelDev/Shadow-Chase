@@ -65,23 +65,26 @@ public class EnemyRaycast : MonoBehaviour
             else
                 direction = -1;
 
-            raycast = Physics2D.Raycast(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), detectionRadius);
-
-            // If the raycast detects the player, lowers the alarm countdown
-            if (CheckRaycastCollision())
+            for (float i = 0; i < detectionRadius; i+= 0.1f)
             {
-                Debug.Log(raycast.transform.position);
+                Vector2 rayPos = playerDetector.transform.position;
+                rayPos.x += i * direction;
+                raycast = Physics2D.Raycast(rayPos, Vector2.right * new Vector2(direction * detectionRadius, 0f), 0.1f);
 
-                if (Time.time > lastTick + countdownTicks)
+                // If the raycast detects the player, lowers the alarm countdown
+                if (CheckRaycastCollision())
                 {
-                    //countdown -= countdownTicks;
-                    lastTick = Time.time;
+                    if (Time.time > lastTick + countdownTicks)
+                    {
+                        countdown -= countdownTicks;
+                        lastTick = Time.time;
+                    }
+                    Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
                 }
-                Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
-            }
 
-            else
-                Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.green);
+                else
+                    Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
+            }
         }
         // If the raycast doesn't detect the player, raises the alarm countdown
         else if (countdown < countdownTimer)
