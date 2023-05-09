@@ -593,6 +593,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: 80
+  countdownTimer: 3
+  countdownTicks: 0.1
 --- !u!1 &7099577415778838362
 GameObject:
   m_ObjectHideFlags: 0

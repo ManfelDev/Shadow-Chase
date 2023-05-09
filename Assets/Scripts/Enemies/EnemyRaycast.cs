@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyRaycast : MonoBehaviour
 {
     [SerializeField] private float      detectionRadius = 80.0f;
+    [SerializeField] private float      countdownTimer = 3.0f;
+    [SerializeField] private float      countdownTicks = 0.1f;
 
     private EnemyAlarm   alarm;
     private GameObject   player;
@@ -12,6 +14,8 @@ public class EnemyRaycast : MonoBehaviour
     private Vector2      selfPosition;
     private Vector2      enemyToPlayer;
     private float        playerDistance;
+    private float        countdown;
+    private float        lastTick;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,9 @@ public class EnemyRaycast : MonoBehaviour
 
         // Identifies the player
         player = GameObject.FindWithTag("Player");
+
+        // Initializes countdown
+        countdown = countdownTimer;
     }
 
     // Update is called once per frame
@@ -42,11 +49,34 @@ public class EnemyRaycast : MonoBehaviour
             // Send a raycast from the enemy towards the player
             RaycastHit2D raycast = Physics2D.Raycast(selfPosition, selfPosition - playerPosition);
 
-            // If the raycast detects the player, begins the alarm countdown
+            // If the raycast detects the player, lowers the alarm countdown
             if (raycast.collider.CompareTag("Player"))
             {
-                alarm.Trigger();
+                if (Time.time > lastTick + countdownTicks)
+                {
+                    countdown -= countdownTicks;
+                    lastTick = Time.time;
+                }
             }
+            // If the raycast doesn't detect the player, raises the alarm countdown
+            else if (countdown < countdownTimer)
+            {
+                if (Time.time > lastTick + countdownTicks)
+                {
+                    countdown += countdownTicks;
+                    lastTick = Time.time;
+                }
+
+                // The countdown caps at the set limit
+                if (countdown > countdownTimer)
+                    countdown = countdownTimer;
+            }
+
         }
+
+        if (countdown <= 0)
+            alarm.Trigger();
+        
+        Debug.Log(countdown);
     }
 }
