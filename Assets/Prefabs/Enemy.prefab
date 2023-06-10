@@ -745,6 +745,7 @@ MonoBehaviour:
   maxHealth: 100
   hurtSound: {fileID: 8300000, guid: 6f316cf5846cd554c833a042e4fa578d, type: 3}
   deathSound: {fileID: 8300000, guid: 476539fa2ba10e543ae890704b03663e, type: 3}
+  weaponToDropWhenDead: {fileID: 8239158761946417686, guid: 8fc24919df086ed48937daec6634a52f, type: 3}
 --- !u!95 &8240838182233069071
 Animator:
   serializedVersion: 4

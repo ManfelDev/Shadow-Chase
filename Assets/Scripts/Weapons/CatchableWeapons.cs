@@ -44,7 +44,7 @@ public class CatchableWeapons : MonoBehaviour
             if (playerManager.CurrentWeapon.Tag == CatchableWeapon.Tag)
             {
                 // Add ammo to the player
-                playerManager.Ammo += (int)(CatchableWeapon.MaxAmmo/Random.Range(3, 4));
+                playerManager.Ammo += (int)(CatchableWeapon.MaxAmmo/Random.Range(4, 5));
             }
             else
             {

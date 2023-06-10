@@ -12,6 +12,7 @@ public class ExplosiveBarrel : MonoBehaviour
     private PlayerManager player;
     private EnemyManager  enemy;
     private Box           box;
+    private EnemyAlarm    alarm;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -51,12 +52,14 @@ public class ExplosiveBarrel : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
+            alarm = FindObjectOfType<EnemyAlarm>();
             audioSource.PlayOneShot(explosionSound, 1f);
 
             Destroy(collision.gameObject);
             Explosion();
             ExplosionAnimation();
             Destroy(gameObject);
+            alarm.Trigger();
         }
     }
 

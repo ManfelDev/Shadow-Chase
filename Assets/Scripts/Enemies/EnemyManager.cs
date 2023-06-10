@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int          maxHealth = 100;
     [SerializeField] private AudioClip    hurtSound;
     [SerializeField] private AudioClip    deathSound;
+    [SerializeField] private GameObject   weaponToDropWhenDead;
     
     private int          currentHealth;
     private WeaponsClass currentWeapon;
@@ -38,6 +39,7 @@ public class EnemyManager : MonoBehaviour
             audioSource.PlayOneShot(deathSound, 1f);
             dead = true;
             Destroy(gameObject);
+            DropWeapon();
         }
 
         else if (currentHealth > maxHealth)
@@ -71,5 +73,13 @@ public class EnemyManager : MonoBehaviour
     public bool GetDead()
     {
         return dead;
+    }
+
+    // Drop weapon prefab
+    public void DropWeapon()
+    {
+        Vector3 dropPosition = transform.position;
+        dropPosition.y += 7f;
+        Instantiate(weaponToDropWhenDead, dropPosition, Quaternion.identity);
     }
 }
