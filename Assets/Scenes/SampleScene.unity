@@ -324,7 +324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 274798950}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201954582}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &274798950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2568,7 +2580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100
+      value: 253.3
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3289,6 +3301,7 @@ GameObject:
   - component: {fileID: 1201954579}
   - component: {fileID: 1201954578}
   - component: {fileID: 1201954582}
+  - component: {fileID: 1201954583}
   m_Layer: 5
   m_Name: Pause menu (Screen)
   m_TagString: Untagged
@@ -3391,7 +3404,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1073519944}
+  playerUI: {fileID: 1673635774}
   player: {fileID: 1362469265}
+--- !u!114 &1201954583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201954577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bbbef28c3c64560ae835eae7f282f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1223679101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3488,71 +3514,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1246231756}
-    m_ColliderPaths:
-    - - X: 2880000100
-        Y: -320000041
-      - X: 2880000100
-        Y: 41
-      - X: 2880000041
-        Y: 100
-      - X: 9999980
-        Y: 100
-      - X: 9999943
-        Y: 85
-      - X: -85
-        Y: -9999943
-      - X: -100
-        Y: -9999980
-      - X: -100
-        Y: -300000020
-      - X: -85
-        Y: -300000057
-      - X: 19999943
-        Y: -320000085
-      - X: 19999980
-        Y: -320000100
-      - X: 2880000041
-        Y: -320000100
-    - - X: 2879999900
-        Y: -960000041
-      - X: 2879999900
-        Y: -639999959
-      - X: 2879999959
-        Y: -639999900
-      - X: -1590000020
-        Y: -639999900
-      - X: -1590000057
-        Y: -639999915
-      - X: -1600000085
-        Y: -649999943
-      - X: -1600000100
-        Y: -649999980
-      - X: -1600000100
-        Y: -940000020
-      - X: -1600000085
-        Y: -940000057
-      - X: -1580000057
-        Y: -960000085
-      - X: -1580000020
-        Y: -960000100
-      - X: 2879999959
-        Y: -960000100
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 287.99997, y: -32.00001}
-      - {x: 287.99997, y: 0.00001}
-      - {x: 0.9999867, y: 0.00000090000003}
-      - {x: -0.00001, y: -1.0000088}
-      - {x: -0.00000090000003, y: -30.000013}
-      - {x: 2.0000088, y: -32.00001}
-    - - {x: 287.99997, y: -96.000015}
-      - {x: 287.99997, y: -63.99999}
-      - {x: -159.00002, y: -64}
-      - {x: -160.00002, y: -65.00001}
-      - {x: -160, y: -94.000015}
-      - {x: -157.99998, y: -96.000015}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1246231755
@@ -3588,7 +3552,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -4678,7 +4642,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807192305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1201954583}
+        m_TargetAssemblyTypeName: Buttons, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1807192305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4792,7 +4768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 250
+      value: 72.7
       objectReference: {fileID: 0}
     - target: {fileID: 7099577415367382323, guid: b8e306b92aa367a4f8961edab40107b3, type: 3}
       propertyPath: m_LocalPosition.y

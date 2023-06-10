@@ -45,10 +45,6 @@ public class Bullets : MonoBehaviour
             player.TakeDamage((int)enemy.CurrentWeapon.Damage);
             Destroy(gameObject);
         }
-        else if (hitInfo.CompareTag("Enemy") || hitInfo.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
         // Destroy the bullet if the time is up
         else
         {
