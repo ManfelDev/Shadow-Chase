@@ -8,8 +8,9 @@ public class LoadoutUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ammoDisplay;
     [SerializeField] private TextMeshProUGUI maxAmmoDisplay;
+    [SerializeField] private Image           currentWeaponImage;
     private PlayerManager player;
-    private WeaponsClass currentWeapon;
+    private WeaponsClass  currentWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,9 @@ public class LoadoutUI : MonoBehaviour
         if (currentWeapon != player.CurrentWeapon)
         {
             currentWeapon = player.CurrentWeapon;
+
+            // Update the weapon image to the current weapon
+            currentWeaponImage.sprite = currentWeapon.WeaponSprite;
         }
 
         ammoDisplay.text = player.Ammo.ToString();

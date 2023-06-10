@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8239158761946417683}
   - component: {fileID: 8239158761946417684}
-  - component: {fileID: 8239158761946417685}
+  - component: {fileID: 7503073569962269278}
   - component: {fileID: 8239158761946417682}
   m_Layer: 0
-  m_Name: Pistol
-  m_TagString: Pistol
+  m_Name: AK
+  m_TagString: AK
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cee1243de17db454f8e9a777af2444e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8239158761946417685
+--- !u!61 &7503073569962269278
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10, y: 7}
+  m_Size: {x: 16, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &8239158761946417682
 MonoBehaviour:
@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpSound: {fileID: 8300000, guid: 156a80762c6af0c448a4bfe01ceaf51a, type: 3}
-  rightArmSprite: {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
-  leftArmSprite: {fileID: 21300000, guid: 4fecd751c25b145c9a50fa57dcb468bd, type: 3}
+  rightArmSprite: {fileID: 21300000, guid: 6d6d0de51c0c3db4987e5216a622a03c, type: 3}
+  leftArmSprite: {fileID: 21300000, guid: 565683bda776a3f4aaf5e70a3463ddc0, type: 3}
+  pickupText: {fileID: 0}

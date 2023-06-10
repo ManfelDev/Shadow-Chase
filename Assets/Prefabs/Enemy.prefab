@@ -728,8 +728,8 @@ MonoBehaviour:
   firePoint: {fileID: 1615915362912992626}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
   detectionRadius: 75
-  shootSound: {fileID: 8300000, guid: 9da47fd4f893585429e9f46346330326, type: 3}
-  fireRate: 0.15
+  shootSound: {fileID: 8300000, guid: 810e6648a1f5c82489fc6d840a59b4f7, type: 3}
+  fireRate: 0.2
 --- !u!114 &8734340318480276080
 MonoBehaviour:
   m_ObjectHideFlags: 0

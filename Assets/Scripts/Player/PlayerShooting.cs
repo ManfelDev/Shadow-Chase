@@ -6,12 +6,12 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private AudioClip  shootSound;
-    [SerializeField] private AudioClip  blankShootSound;
 
     private float         lastShot;
     private PlayerManager player;
     private WeaponsClass  currentWeapon;
+    private AudioClip     shootSound;
+    private AudioClip     blankShootSound;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -29,14 +29,17 @@ public class PlayerShooting : MonoBehaviour
         {
             currentWeapon = player.CurrentWeapon;
         }
+
+        shootSound = player.CurrentWeapon.ShootSound;
+        blankShootSound = player.CurrentWeapon.BlankShootSound;
         
         // Check if the player has shot
-        if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= currentWeapon.FireRate && player.Ammo > 0)
+        if (Input.GetButton("Fire1") && Time.time - lastShot >= currentWeapon.FireRate && player.Ammo > 0)
         {
             Shoot();
             lastShot = Time.time;
         }
-        else if (Input.GetButtonDown("Fire1") && Time.time - lastShot >= currentWeapon.FireRate)
+        else if (Input.GetButton("Fire1") && Time.time - lastShot >= currentWeapon.FireRate)
         {
             audioSource.PlayOneShot(blankShootSound, 1f);
             lastShot = Time.time;

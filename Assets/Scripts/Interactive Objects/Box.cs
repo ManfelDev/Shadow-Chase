@@ -45,7 +45,7 @@ public class Box : MonoBehaviour
         {
             Destroy(collision.gameObject);
             HitPoints--;
-            audioSource.PlayOneShot(breakSound, 1f);
+            audioSource.PlayOneShot(breakSound, 0.7f);
         }
     }
 }

@@ -6,6 +6,7 @@ public class CatchableWeapons : MonoBehaviour
 {
     [SerializeField] private AudioClip pickUpSound;
     private PlayerManager playerManager;
+    private GameObject    player;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -30,11 +31,14 @@ public class CatchableWeapons : MonoBehaviour
     void Start()
     {
         playerManager = FindObjectOfType<PlayerManager>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && playerManager.Ammo < playerManager.CurrentWeapon.MaxAmmo)
+        if (collision.gameObject.CompareTag("Player") && 
+           (playerManager.Ammo < playerManager.CurrentWeapon.MaxAmmo || 
+            playerManager.CurrentWeapon.Tag != CatchableWeapon.Tag))
         {
             // Check if players current weapon tag is the same as the catchable weapon tag
             if (playerManager.CurrentWeapon.Tag == CatchableWeapon.Tag)
@@ -48,6 +52,14 @@ public class CatchableWeapons : MonoBehaviour
                 playerManager.ChangeWeapon(CatchableWeapon);
                 // Set the player's ammo to the weapon's max ammo
                 playerManager.Ammo = (int)(CatchableWeapon.MaxAmmo/2);
+
+                // Change the right arm sprite
+                SpriteRenderer rightArmRenderer = player.transform.Find("Arms/right_arm").GetComponent<SpriteRenderer>();
+                rightArmRenderer.sprite = CatchableWeapon.RightArmSprite;
+
+                // Change the left arm sprite
+                SpriteRenderer leftArmRenderer = player.transform.Find("Arms/left_arm").GetComponent<SpriteRenderer>();
+                leftArmRenderer.sprite = CatchableWeapon.LeftArmSprite;
             }
 
             // Play pick up sound
