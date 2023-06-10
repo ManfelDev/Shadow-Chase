@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class FastRespawn : MonoBehaviour
 {
+    private GameManager  gameManager;
+    private GameObject   player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        player.transform.position = gameManager.LastCheckPointPosition;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))

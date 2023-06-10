@@ -11,6 +11,8 @@ TagManager:
   - Bullet
   - Pistol
   - AK
+  - LevelManager
+  - GameManager
   layers:
   - Default
   - TransparentFX
