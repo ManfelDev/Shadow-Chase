@@ -10,6 +10,7 @@ public class PlayerShooting : MonoBehaviour
     private float         lastShot;
     private PlayerManager player;
     private WeaponsClass  currentWeapon;
+    private EnemyAlarm    alarm;
     private AudioClip     shootSound;
     private AudioClip     blankShootSound;
 
@@ -19,6 +20,7 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<PlayerManager>();
+        alarm = FindObjectOfType<EnemyAlarm>();
     }
 
     // Update is called once per frame
@@ -57,5 +59,11 @@ public class PlayerShooting : MonoBehaviour
         }
         player.Ammo--;
         audioSource.PlayOneShot(shootSound, 1f);
+
+        // If the weapon is not silenced, trigger the enemy alarm
+        if (currentWeapon.IsSilenced == false)
+        {
+            alarm.Trigger();
+        }
     }
 }
