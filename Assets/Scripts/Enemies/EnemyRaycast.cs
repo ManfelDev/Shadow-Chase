@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class EnemyRaycast : MonoBehaviour
 {
-    [SerializeField] private float      detectionRadius = 80.0f;
+    [SerializeField] private float      detectionRadius = 100.0f;
     [SerializeField] private float      countdownTimer = 3.0f;
     [SerializeField] private float      countdownTicks = 0.1f;
     [SerializeField] private GameObject playerDetector;
+    [SerializeField] private GameObject suspicionIcon;
+    [SerializeField] private GameObject detectionIcon;
 
     private EnemyAlarm    alarm;
     private EnemyMovement enemyMovement;
     private GameObject    player;
     private Vector2       playerPosition;
     private Vector2       enemyToPlayer;
+    private FollowPlayer  followPlayer;
     private float         playerDistance;
     private float         countdown;
     private float         lastTick;
     private Vector2       selfPosition;
     private RaycastHit2D  raycast;
     private float         direction;
-    private Collider2D[] playerColliders;
+    private Collider2D[]  playerColliders;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +42,7 @@ public class EnemyRaycast : MonoBehaviour
         countdown = countdownTimer;
 
         enemyMovement = GetComponentInParent<EnemyMovement>();
+        followPlayer = GameObject.FindObjectOfType<FollowPlayer>();
     }
 
     // Update is called once per frame
@@ -56,8 +60,12 @@ public class EnemyRaycast : MonoBehaviour
         enemyToPlayer = selfPosition - playerPosition;
         playerDistance = Mathf.Sqrt((enemyToPlayer.x * enemyToPlayer.x) + (enemyToPlayer.y * enemyToPlayer.y));
 
-        //if (playerDistance <= detectionRadius)
-        if (true)
+        // Rotates the detection icons to match the player's rotation
+        suspicionIcon.transform.localRotation = transform.localRotation;
+        detectionIcon.transform.localRotation = transform.localRotation;
+
+        if (playerDistance <= detectionRadius)
+        //if (true)
         {
             // Send a raycast from the enemy's PlayerDetector towards the player
             if (enemyMovement.GetEnemySpeedX() != 0)
@@ -102,6 +110,24 @@ public class EnemyRaycast : MonoBehaviour
         
         if (countdown <= 0)
             alarm.Trigger();
+
+        if (alarm.IsON)
+        {
+            detectionIcon.SetActive(true);
+            suspicionIcon.SetActive(false);
+        }
+
+        else if (countdown < countdownTimer)
+        {
+            detectionIcon.SetActive(false);
+            suspicionIcon.SetActive(true);
+        }
+
+        else
+        {
+            detectionIcon.SetActive(false);
+            suspicionIcon.SetActive(false);
+        }
     }
 
     // Draw gizmos to visualize the detection radius
@@ -109,7 +135,7 @@ public class EnemyRaycast : MonoBehaviour
     {
         // Draw detection radius
         Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(selfPosition, detectionRadius);
+        Gizmos.DrawWireSphere(selfPosition, detectionRadius);
     }
 
     private bool CheckRaycastCollision()
@@ -120,5 +146,15 @@ public class EnemyRaycast : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private Transform GetHighestParentTransform(Transform transform)
+    {
+        Transform highestParent = transform;
+        while (highestParent.parent != null)
+        {
+            highestParent = highestParent.parent;
+        }
+        return highestParent;
     }
 }

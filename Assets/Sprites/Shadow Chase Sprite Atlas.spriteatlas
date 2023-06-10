@@ -97,6 +97,7 @@ SpriteAtlas:
   - {fileID: -1494036381, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: -189094765, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: 21300000, guid: 520537e77fd5e46ca9243c994065fdd7, type: 3}
+  - {fileID: 21300000, guid: a80208189e1dc2049ae74d9a82108a7f, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
   - {fileID: -1406578760, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
   - {fileID: 1548242419, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
@@ -117,6 +118,7 @@ SpriteAtlas:
   - {fileID: 931684453, guid: cb70018c1a7b04c2d940d13509cda47a, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
   - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
+  - {fileID: 21300000, guid: 9e87e0df2553da440a619145d6213c28, type: 3}
   m_PackedSpriteNamesToIndex:
   - explosion px_5
   - explosion px_4
@@ -165,6 +167,7 @@ SpriteAtlas:
   - animation run_0
   - animation run_3
   - Character
+  - questionmark
   - explosive barrel
   - jump animation_0
   - jump animation_1
@@ -185,6 +188,7 @@ SpriteAtlas:
   - Intractable_Objects_1
   - right_arm
   - HP_Bar_1 (1)
+  - detectionmark
   m_RenderDataMap: {}
   m_Tag: Shadow Chase Sprite Atlas
   m_IsVariant: 0

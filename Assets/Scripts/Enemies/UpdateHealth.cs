@@ -9,7 +9,8 @@ public class UpdateHealth : MonoBehaviour
     private FollowPlayer  followPlayer;
     private float         maxScale;
     private Vector3       localScale;
-    private Vector3       localPosition;
+    private Quaternion    localRotation;
+    private Transform     enemyTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -20,28 +21,26 @@ public class UpdateHealth : MonoBehaviour
 
         localScale = transform.localScale;
         maxScale = localScale.x;
-        localPosition = transform.localPosition;
+        enemyTransform = GetHighestParentTransform(transform);
     }
 
     // Update is called once per frame
     void Update()
     {
         localScale.x = (float) maxScale * enemyManager.GetCurrentHealth() / enemyManager.GetMaxHealth();
-
-        if (enemyMovement.GetEnemySpeedX() != 0)
-        {
-            localPosition.x = (float) -enemyMovement.GetEnemySpeedX() * (maxScale - localScale.x) / 2;
-        }
-        else
-        {
-            localPosition.x = (float) (maxScale - localScale.x) / 2;
-            if (followPlayer.PointingRight())
-            {
-                localPosition.x *= -1;
-            }
-        }
+        localRotation = enemyTransform.localRotation;
 
         transform.localScale = localScale;
-        transform.localPosition = localPosition;
+        transform.parent.transform.localRotation = localRotation;
+    }
+
+    private Transform GetHighestParentTransform(Transform transform)
+    {
+        Transform highestParent = transform;
+        while (highestParent.parent != null)
+        {
+            highestParent = highestParent.parent;
+        }
+        return highestParent;
     }
 }
