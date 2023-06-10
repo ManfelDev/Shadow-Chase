@@ -64,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c49b3ef18ab7142f090c38def63461f1, type: 3}
   - {fileID: 21300000, guid: c161fef18ca364ba288924fbc62b6857, type: 3}
   - {fileID: 21300000, guid: c50c17126b7ae3d458538f09dbadd2dc, type: 3}
+  - {fileID: 21300000, guid: f9f5a572a84f3cb4ab9c596b2c67f24c, type: 3}
   - {fileID: 21300000, guid: 3812a0b2b6bf467489abc09735378d48, type: 3}
   - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
   - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
@@ -105,6 +106,7 @@ SpriteAtlas:
   - {fileID: -1494036381, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: -189094765, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: 21300000, guid: 520537e77fd5e46ca9243c994065fdd7, type: 3}
+  - {fileID: 21300000, guid: a80208189e1dc2049ae74d9a82108a7f, type: 3}
   - {fileID: 21300000, guid: 9e1d05885775f4c91ae0e58900aabe49, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
   - {fileID: 21300000, guid: 6a2db4c9052384707b0526c7328f1db2, type: 3}
@@ -130,6 +132,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e5a91bfc0d79b3a498906b9ec0d76c60, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
   - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
+  - {fileID: 21300000, guid: 9e87e0df2553da440a619145d6213c28, type: 3}
   - {fileID: 21300000, guid: 7e1df7ff2afa64702bac7ab3e04cf288, type: 3}
   m_PackedSpriteNamesToIndex:
   - HowToPlayButton
@@ -146,6 +149,7 @@ SpriteAtlas:
   - ExitButton
   - box_broken
   - enemy 1
+  - AlarmLight
   - ResumePauseMenuSelected
   - pistol
   - left_arm_enemy
@@ -187,6 +191,7 @@ SpriteAtlas:
   - animation run_0
   - animation run_3
   - Character
+  - questionmark
   - ExitButtonSelected
   - explosive barrel
   - PlayButtonSelected
@@ -212,6 +217,7 @@ SpriteAtlas:
   - ResumePauseMenu
   - right_arm
   - HP_Bar_1 (1)
+  - detectionmark
   - PlayButton
   m_RenderDataMap: {}
   m_Tag: Shadow Chase Sprite Atlas
