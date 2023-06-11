@@ -50,7 +50,8 @@ public class ExplosiveBarrel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
+        if (collision.CompareTag("Bullet") ||
+            collision.CompareTag("ThrowableWeapon"))
         {
             alarm = FindObjectOfType<EnemyAlarm>();
             audioSource.PlayOneShot(explosionSound, 1f);

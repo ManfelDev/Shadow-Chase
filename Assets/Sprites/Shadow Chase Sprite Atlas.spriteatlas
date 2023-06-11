@@ -108,6 +108,7 @@ SpriteAtlas:
   - {fileID: -189094765, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: 21300000, guid: 520537e77fd5e46ca9243c994065fdd7, type: 3}
   - {fileID: 21300000, guid: a80208189e1dc2049ae74d9a82108a7f, type: 3}
+  - {fileID: 21300000, guid: b067c448259067242888e7f556a1cf0f, type: 3}
   - {fileID: 21300000, guid: 9e1d05885775f4c91ae0e58900aabe49, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
   - {fileID: 21300000, guid: 6a2db4c9052384707b0526c7328f1db2, type: 3}
@@ -197,6 +198,7 @@ SpriteAtlas:
   - animation run_3
   - Character
   - questionmark
+  - punch animation
   - ExitButtonSelected
   - explosive barrel
   - PlayButtonSelected

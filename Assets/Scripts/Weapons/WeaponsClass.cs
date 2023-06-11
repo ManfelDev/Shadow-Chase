@@ -58,4 +58,18 @@ public class WeaponsClass
                                     Resources.Load<AudioClip>("Audio/AK empty"));
         }
     }
+
+    // Punch with a get
+    public static WeaponsClass Punch
+    {
+        get
+        {
+            return new WeaponsClass(0.5f, 30, 0, null, true,
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null);
+        }
+    }
 }

@@ -23,7 +23,11 @@ public class PlayerManager : MonoBehaviour
     // Get player's current health
     public int          CurrentHealth { get => currentHealth; }
     // Get current weapon
-    public WeaponsClass CurrentWeapon { get => currentWeapon; }
+    public WeaponsClass CurrentWeapon 
+    { 
+        get => currentWeapon;
+        set => currentWeapon = value;
+    }
     // Get sound manager's audio source
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -122,6 +126,13 @@ public class PlayerManager : MonoBehaviour
     {
         currentWeapon = newWeapon;
         Ammo = currentWeapon.MaxAmmo;
+        
+        // Change the right arm sprite
+        SpriteRenderer rightArmRenderer = player.transform.Find("Arms/right_arm").GetComponent<SpriteRenderer>();
+        rightArmRenderer.sprite = currentWeapon.RightArmSprite;
+        // Change the left arm sprite
+        SpriteRenderer leftArmRenderer = player.transform.Find("Arms/left_arm").GetComponent<SpriteRenderer>();
+        leftArmRenderer.sprite = currentWeapon.LeftArmSprite;
     }
 
     // Restart the level after a delay

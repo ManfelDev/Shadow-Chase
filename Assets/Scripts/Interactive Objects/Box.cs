@@ -47,5 +47,11 @@ public class Box : MonoBehaviour
             HitPoints--;
             audioSource.PlayOneShot(breakSound, 0.7f);
         }
+        else if (collision.gameObject.tag == "ThrowableWeapon")
+        {
+            Destroy(collision.gameObject);
+            HitPoints = 0;
+            audioSource.PlayOneShot(breakSound, 0.7f);
+        }
     }
 }

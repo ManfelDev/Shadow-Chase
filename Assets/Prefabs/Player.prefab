@@ -233,8 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8967355249736792041}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
-  shootSound: {fileID: 8300000, guid: f8d904b900360224eb37198db202f5f5, type: 3}
-  blankShootSound: {fileID: 8300000, guid: c763b95672177d74eb42d353697f24ed, type: 3}
+  throwableWeapon: {fileID: 1167675934390909483, guid: 66dce43a814961f43b63c70ad5fe4373, type: 3}
 --- !u!1 &4842346694540083632
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,13 +6,14 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject throwableWeapon;
 
-    private float         lastShot;
-    private PlayerManager player;
-    private WeaponsClass  currentWeapon;
-    private EnemyAlarm    alarm;
-    private AudioClip     shootSound;
-    private AudioClip     blankShootSound;
+    private float           lastShot;
+    private PlayerManager   player;
+    private WeaponsClass    currentWeapon;
+    private EnemyAlarm      alarm;
+    private AudioClip       shootSound;
+    private AudioClip       blankShootSound;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -36,7 +37,10 @@ public class PlayerShooting : MonoBehaviour
         blankShootSound = player.CurrentWeapon.BlankShootSound;
         
         // Check if the player has shot
-        if (Input.GetButton("Fire1") && Time.time - lastShot >= currentWeapon.FireRate && player.Ammo > 0)
+        if (Input.GetButton("Fire1") && 
+            Time.time - lastShot >= currentWeapon.FireRate && 
+            player.Ammo > 0 &&
+            currentWeapon != WeaponsClass.Punch)
         {
             Shoot();
             lastShot = Time.time;
@@ -46,6 +50,15 @@ public class PlayerShooting : MonoBehaviour
             audioSource.PlayOneShot(blankShootSound, 1f);
             lastShot = Time.time;
         }
+
+        // Throw weapon
+        if (Input.GetButtonDown("Fire2") && 
+            currentWeapon != WeaponsClass.Punch)
+        {
+            ThrowWeapon();
+        }
+
+        Debug.Log(currentWeapon.Tag);
     }
 
     // Shoot bullet 
@@ -65,5 +78,17 @@ public class PlayerShooting : MonoBehaviour
         {
             alarm.SlowTriggerAll();
         }
+    }
+
+    void ThrowWeapon()
+    {
+        GameObject newThrowableWeapon = Instantiate(throwableWeapon, firePoint.position, firePoint.rotation);
+        ThrowableWeapon throwableWeaponScript = newThrowableWeapon.GetComponent<ThrowableWeapon>();
+        if (throwableWeaponScript != null)
+        {
+            throwableWeaponScript.spriteRenderer.sprite = currentWeapon.WeaponSprite;
+        }
+
+        player.ChangeWeapon(WeaponsClass.Punch);
     }
 }
