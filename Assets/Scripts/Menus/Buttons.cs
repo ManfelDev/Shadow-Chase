@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
+    private PauseMenu pauseMenu;
+
+    void Start()
+    {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+    }
+
     // Go to How to Play
     public void GoToHowToPlay()
     {
@@ -13,6 +20,7 @@ public class Buttons : MonoBehaviour
     // Go to main menu
     public void GoToMainMenu()
     {
+        pauseMenu.Resume();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
@@ -21,5 +29,4 @@ public class Buttons : MonoBehaviour
     {
         Application.Quit();
     }
-
 }

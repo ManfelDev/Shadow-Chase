@@ -132,6 +132,7 @@ SpriteAtlas:
   - {fileID: 931684453, guid: cb70018c1a7b04c2d940d13509cda47a, type: 3}
   - {fileID: 21300000, guid: e5a91bfc0d79b3a498906b9ec0d76c60, type: 3}
   - {fileID: 21300000, guid: cee1243de17db454f8e9a777af2444e6, type: 3}
+  - {fileID: 21300000, guid: 38c5d6ad9e029984ab33102bf999ca1f, type: 3}
   - {fileID: 21300000, guid: 565683bda776a3f4aaf5e70a3463ddc0, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
   - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
@@ -220,6 +221,7 @@ SpriteAtlas:
   - Intractable_Objects_1
   - ResumePauseMenu
   - ak
+  - checkpoint
   - left_arm_ak
   - right_arm
   - HP_Bar_1 (1)

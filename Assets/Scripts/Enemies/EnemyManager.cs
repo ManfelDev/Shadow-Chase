@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private int          currentHealth;
     private WeaponsClass currentWeapon;
     private Animator     animator;
+
     private bool         dead = false;
 
     // Get current weapon
@@ -38,6 +39,7 @@ public class EnemyManager : MonoBehaviour
         {
             audioSource.PlayOneShot(deathSound, 1f);
             dead = true;
+            DropWeapon();
             Destroy(gameObject);
             DropWeapon();
         }

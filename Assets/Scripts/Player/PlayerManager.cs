@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerMovement   playerMovement;
     private PlayerShooting   playerShooting;
     private SpriteRenderer[] spriteRenderers;
+    private GameManager      gameManager;
 
     // Get and set ammo
     public int          Ammo { get; set; }
@@ -38,6 +40,9 @@ public class PlayerManager : MonoBehaviour
 
         // Get all sprite renderers
         spriteRenderers = player.GetComponentsInChildren<SpriteRenderer>();
+
+        // Get game manager
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -66,6 +71,9 @@ public class PlayerManager : MonoBehaviour
                     spriteRenderer.enabled = false;
                 }
             }
+
+            // Restart level after 2 seconds
+            StartCoroutine(RestartLevelAfterDelay(2f));
         }
 
         // Can't have more ammo than the weapon's max ammo
@@ -114,5 +122,14 @@ public class PlayerManager : MonoBehaviour
     {
         currentWeapon = newWeapon;
         Ammo = currentWeapon.MaxAmmo;
+    }
+
+    // Restart the level after a delay
+    private IEnumerator RestartLevelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Restart the level from the last checkpoint
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
