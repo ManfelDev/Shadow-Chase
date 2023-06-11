@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
     private string       currentState;
     private EnemyAlarm   alarm;
     private EnemyManager enemyManager;
+    private EnemyRaycast enemyRaycast;
     private FollowPlayer followPlayer;
     private Vector2      playerPosition;
     private Vector2      selfPosition;
@@ -38,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
         alarm = FindObjectOfType<EnemyAlarm>();
         followPlayer = GetComponentInChildren<FollowPlayer>();
         enemyManager = GetComponent<EnemyManager>();
+        enemyRaycast = GetComponent<EnemyRaycast>();
 
         selfPosition = transform.position;
         limit1Position.x = (selfPosition.x + walkLimits);
@@ -75,6 +77,13 @@ public class EnemyMovement : MonoBehaviour
             // Inverts the speed when it walks past a limit
             if (canMove)
             {
+                if (enemyRaycast.GetCountdown() <= 2.5f && !alarm.IsON)
+                    speedX = 0;
+                
+                else if (speedX == 0)
+                    speedX = -1;
+
+
                 if ((selfPosition.x <= limit1Position.x && walkLimits < 0) || (selfPosition.x <= limit2Position.x && walkLimits > 0))
                     speedX = 1;
 

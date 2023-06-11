@@ -174,4 +174,9 @@ public class EnemyRaycast : MonoBehaviour
     {
         slowTrigger = true;
     }
+
+    public float GetCountdown()
+    {
+        return countdown;
+    }
 }
