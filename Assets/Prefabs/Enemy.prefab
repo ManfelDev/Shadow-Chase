@@ -542,8 +542,8 @@ GameObject:
   - component: {fileID: 7099577415367382318}
   - component: {fileID: 7238058705475796693}
   - component: {fileID: 8734340318480276080}
-  - component: {fileID: 8240838182233069071}
   - component: {fileID: 4444862675347616423}
+  - component: {fileID: 8240838182233069071}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -658,8 +658,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.389595, y: 16.18132}
-  m_Size: {x: 13.27919, y: 32.124634}
+  m_Offset: {x: -1.389595, y: 15.60427}
+  m_Size: {x: 13.27919, y: 30.970533}
   m_Direction: 0
 --- !u!61 &7099577415367382324
 BoxCollider2D:
@@ -674,7 +674,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.3725128, y: 16}
+  m_Offset: {x: -1.3725128, y: 15.534201}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -685,7 +685,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 13.318848, y: 32}
+  m_Size: {x: 13.318848, y: 31.068401}
   m_EdgeRadius: 0
 --- !u!114 &7099577415367382318
 MonoBehaviour:
@@ -727,7 +727,7 @@ MonoBehaviour:
   enemyManager: {fileID: 8734340318480276080}
   firePoint: {fileID: 1615915362912992626}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
-  detectionRadius: 75
+  detectionRadius: 120
   shootSound: {fileID: 8300000, guid: 810e6648a1f5c82489fc6d840a59b4f7, type: 3}
   fireRate: 0.2
 --- !u!114 &8734340318480276080
@@ -746,6 +746,24 @@ MonoBehaviour:
   hurtSound: {fileID: 8300000, guid: 6f316cf5846cd554c833a042e4fa578d, type: 3}
   deathSound: {fileID: 8300000, guid: 476539fa2ba10e543ae890704b03663e, type: 3}
   weaponToDropWhenDead: {fileID: 8239158761946417686, guid: 8fc24919df086ed48937daec6634a52f, type: 3}
+--- !u!114 &4444862675347616423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7099577415367382333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d9035eab2e667449522d1e7d9ea4ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 120
+  countdownTimer: 3
+  countdownTicks: 0.1
+  playerDetector: {fileID: 2868109066020347602}
+  suspicionIcon: {fileID: 1347322506596078697}
+  detectionIcon: {fileID: 7382168648614718608}
 --- !u!95 &8240838182233069071
 Animator:
   serializedVersion: 4
@@ -766,24 +784,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4444862675347616423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7099577415367382333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d9035eab2e667449522d1e7d9ea4ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRadius: 80
-  countdownTimer: 3
-  countdownTicks: 0.1
-  playerDetector: {fileID: 2868109066020347602}
-  suspicionIcon: {fileID: 1347322506596078697}
-  detectionIcon: {fileID: 7382168648614718608}
 --- !u!1 &7099577415778838362
 GameObject:
   m_ObjectHideFlags: 0
