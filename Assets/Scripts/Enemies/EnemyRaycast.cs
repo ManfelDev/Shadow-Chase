@@ -81,8 +81,14 @@ public class EnemyRaycast : MonoBehaviour
             // Send a raycast from the enemy's PlayerDetector towards the player
             if (enemyMovement.GetEnemySpeedX() != 0)
                 direction = enemyMovement.GetEnemySpeedX();
+
             else
-                direction = -1;
+            {
+                if (enemyToPlayer.x >= 0)
+                    direction = -1;
+
+                else direction = 1;
+            }
 
             for (float i = 0; i < detectionRadius; i+= 0.1f)
             {
@@ -178,5 +184,10 @@ public class EnemyRaycast : MonoBehaviour
     public float GetCountdown()
     {
         return countdown;
+    }
+
+    public float GetDirection()
+    {
+        return direction;
     }
 }

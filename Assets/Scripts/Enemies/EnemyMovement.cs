@@ -119,8 +119,15 @@ public class EnemyMovement : MonoBehaviour
             // Apply movement
             rb.velocity = currentVelocity;
 
+            // If the enemy is suspicious, look towards the player
+            if (enemyRaycast.GetCountdown() < 3)
+                if (enemyRaycast.GetDirection() > 0)
+                    transform.rotation = Quaternion.identity;
+                
+                else transform.rotation = Quaternion.Euler(0, 180, 0);
+
             // If the enemy is pointing right does nothing
-            if (followPlayer.PointingRight())
+            else if (followPlayer.PointingRight())
                 transform.rotation = Quaternion.identity;
 
             // If the enemy is pointing left, rotate everything 180 degrees
