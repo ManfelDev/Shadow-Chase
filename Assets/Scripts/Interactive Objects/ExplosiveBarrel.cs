@@ -59,7 +59,7 @@ public class ExplosiveBarrel : MonoBehaviour
             Explosion();
             ExplosionAnimation();
             Destroy(gameObject);
-            alarm.Trigger();
+            alarm.SlowTriggerAll();
         }
     }
 

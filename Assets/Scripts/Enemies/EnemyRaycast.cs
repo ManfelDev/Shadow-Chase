@@ -24,11 +24,13 @@ public class EnemyRaycast : MonoBehaviour
     private RaycastHit2D  raycast;
     private float         direction;
     private Collider2D[]  playerColliders;
+    private bool          slowTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         alarm = FindObjectOfType<EnemyAlarm>();
+        slowTrigger = false;
 
         selfPosition = transform.position;
         // Updates its own position to its eyes
@@ -64,8 +66,17 @@ public class EnemyRaycast : MonoBehaviour
         suspicionIcon.transform.localRotation = transform.localRotation;
         detectionIcon.transform.localRotation = transform.localRotation;
 
-        if (playerDistance <= detectionRadius)
-        //if (true)
+        // If slow trigger is active, the alarm will raise continuously
+        if (slowTrigger)
+        {
+            if (Time.time > lastTick + countdownTicks)
+                {
+                    countdown -= countdownTicks;
+                    lastTick = Time.time;
+                }
+        }
+
+        else if (playerDistance <= detectionRadius)
         {
             // Send a raycast from the enemy's PlayerDetector towards the player
             if (enemyMovement.GetEnemySpeedX() != 0)
@@ -94,6 +105,7 @@ public class EnemyRaycast : MonoBehaviour
                     Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
             }
         }
+
         // If the raycast doesn't detect the player, raises the alarm countdown
         else if (countdown < countdownTimer)
         {
@@ -156,5 +168,10 @@ public class EnemyRaycast : MonoBehaviour
             highestParent = highestParent.parent;
         }
         return highestParent;
+    }
+
+    public void SlowTrigger()
+    {
+        slowTrigger = true;
     }
 }
