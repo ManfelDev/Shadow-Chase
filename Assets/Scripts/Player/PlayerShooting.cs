@@ -63,7 +63,7 @@ public class PlayerShooting : MonoBehaviour
         // If the weapon is not silenced, trigger the enemy alarm
         if (currentWeapon.IsSilenced == false)
         {
-            alarm.Trigger();
+            alarm.SlowTriggerAll();
         }
     }
 }

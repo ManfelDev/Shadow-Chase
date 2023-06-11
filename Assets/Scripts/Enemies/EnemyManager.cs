@@ -41,6 +41,7 @@ public class EnemyManager : MonoBehaviour
             dead = true;
             DropWeapon();
             Destroy(gameObject);
+            DropWeapon();
         }
 
         else if (currentHealth > maxHealth)

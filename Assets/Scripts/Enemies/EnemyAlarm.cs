@@ -10,10 +10,19 @@ public class EnemyAlarm : MonoBehaviour
     private float slider;
     private bool sliderUp;
     private bool sliderDown;
+    private EnemyRaycast[] enemyRaycasts;
 
     public void Trigger()
     {
         alarm = true;
+    }
+
+    public void SlowTriggerAll()
+    {
+        foreach (EnemyRaycast r in enemyRaycasts)
+        {
+            r.SlowTrigger();
+        }
     }
 
     void Start()
@@ -21,6 +30,7 @@ public class EnemyAlarm : MonoBehaviour
         slider = 0.0f;
         sliderDown = false;
         sliderUp = true;
+        enemyRaycasts = FindObjectsOfType<EnemyRaycast>();
     }
 
     void Update()
