@@ -23,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     public int          Ammo { get; set; }
     // Get player's current health
     public int          CurrentHealth { get => currentHealth; }
+    // Get player's max health
+    public int          MaxHealth { get => maxHealth; }
     // Get current weapon
     public WeaponsClass CurrentWeapon 
     { 
@@ -132,6 +134,14 @@ public class PlayerManager : MonoBehaviour
         healthBar.SetHealth(currentHealth);
 
         StartCoroutine(Blink());
+    }
+
+    // Give health
+    public void GiveHealth(int health)
+    {
+        currentHealth += health;
+
+        healthBar.SetHealth(currentHealth);
     }
 
     // Coroutine to make player blink red for a second
