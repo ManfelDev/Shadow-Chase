@@ -14,11 +14,11 @@ public class Buttons : MonoBehaviour
     // Go to How to Play
     public void GoToHowToPlay()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     // Go to main menu
-    public void GoToMainMenu()
+    public void GoToMainMenuPause()
     {
         pauseMenu.Resume();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);

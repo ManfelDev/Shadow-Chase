@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ASyncLoader : MonoBehaviour
+public class ASyncManager : MonoBehaviour
 {
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject settingsMenu;
 
     public void LoadLevel(int levelToLoad)
     {
@@ -15,6 +16,18 @@ public class ASyncLoader : MonoBehaviour
         loadingScreen.SetActive(true);
 
         StartCoroutine(LoadLevelASync(levelToLoad));
+    }
+
+    public void GoFromMainMenuToSettings()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+    }
+
+    public void GoFromSettingsToMainMenu()
+    {
+        settingsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     IEnumerator LoadLevelASync (int levelToLoad)
