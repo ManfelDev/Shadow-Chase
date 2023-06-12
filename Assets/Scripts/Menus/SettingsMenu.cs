@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider     volumeSlider;
 
     private void Start()
     {
@@ -19,5 +19,10 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("volume", volume);
+    }
+
+    public void SetFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
     }
 }
