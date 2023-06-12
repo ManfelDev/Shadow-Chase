@@ -200,12 +200,6 @@ public class PlayerMovement : MonoBehaviour
                 Invoke("PunchComplete", 0.8f);
             }
         }
-
-        // If press E punch
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            isPunchingPressed = true;
-        }
     }
 
     public void IsPunching()
