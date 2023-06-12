@@ -17,6 +17,7 @@ public class RunningManMovement : MonoBehaviour
     private Animator          animator;
     private bool              onGround = false;
     private float             speedX;
+    private float             oldSpeedX;
     private string            currentState;
     private EnemyAlarm        alarm;
     private RunningManRaycast runningManRaycast;
@@ -40,6 +41,7 @@ public class RunningManMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 7, true);
 
         speedX = 1;
+        oldSpeedX = speedX;
 
         // Initializes all 'last' variables to 100 seconds before the start of the game
         lastJump = -100f;
@@ -61,10 +63,18 @@ public class RunningManMovement : MonoBehaviour
         // Update character horizontal velocity
         Vector2 currentVelocity = rb.velocity;
 
+        if (runningManRaycast.GetCountdown()<= 2.7f && !alarm.IsON)
+            speedX = 0;
+
+        else if (!isPaused)
+            speedX = oldSpeedX;
+        
+
         // Inverts the speed when it reaches a turning point at least 2 seconds after the last turn
         if (turnPoint)
             {
                 speedX *= -1;
+                oldSpeedX = speedX;
                 lastTurn = Time.time;
                 turnPoint = false;
             }
@@ -75,13 +85,18 @@ public class RunningManMovement : MonoBehaviour
             if (Time.time >= lastPause + 10f)
             {
                 lastPause = Time.time;
+                oldSpeedX = speedX;
                 speedX = 0;
                 isPaused = true;
             }
 
-            else if (isPaused && Time.time >= lastPause + 5f)
+            else if (!isPaused)
+                pausePoint = false;
+
+
+            if ((isPaused && Time.time >= lastPause + 5f  && runningManRaycast.GetCountdown()>= 3f) || alarm.IsON)
             {
-                speedX = 1;
+                speedX = oldSpeedX;
                 isPaused = false;
                 pausePoint = false;
                 ChangeAnimationState("Walk");
@@ -96,6 +111,9 @@ public class RunningManMovement : MonoBehaviour
         }
 
         // Calculate movement
+        if (alarm.IsON)
+            speedX *= 1.5f;
+
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the enemy is grounded and if it reached a jumping point
@@ -154,13 +172,13 @@ public class RunningManMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 2f)
+        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 1f)
             jumpPoint = true;
 
         if (col.gameObject.tag == "PauseTrigger" && !alarm.IsON)
             pausePoint = true;
 
-        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 2f)
+        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 1f)
             turnPoint = true;
     }
 
