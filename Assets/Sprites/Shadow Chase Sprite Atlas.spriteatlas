@@ -71,6 +71,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
   - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
   - {fileID: 21300000, guid: 6d6d0de51c0c3db4987e5216a622a03c, type: 3}
+  - {fileID: 21300000, guid: 94d288f580f6da14083862ec22f19128, type: 3}
   - {fileID: 21300000, guid: 73aa3a0685bb24b80aea418850300ceb, type: 3}
   - {fileID: 21300000, guid: 73446d765c33445b69e1ab813ca860dc, type: 3}
   - {fileID: 21300000, guid: 7eecfa860855fc04d81705885f5a2e3d, type: 3}
@@ -99,6 +100,7 @@ SpriteAtlas:
   - {fileID: 1900663129, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
   - {fileID: -1590039821, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
   - {fileID: -1256954853, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
+  - {fileID: 21300000, guid: 784f7fd7738317346803070e988581ef, type: 3}
   - {fileID: 1903054150, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: -552519507, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: 431925961, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
@@ -107,6 +109,7 @@ SpriteAtlas:
   - {fileID: -106147530, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: -1494036381, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
   - {fileID: -189094765, guid: d183cfd7c2c4d40c5ba44189cae36691, type: 3}
+  - {fileID: 21300000, guid: 00d732e70b21fd74e9230b5a3c66c389, type: 3}
   - {fileID: 21300000, guid: 520537e77fd5e46ca9243c994065fdd7, type: 3}
   - {fileID: 21300000, guid: a80208189e1dc2049ae74d9a82108a7f, type: 3}
   - {fileID: 2033567022, guid: b067c448259067242888e7f556a1cf0f, type: 3}
@@ -114,6 +117,7 @@ SpriteAtlas:
   - {fileID: -1589046224, guid: b067c448259067242888e7f556a1cf0f, type: 3}
   - {fileID: -1300295457, guid: b067c448259067242888e7f556a1cf0f, type: 3}
   - {fileID: 21300000, guid: 9e1d05885775f4c91ae0e58900aabe49, type: 3}
+  - {fileID: 21300000, guid: 51a9e8887d3ae3147a22ddcd3eb64f85, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
   - {fileID: 21300000, guid: 6a2db4c9052384707b0526c7328f1db2, type: 3}
   - {fileID: -1406578760, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
@@ -167,6 +171,7 @@ SpriteAtlas:
   - pistol
   - left_arm_enemy
   - right_arm_ak
+  - SettingsButton
   - MainMenuBg
   - current_weapon_1 (1)
   - QuitGamePauseMenuSelected
@@ -195,6 +200,7 @@ SpriteAtlas:
   - crouch walking animation_2
   - crouch walking animation_1
   - crouch walking animation_0
+  - SettingsButtonSelected
   - animation run_2
   - animation run_5
   - animation run_4
@@ -203,6 +209,7 @@ SpriteAtlas:
   - animation run_1
   - animation run_0
   - animation run_3
+  - SettingsBG
   - Character
   - questionmark
   - punch animation_2
@@ -210,6 +217,7 @@ SpriteAtlas:
   - punch animation_0
   - punch animation_1
   - ExitButtonSelected
+  - pausedText
   - explosive barrel
   - PlayButtonSelected
   - jump animation_0

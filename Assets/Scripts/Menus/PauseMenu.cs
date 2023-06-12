@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject playerUI;
+    [SerializeField] private GameObject settingsMenuUI;
     [SerializeField] private GameObject player;
     public static bool GameIsPaused = false; 
 
@@ -87,4 +88,16 @@ public class PauseMenu : MonoBehaviour
             EnableAllScripts(obj.transform.GetChild(i).gameObject);
         }
     }
+
+    public void GoToSettings()
+    {
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
+    }
+
+    public void GoBackToPauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
+    } 
 }
