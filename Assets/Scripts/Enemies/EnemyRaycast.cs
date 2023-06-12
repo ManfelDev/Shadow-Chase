@@ -96,14 +96,14 @@ public class EnemyRaycast : MonoBehaviour
                 rayPos.x += i * direction;
                 raycast = Physics2D.Raycast(rayPos, Vector2.right * new Vector2(direction * detectionRadius, 0f), 0.1f);
 
-                if (CheckRaycastCollision() == "Ground")
+                if (CheckRaycastCollision(raycast) == "Ground")
                 {
                     Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.blue);
                     break;
                 }
 
                 // If the raycast detects the player, lowers the alarm countdown
-                else if (CheckRaycastCollision() == "Player")
+                else if (CheckRaycastCollision(raycast) == "Player")
                 {
                     if (Time.time > lastTick + countdownTicks)
                     {
@@ -163,7 +163,7 @@ public class EnemyRaycast : MonoBehaviour
         Gizmos.DrawWireSphere(selfPosition, detectionRadius);
     }
 
-    private string CheckRaycastCollision()
+    private string CheckRaycastCollision(RaycastHit2D raycast)
     {
         if(raycast.collider != null)
             return raycast.collider.gameObject.tag;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private GameObject   playerDetector;
     [SerializeField] private Transform    firePoint;
     [SerializeField] private GameObject   bullet;
     [SerializeField] private float        detectionRadius;
@@ -17,6 +18,7 @@ public class EnemyShoot : MonoBehaviour
     private float         lastShot;
     private EnemyAlarm    alarm;
     private PlayerManager playerManager;
+    private RaycastHit2D  raycast;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -32,11 +34,25 @@ public class EnemyShoot : MonoBehaviour
         playerPosition = GameObject.FindWithTag("Player").transform.position;
         selfPosition = transform.position;
 
-        if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
-        {
-            Shoot();
-            lastShot = Time.time;
-        }
+        playerPosition.y += 20f;
+        selfPosition.y += 20f;
+        Vector2 direction = new Vector2 ((playerPosition.x - selfPosition.x),(playerPosition.y - selfPosition.y));
+
+        raycast = Physics2D.Raycast(playerDetector.transform.position, direction, 100f);
+        Debug.Log(CheckRaycastCollision(raycast));
+
+        if (CheckRaycastCollision(raycast) == "Ground")
+            Debug.DrawRay(playerDetector.transform.position, direction, Color.blue);
+
+        else if (CheckRaycastCollision(raycast) == "Player")
+            {
+                Debug.DrawRay(playerDetector.transform.position, direction, Color.green);
+                if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
+                {
+                    Shoot();
+                    lastShot = Time.time;
+                }
+            }
     }
 
     public bool DetectPlayer()
@@ -50,6 +66,13 @@ public class EnemyShoot : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private string CheckRaycastCollision(RaycastHit2D raycast)
+    {
+        if(raycast.collider != null)
+            return raycast.collider.gameObject.tag;
+        else return "";
     }
 
     private void Shoot()
