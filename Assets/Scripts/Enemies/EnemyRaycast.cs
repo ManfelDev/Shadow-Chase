@@ -16,7 +16,6 @@ public class EnemyRaycast : MonoBehaviour
     private GameObject    player;
     private Vector2       playerPosition;
     private Vector2       enemyToPlayer;
-    private FollowPlayer  followPlayer;
     private float         playerDistance;
     private float         countdown;
     private float         lastTick;
@@ -44,7 +43,6 @@ public class EnemyRaycast : MonoBehaviour
         countdown = countdownTimer;
 
         enemyMovement = GetComponentInParent<EnemyMovement>();
-        followPlayer = GameObject.FindObjectOfType<FollowPlayer>();
     }
 
     // Update is called once per frame
