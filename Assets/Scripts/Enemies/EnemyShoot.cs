@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private GameObject   playerDetector;
     [SerializeField] private Transform    firePoint;
     [SerializeField] private GameObject   bullet;
     [SerializeField] private float        detectionRadius;
@@ -38,21 +37,23 @@ public class EnemyShoot : MonoBehaviour
         selfPosition.y += 20f;
         Vector2 direction = new Vector2 ((playerPosition.x - selfPosition.x),(playerPosition.y - selfPosition.y));
 
-        raycast = Physics2D.Raycast(playerDetector.transform.position, direction, 100f);
-        Debug.Log(CheckRaycastCollision(raycast));
+        raycast = Physics2D.Raycast(firePoint.position, direction, 100f);
 
-        if (CheckRaycastCollision(raycast) == "Ground")
-            Debug.DrawRay(playerDetector.transform.position, direction, Color.blue);
+        if (DetectPlayer())
+        {
+            if (CheckRaycastCollision(raycast) == "Ground")
+                Debug.DrawRay(firePoint.position, direction, Color.blue);
 
-        else if (CheckRaycastCollision(raycast) == "Player")
-            {
-                Debug.DrawRay(playerDetector.transform.position, direction, Color.green);
-                if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
+            else if (CheckRaycastCollision(raycast) == "Player" || CheckRaycastCollision(raycast) == "Box")
                 {
-                    Shoot();
-                    lastShot = Time.time;
+                    Debug.DrawRay(firePoint.position, direction, Color.green);
+                    if (Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
+                    {
+                        Shoot();
+                        lastShot = Time.time;
+                    }
                 }
-            }
+        }
     }
 
     public bool DetectPlayer()
