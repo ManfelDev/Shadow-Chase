@@ -2024,6 +2024,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410052163}
   m_CullTransparentMesh: 1
+--- !u!1 &428081055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 428081055, guid: b9cec4811506b488686061254487baca, type: 3}
+  m_PrefabInstance: {fileID: 4842346695328103872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &428081056 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 428081056, guid: b9cec4811506b488686061254487baca, type: 3}
+  m_PrefabInstance: {fileID: 4842346695328103872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &428081057
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428081055}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 5
 --- !u!1 &431018733
 GameObject:
   m_ObjectHideFlags: 0
@@ -5482,6 +5508,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 428081056, guid: b9cec4811506b488686061254487baca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 254375013329299128, guid: b9cec4811506b488686061254487baca, type: 3}
+      propertyPath: puchPoint
+      value: 
+      objectReference: {fileID: 428081056}
+    - target: {fileID: 254375013329299128, guid: b9cec4811506b488686061254487baca, type: 3}
+      propertyPath: punchRange
+      value: 3.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 254375013329299128, guid: b9cec4811506b488686061254487baca, type: 3}
+      propertyPath: punchCollider
+      value: 
+      objectReference: {fileID: 428081057}
     - target: {fileID: 4842346693877871575, guid: b9cec4811506b488686061254487baca, type: 3}
       propertyPath: m_Name
       value: Player

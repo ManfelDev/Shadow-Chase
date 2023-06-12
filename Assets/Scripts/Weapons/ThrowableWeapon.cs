@@ -7,6 +7,7 @@ public class ThrowableWeapon : MonoBehaviour
     [SerializeField] private float       destroyTime = 2f;
     [SerializeField] private float       throwSpeed = 200f;
     [SerializeField] private float       rotationSpeed = 5f;
+    [SerializeField] private int         damage = 40;
     [SerializeField] private Rigidbody2D rigidBody;
     private EnemyManager   enemy;
     public SpriteRenderer  spriteRenderer;
@@ -35,7 +36,7 @@ public class ThrowableWeapon : MonoBehaviour
         else if (hitInfo.CompareTag("Enemy"))
         {
             enemy = hitInfo.GetComponent<EnemyManager>();
-            enemy.TakeDamage(50);
+            enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
         // Destroy the bullet if the time is up

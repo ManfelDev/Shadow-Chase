@@ -34,7 +34,7 @@ public class LoadoutUI : MonoBehaviour
         ammoDisplay.text = player.Ammo.ToString();
         
         // If the player has the max ammo, display "MAX"
-        if (player.Ammo == currentWeapon.MaxAmmo)
+        if (player.Ammo == currentWeapon.MaxAmmo && player.CurrentWeapon.Tag != "Punch")
             maxAmmoDisplay.text = "MAX";
         else
             maxAmmoDisplay.text = "";

@@ -13,6 +13,7 @@ TagManager:
   - AK
   - LevelManager
   - GameManager
+  - ThrowableWeapon
   layers:
   - Default
   - TransparentFX

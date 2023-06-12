@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &428081055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428081056}
+  m_Layer: 0
+  m_Name: PunchPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428081056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428081055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3643361209017144835}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4842346693877871575
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +48,7 @@ GameObject:
   - component: {fileID: 4842346693877871581}
   - component: {fileID: 4842346693877871580}
   - component: {fileID: -7145238562130431422}
+  - component: {fileID: 254375013329299128}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -212,6 +244,7 @@ MonoBehaviour:
   groundDetectorRadius: 2
   groundDetectorExtraRadius: 6
   maxJumps: 1
+  punchTime: 0.8
   groundDetector: {fileID: 4842346694540083633}
   groundMask:
     serializedVersion: 2
@@ -234,6 +267,20 @@ MonoBehaviour:
   firePoint: {fileID: 8967355249736792041}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
   throwableWeapon: {fileID: 1167675934390909483, guid: 66dce43a814961f43b63c70ad5fe4373, type: 3}
+--- !u!114 &254375013329299128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842346693877871575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: accadaba30cdd1640af6f7485b4af173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  puchPoint: {fileID: 428081056}
+  punchRange: 3
 --- !u!1 &4842346694540083632
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +460,7 @@ Transform:
   - {fileID: 659221840946888483}
   - {fileID: 8530074877812600820}
   - {fileID: 8967355249736792041}
+  - {fileID: 428081056}
   m_Father: {fileID: 4842346693877871577}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

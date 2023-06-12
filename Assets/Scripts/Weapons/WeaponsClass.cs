@@ -64,10 +64,10 @@ public class WeaponsClass
     {
         get
         {
-            return new WeaponsClass(0.5f, 30, 0, null, true,
-                                    null,
-                                    null,
-                                    null,
+            return new WeaponsClass(0.5f, 30, 0, "Punch", true,
+                                    Resources.Load<Sprite>("Weapons/punch"),
+                                    Resources.Load<Sprite>("Arms/Punch arms/right_arm_punch"),
+                                    Resources.Load<Sprite>("Arms/Punch arms/left_arm_punch"),
                                     null,
                                     null);
         }

@@ -14,6 +14,8 @@ public class PlayerShooting : MonoBehaviour
     private EnemyAlarm      alarm;
     private AudioClip       shootSound;
     private AudioClip       blankShootSound;
+    private PlayerMovement  playerMovement;
+    private PlayerPunch     playerPunch;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -22,6 +24,8 @@ public class PlayerShooting : MonoBehaviour
     {
         player = FindObjectOfType<PlayerManager>();
         alarm = FindObjectOfType<EnemyAlarm>();
+        playerMovement = GetComponent<PlayerMovement>();
+        playerPunch = GetComponent<PlayerPunch>();
     }
 
     // Update is called once per frame
@@ -40,25 +44,36 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButton("Fire1") && 
             Time.time - lastShot >= currentWeapon.FireRate && 
             player.Ammo > 0 &&
-            currentWeapon != WeaponsClass.Punch)
+            player.CurrentWeapon.Tag != "Punch")
         {
             Shoot();
             lastShot = Time.time;
         }
-        else if (Input.GetButton("Fire1") && Time.time - lastShot >= currentWeapon.FireRate)
+        else if (Input.GetButton("Fire1") && 
+                 Time.time - lastShot >= currentWeapon.FireRate &&
+                 player.CurrentWeapon.Tag != "Punch")
         {
             audioSource.PlayOneShot(blankShootSound, 1f);
             lastShot = Time.time;
         }
 
-        // Throw weapon
-        if (Input.GetButtonDown("Fire2") && 
-            currentWeapon != WeaponsClass.Punch)
+        // Throw weapon or punch
+        if (Input.GetButtonDown("Fire2") &&
+            player.CurrentWeapon.Tag != "Punch")
         {
             ThrowWeapon();
         }
+        else if (Input.GetButtonDown("Fire2") &&
+            player.CurrentWeapon.Tag == "Punch")
+        {
+            playerMovement.IsPunching();
+            Invoke("Punch", 0.6f);
+        }
+    }
 
-        Debug.Log(currentWeapon.Tag);
+    void Punch()
+    {
+        playerPunch.Punch();
     }
 
     // Shoot bullet 

@@ -66,15 +66,7 @@ public class PlayerManager : MonoBehaviour
             playerShooting.enabled = false;
             // Take of rigid body material
             player.GetComponent<Rigidbody2D>().sharedMaterial = null;
-            // Turn off player's sprite renderer
-            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
-            {
-                // All sprite renderers except the player's body
-                if (spriteRenderer.gameObject.name != "Player")
-                {
-                    spriteRenderer.enabled = false;
-                }
-            }
+            TurnOffPlayerSprites();
 
             // Restart level after 2 seconds
             StartCoroutine(RestartLevelAfterDelay(2f));
@@ -84,6 +76,32 @@ public class PlayerManager : MonoBehaviour
         if (Ammo > currentWeapon.MaxAmmo)
         {
             Ammo = currentWeapon.MaxAmmo;
+        }
+    }
+
+    public void TurnOffPlayerSprites()
+    {
+        // Turn off player's sprite renderer
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            // All sprite renderers except the player's body
+            if (spriteRenderer.gameObject.name != "Player")
+            {
+                spriteRenderer.enabled = false;
+            }
+        }
+    }
+
+    public void TurnOnPlayerSprites()
+    {
+        // Turn on player's sprite renderer
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            // All sprite renderers except the player's body
+            if (spriteRenderer.gameObject.name != "Player")
+            {
+                spriteRenderer.enabled = true;
+            }
         }
     }
 
