@@ -18,21 +18,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Collider2D airCollider;
     [SerializeField] private Collider2D crouchedCollider;
 
-    private bool        onGround = false;
-    private bool        isBackwards = false;
-    private bool        isCrouched = false;
-    private bool        isJumping = false;
-    private float       speedX;
-    private float       originalMoveSpeed;
-    private float       lastGroundTime;
-    private float       lastJumpTime;
-    private float       moveSpeed;
-    private int         nJumps = 0;
-    private string      currentState;
-    private FollowMouse followMouse;
-    private Rigidbody2D rb;
-    private Animator    animator;
-    private EnemyAlarm  enemyAlarm;
+    private bool          onGround;
+    private bool          isBackwards;
+    private bool          isCrouched;
+    private bool          isJumping;
+    private bool          isPunching;
+    private bool          isPunchingPressed;
+    private float         speedX;
+    private float         originalMoveSpeed;
+    private float         lastGroundTime;
+    private float         lastJumpTime;
+    private float         moveSpeed;
+    private int           nJumps = 0;
+    private string        currentState;
+    private FollowMouse   followMouse;
+    private Rigidbody2D   rb;
+    private Animator      animator;
+    private EnemyAlarm    enemyAlarm;
+    private PlayerManager playerManager;
 
     // Animation states
     private const string IDLE = "Player_Idle";
@@ -43,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     private const string WALK_BACKWARDS = "Player_WalkBackwards";
     private const string CROUCH_BACKWARDS = "Player_CrouchBackwards";
     private const string RUN = "Player_Run";
+    private const string PUNCH = "Player_Punch";
     
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         followMouse = GetComponentInChildren<FollowMouse>();
         enemyAlarm = FindObjectOfType<EnemyAlarm>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -142,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
             isBackwards = false;
 
         // Update animations
-        if (onGround)
+        if (onGround && !isPunching)
         {
             if (speedX != 0)
             {
@@ -171,11 +176,41 @@ public class PlayerMovement : MonoBehaviour
                     ChangeAnimationState(IDLE);
             }
         }
-        else if (isJumping && !onGround)
+
+        if (isJumping && !onGround)
         {
             ChangeAnimationState(JUMP);
             isJumping = false;
         }
+
+        if (isPunchingPressed)
+        {
+            isPunchingPressed = false;
+
+            if (!isPunching)
+            {
+                isPunching = true;
+
+                if (onGround)
+                {
+                    playerManager.TurnOffPlayerSprites();
+                    ChangeAnimationState(PUNCH);
+                }
+
+                Invoke("PunchComplete", 0.8f);
+            }
+        }
+    }
+
+    public void IsPunching()
+    {
+        isPunchingPressed = true;
+    }
+
+    void PunchComplete()
+    {
+        isPunching = false;
+        playerManager.TurnOnPlayerSprites();
     }
 
     void DetectGround()

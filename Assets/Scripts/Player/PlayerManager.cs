@@ -17,13 +17,18 @@ public class PlayerManager : MonoBehaviour
     private PlayerShooting   playerShooting;
     private SpriteRenderer[] spriteRenderers;
     private GameManager      gameManager;
+    private GameObject       pickMeText;
 
     // Get and set ammo
     public int          Ammo { get; set; }
     // Get player's current health
     public int          CurrentHealth { get => currentHealth; }
     // Get current weapon
-    public WeaponsClass CurrentWeapon { get => currentWeapon; }
+    public WeaponsClass CurrentWeapon 
+    { 
+        get => currentWeapon;
+        set => currentWeapon = value;
+    }
     // Get sound manager's audio source
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -43,6 +48,9 @@ public class PlayerManager : MonoBehaviour
 
         // Get game manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        // Get pick me text
+        pickMeText = player.transform.Find("PickMeText").gameObject;
     }
 
     private void Update()
@@ -62,15 +70,7 @@ public class PlayerManager : MonoBehaviour
             playerShooting.enabled = false;
             // Take of rigid body material
             player.GetComponent<Rigidbody2D>().sharedMaterial = null;
-            // Turn off player's sprite renderer
-            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
-            {
-                // All sprite renderers except the player's body
-                if (spriteRenderer.gameObject.name != "Player")
-                {
-                    spriteRenderer.enabled = false;
-                }
-            }
+            TurnOffPlayerSprites();
 
             // Restart level after 2 seconds
             StartCoroutine(RestartLevelAfterDelay(2f));
@@ -80,6 +80,42 @@ public class PlayerManager : MonoBehaviour
         if (Ammo > currentWeapon.MaxAmmo)
         {
             Ammo = currentWeapon.MaxAmmo;
+        }
+
+        // Prevent pick me text from rotating
+        if (player.transform.rotation.y == -180)
+        {
+            pickMeText.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            pickMeText.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+    }
+
+    public void TurnOffPlayerSprites()
+    {
+        // Turn off player's sprite renderer
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            // All sprite renderers except the player's body
+            if (spriteRenderer.gameObject.name != "Player")
+            {
+                spriteRenderer.enabled = false;
+            }
+        }
+    }
+
+    public void TurnOnPlayerSprites()
+    {
+        // Turn on player's sprite renderer
+        foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+        {
+            // All sprite renderers except the player's body
+            if (spriteRenderer.gameObject.name != "Player")
+            {
+                spriteRenderer.enabled = true;
+            }
         }
     }
 
@@ -122,6 +158,13 @@ public class PlayerManager : MonoBehaviour
     {
         currentWeapon = newWeapon;
         Ammo = currentWeapon.MaxAmmo;
+        
+        // Change the right arm sprite
+        SpriteRenderer rightArmRenderer = player.transform.Find("Arms/right_arm").GetComponent<SpriteRenderer>();
+        rightArmRenderer.sprite = currentWeapon.RightArmSprite;
+        // Change the left arm sprite
+        SpriteRenderer leftArmRenderer = player.transform.Find("Arms/left_arm").GetComponent<SpriteRenderer>();
+        leftArmRenderer.sprite = currentWeapon.LeftArmSprite;
     }
 
     // Restart the level after a delay
