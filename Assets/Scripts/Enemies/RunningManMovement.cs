@@ -100,16 +100,22 @@ public class RunningManMovement : MonoBehaviour
                 speedX = oldSpeedX;
                 isPaused = false;
                 pausePoint = false;
-                ChangeAnimationState("Walk");
+                if (!alarm.IsON)
+                    ChangeAnimationState("Walk");
+                else ChangeAnimationState("Run");
             }
 
         }
 
         // Changes the animation to idle whenever the enemy is not moving
         if (speedX == 0)
-        {
             ChangeAnimationState("Idle");
-        }
+
+        else if (speedX != 0 && alarm.IsON)
+            ChangeAnimationState("Run");
+
+        else if (speedX != 0)
+            ChangeAnimationState("Walk");
 
         // Calculate movement
         if (alarm.IsON)
