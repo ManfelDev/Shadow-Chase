@@ -114,6 +114,7 @@ SpriteAtlas:
   - {fileID: -1589046224, guid: b067c448259067242888e7f556a1cf0f, type: 3}
   - {fileID: -1300295457, guid: b067c448259067242888e7f556a1cf0f, type: 3}
   - {fileID: 21300000, guid: 9e1d05885775f4c91ae0e58900aabe49, type: 3}
+  - {fileID: 21300000, guid: 51a9e8887d3ae3147a22ddcd3eb64f85, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
   - {fileID: 21300000, guid: 6a2db4c9052384707b0526c7328f1db2, type: 3}
   - {fileID: -1406578760, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
@@ -210,6 +211,7 @@ SpriteAtlas:
   - punch animation_0
   - punch animation_1
   - ExitButtonSelected
+  - pausedText
   - explosive barrel
   - PlayButtonSelected
   - jump animation_0
