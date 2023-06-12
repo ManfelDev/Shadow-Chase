@@ -64,10 +64,12 @@ public class PlayerShooting : MonoBehaviour
             ThrowWeapon();
         }
         else if (Input.GetButtonDown("Fire2") &&
+            Time.time - lastShot >= currentWeapon.FireRate &&
             player.CurrentWeapon.Tag == "Punch")
         {
             playerMovement.IsPunching();
             Invoke("Punch", 0.6f);
+            lastShot = Time.time;
         }
     }
 
