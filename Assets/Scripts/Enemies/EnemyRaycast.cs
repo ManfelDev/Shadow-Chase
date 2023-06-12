@@ -96,15 +96,22 @@ public class EnemyRaycast : MonoBehaviour
                 rayPos.x += i * direction;
                 raycast = Physics2D.Raycast(rayPos, Vector2.right * new Vector2(direction * detectionRadius, 0f), 0.1f);
 
+                if (CheckRaycastCollision() == "Ground")
+                {
+                    Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.blue);
+                    break;
+                }
+
                 // If the raycast detects the player, lowers the alarm countdown
-                if (CheckRaycastCollision())
+                else if (CheckRaycastCollision() == "Player")
                 {
                     if (Time.time > lastTick + countdownTicks)
                     {
                         countdown -= countdownTicks;
                         lastTick = Time.time;
                     }
-                    Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.red);
+                    Debug.DrawRay(playerDetector.transform.position, Vector2.right * new Vector2(direction * detectionRadius, 0f), Color.green);
+                    break;
                 }
 
                 else
@@ -156,14 +163,11 @@ public class EnemyRaycast : MonoBehaviour
         Gizmos.DrawWireSphere(selfPosition, detectionRadius);
     }
 
-    private bool CheckRaycastCollision()
+    private string CheckRaycastCollision()
     {
-        foreach (Collider2D c in playerColliders)
-        {
-            if (c == raycast.collider)
-                return true;
-        }
-        return false;
+        if(raycast.collider != null)
+            return raycast.collider.gameObject.tag;
+        else return "";
     }
 
     private Transform GetHighestParentTransform(Transform transform)

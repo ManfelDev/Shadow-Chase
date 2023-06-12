@@ -120,7 +120,7 @@ public class EnemyMovement : MonoBehaviour
             rb.velocity = currentVelocity;
 
             // If the enemy is suspicious, look towards the player
-            if (enemyRaycast.GetCountdown() < 3)
+            if (enemyRaycast.GetCountdown() < 3 && !alarm.IsON)
                 if (enemyRaycast.GetDirection() > 0)
                     transform.rotation = Quaternion.identity;
                 
