@@ -17,6 +17,7 @@ public class EnemyShoot : MonoBehaviour
     private float         lastShot;
     private EnemyAlarm    alarm;
     private PlayerManager playerManager;
+    private RaycastHit2D  raycast;
 
     private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
 
@@ -32,10 +33,26 @@ public class EnemyShoot : MonoBehaviour
         playerPosition = GameObject.FindWithTag("Player").transform.position;
         selfPosition = transform.position;
 
-        if (DetectPlayer() && Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
+        playerPosition.y += 20f;
+        selfPosition.y += 20f;
+        Vector2 direction = new Vector2 ((playerPosition.x - selfPosition.x),(playerPosition.y - selfPosition.y));
+
+        raycast = Physics2D.Raycast(firePoint.position, direction, 100f);
+
+        if (DetectPlayer())
         {
-            Shoot();
-            lastShot = Time.time;
+            if (CheckRaycastCollision(raycast) == "Ground")
+                Debug.DrawRay(firePoint.position, direction, Color.blue);
+
+            else if (CheckRaycastCollision(raycast) == "Player" || CheckRaycastCollision(raycast) == "Box")
+                {
+                    Debug.DrawRay(firePoint.position, direction, Color.green);
+                    if (Time.time - lastShot >= fireRate && alarm.IsON && playerManager.CurrentHealth > 0)
+                    {
+                        Shoot();
+                        lastShot = Time.time;
+                    }
+                }
         }
     }
 
@@ -50,6 +67,13 @@ public class EnemyShoot : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private string CheckRaycastCollision(RaycastHit2D raycast)
+    {
+        if(raycast.collider != null)
+            return raycast.collider.gameObject.tag;
+        else return "";
     }
 
     private void Shoot()
