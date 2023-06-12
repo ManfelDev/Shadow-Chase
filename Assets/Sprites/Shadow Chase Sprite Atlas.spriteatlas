@@ -59,6 +59,7 @@ SpriteAtlas:
   - {fileID: 1793656852, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: 1434841357, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: 21300000, guid: 88a942a0765c64fea88aee6a6d885a36, type: 3}
+  - {fileID: 21300000, guid: 097bd5d0ebf2f2546a4b332c13a04537, type: 3}
   - {fileID: 21300000, guid: 8c6f1df0db049fa4f833a3b9e952d7c6, type: 3}
   - {fileID: 21300000, guid: b31359418118ac54fb31c613e891dbd9, type: 3}
   - {fileID: 21300000, guid: 4fecd751c25b145c9a50fa57dcb468bd, type: 3}
@@ -66,10 +67,21 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c49b3ef18ab7142f090c38def63461f1, type: 3}
   - {fileID: 21300000, guid: c161fef18ca364ba288924fbc62b6857, type: 3}
   - {fileID: 21300000, guid: c50c17126b7ae3d458538f09dbadd2dc, type: 3}
+  - {fileID: 958589241, guid: 2a0fbf12bad25f343a6394c0ed000721, type: 3}
+  - {fileID: -924642775, guid: 2a0fbf12bad25f343a6394c0ed000721, type: 3}
   - {fileID: 21300000, guid: f9f5a572a84f3cb4ab9c596b2c67f24c, type: 3}
   - {fileID: 21300000, guid: 3812a0b2b6bf467489abc09735378d48, type: 3}
+  - {fileID: 1313967119, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
+  - {fileID: 663278760, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
+  - {fileID: 76382895, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
+  - {fileID: 1284880490, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
   - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
   - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
+  - {fileID: -1088600362, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: 637064996, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: 1234889514, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: -1678494800, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: 674448921, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: 21300000, guid: 6d6d0de51c0c3db4987e5216a622a03c, type: 3}
   - {fileID: 21300000, guid: 94d288f580f6da14083862ec22f19128, type: 3}
   - {fileID: 21300000, guid: 73aa3a0685bb24b80aea418850300ceb, type: 3}
@@ -159,6 +171,7 @@ SpriteAtlas:
   - explosion px_3
   - explosion px_2
   - heart (1)
+  - 'enemy runner '
   - medical kit
   - left_arm_punch
   - left_arm
@@ -166,10 +179,21 @@ SpriteAtlas:
   - ExitButton
   - box_broken
   - enemy 1
+  - enemy idle animation spritesheet_0
+  - enemy idle animation spritesheet_1
   - AlarmLight
   - ResumePauseMenuSelected
+  - enemy run animation tileset_1
+  - enemy run animation tileset_0
+  - enemy run animation tileset_3
+  - enemy run animation tileset_2
   - pistol
   - left_arm_enemy
+  - enemy jump animation spritesheet_4
+  - enemy jump animation spritesheet_0
+  - enemy jump animation spritesheet_1
+  - enemy jump animation spritesheet_2
+  - enemy jump animation spritesheet_3
   - right_arm_ak
   - SettingsButton
   - MainMenuBg

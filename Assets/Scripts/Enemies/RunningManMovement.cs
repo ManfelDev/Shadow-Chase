@@ -24,6 +24,7 @@ public class RunningManMovement : MonoBehaviour
     private Vector2           playerPosition;
     private Vector2           selfPosition;
     private bool              jumpPoint;
+    private bool              alarmJumpPoint;
     private bool              turnPoint;
     private bool              pausePoint;
     private bool              isPaused;
@@ -117,18 +118,20 @@ public class RunningManMovement : MonoBehaviour
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the enemy is grounded and if it reached a jumping point
-        if (onGround && jumpPoint)
-        {
-            // Calculate the velocity needed to achieve the desired jump height
-            currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
-            // Apply gravity
-            currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+        if ((onGround && jumpPoint && !alarm.IsON) || (onGround && alarmJumpPoint && alarm.IsON))
+            {
+                // Calculate the velocity needed to achieve the desired jump height
+                currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
+                // Apply gravity
+                currentVelocity.y -= rb.gravityScale * Time.deltaTime;
 
-            jumpPoint = false;
-            lastJump = Time.time;
+                jumpPoint = false;
+                alarmJumpPoint = false;
 
-            ChangeAnimationState("Jump");
-        }
+                lastJump = Time.time;
+
+                ChangeAnimationState("Jump");
+            }
 
         // Apply movement
         rb.velocity = currentVelocity;
@@ -174,6 +177,9 @@ public class RunningManMovement : MonoBehaviour
     {
         if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 0.2f)
             jumpPoint = true;
+
+        if (col.gameObject.tag == "AlarmJumpTrigger" && Time.time >= lastJump + 0.2f)
+            alarmJumpPoint = true;
 
         if (col.gameObject.tag == "PauseTrigger" && !alarm.IsON)
             pausePoint = true;
