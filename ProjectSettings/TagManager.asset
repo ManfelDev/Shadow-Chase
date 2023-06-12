@@ -15,6 +15,9 @@ TagManager:
   - GameManager
   - ThrowableWeapon
   - Running Man
+  - JumpTrigger
+  - PauseTrigger
+  - TurnTrigger
   layers:
   - Default
   - TransparentFX

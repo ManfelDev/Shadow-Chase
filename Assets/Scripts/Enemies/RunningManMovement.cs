@@ -26,6 +26,7 @@ public class RunningManMovement : MonoBehaviour
     private bool              turnPoint;
     private bool              pausePoint;
     private bool              isPaused;
+    private float             lastJump;
     private float             lastPause;
     private float             lastTurn;
     
@@ -39,6 +40,11 @@ public class RunningManMovement : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 7, true);
 
         speedX = 1;
+
+        // Initializes all 'last' variables to 100 seconds before the start of the game
+        lastJump = -100f;
+        lastPause = -100f;
+        lastTurn = -100f;
 
     }
 
@@ -56,14 +62,15 @@ public class RunningManMovement : MonoBehaviour
         Vector2 currentVelocity = rb.velocity;
 
         // Inverts the speed when it reaches a turning point at least 2 seconds after the last turn
-        if (turnPoint && Time.time >= lastTurn + 2f)
+        if (turnPoint)
             {
                 speedX *= -1;
                 lastTurn = Time.time;
+                turnPoint = false;
             }
             
         // Stops the enemy for 5 seconds if they reach a pause point after 10 seconds of the previous one
-        if (pausePoint && !alarm.IsON)
+        if (pausePoint)
         {
             if (Time.time >= lastPause + 10f)
             {
@@ -76,6 +83,8 @@ public class RunningManMovement : MonoBehaviour
             {
                 speedX = 1;
                 isPaused = false;
+                pausePoint = false;
+                ChangeAnimationState("Walk");
             }
 
         }
@@ -97,6 +106,9 @@ public class RunningManMovement : MonoBehaviour
             // Apply gravity
             currentVelocity.y -= rb.gravityScale * Time.deltaTime;
 
+            jumpPoint = false;
+            lastJump = Time.time;
+
             ChangeAnimationState("Jump");
         }
 
@@ -111,12 +123,12 @@ public class RunningManMovement : MonoBehaviour
             else transform.rotation = Quaternion.Euler(0, 180, 0);
 
         // If the enemy is pointing right does nothing
-        //else if (followPlayer.PointingRight())
-            //transform.rotation = Quaternion.identity;
+        else if (speedX > 0)
+            transform.rotation = Quaternion.identity;
 
         // If the enemy is pointing left, rotate everything 180 degrees
-        //else if (!followPlayer.PointingRight())
-            //transform.rotation = Quaternion.Euler(0, 180, 0);
+        else if (speedX <= 0)
+            transform.rotation = Quaternion.Euler(0, 180, 0);
 
         // Change visuals
         animator.SetFloat("Speed", Mathf.Abs(speedX));
@@ -140,6 +152,18 @@ public class RunningManMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 2f)
+            jumpPoint = true;
+
+        if (col.gameObject.tag == "PauseTrigger" && !alarm.IsON)
+            pausePoint = true;
+
+        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 2f)
+            turnPoint = true;
+    }
+
     public int GetEnemySpeedX()
     {
         return (int)speedX;
@@ -152,5 +176,17 @@ public class RunningManMovement : MonoBehaviour
 
         animator.Play(newState);
         currentState = newState;
+    }
+
+    //Draws indicators on the editor to check the ground detector
+    private void OnDrawGizmos()
+    {
+        if (groundDetector == null) return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(groundDetector.position, groundDetectorRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(groundDetector.position - Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
+        Gizmos.DrawSphere(groundDetector.position + Vector3.right * groundDetectorExtraRadius, groundDetectorRadius);
     }
 }

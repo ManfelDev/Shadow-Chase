@@ -227,7 +227,7 @@ MonoBehaviour:
   groundDetectorExtraRadius: 6
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   groundCollider: {fileID: 312927050197218528}
   airCollider: {fileID: 312927050197218535}
 --- !u!114 &312927050197218531
