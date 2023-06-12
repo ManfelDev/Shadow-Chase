@@ -73,7 +73,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 73aa3a0685bb24b80aea418850300ceb, type: 3}
   - {fileID: 21300000, guid: 73446d765c33445b69e1ab813ca860dc, type: 3}
   - {fileID: 21300000, guid: 7eecfa860855fc04d81705885f5a2e3d, type: 3}
-  - {fileID: 1923798449, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
   - {fileID: 539552260, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
   - {fileID: 55146552, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
   - {fileID: 1297670585, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
@@ -169,7 +168,6 @@ SpriteAtlas:
   - MainMenuBg
   - current_weapon_1 (1)
   - QuitGamePauseMenuSelected
-  - death animation px_6
   - death animation px_4
   - death animation px_5
   - death animation px_2
