@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerShooting   playerShooting;
     private SpriteRenderer[] spriteRenderers;
     private GameManager      gameManager;
+    private GameObject       pickMeText;
 
     // Get and set ammo
     public int          Ammo { get; set; }
@@ -47,6 +48,9 @@ public class PlayerManager : MonoBehaviour
 
         // Get game manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        // Get pick me text
+        pickMeText = player.transform.Find("PickMeText").gameObject;
     }
 
     private void Update()
@@ -76,6 +80,16 @@ public class PlayerManager : MonoBehaviour
         if (Ammo > currentWeapon.MaxAmmo)
         {
             Ammo = currentWeapon.MaxAmmo;
+        }
+
+        // Prevent pick me text from rotating
+        if (player.transform.rotation.y == -180)
+        {
+            pickMeText.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            pickMeText.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 
