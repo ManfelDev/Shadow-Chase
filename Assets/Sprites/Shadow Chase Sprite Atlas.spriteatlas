@@ -59,6 +59,7 @@ SpriteAtlas:
   - {fileID: 1793656852, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: 1434841357, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: 21300000, guid: 88a942a0765c64fea88aee6a6d885a36, type: 3}
+  - {fileID: 21300000, guid: 8c6f1df0db049fa4f833a3b9e952d7c6, type: 3}
   - {fileID: 21300000, guid: b31359418118ac54fb31c613e891dbd9, type: 3}
   - {fileID: 21300000, guid: 4fecd751c25b145c9a50fa57dcb468bd, type: 3}
   - {fileID: 21300000, guid: 11a4477118fbf474a8db51f0f3eeaaa4, type: 3}
@@ -154,6 +155,7 @@ SpriteAtlas:
   - explosion px_3
   - explosion px_2
   - heart (1)
+  - medical kit
   - left_arm_punch
   - left_arm
   - MainMenuClouds
