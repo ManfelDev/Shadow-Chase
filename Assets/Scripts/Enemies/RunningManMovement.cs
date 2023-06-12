@@ -172,13 +172,13 @@ public class RunningManMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 1f)
+        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 0.2f)
             jumpPoint = true;
 
         if (col.gameObject.tag == "PauseTrigger" && !alarm.IsON)
             pausePoint = true;
 
-        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 1f)
+        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 0.2f)
             turnPoint = true;
     }
 
