@@ -40,8 +40,7 @@ public class EnemyManager : MonoBehaviour
             audioSource.PlayOneShot(deathSound, 1f);
             dead = true;
             DropWeapon();
-            Destroy(gameObject);
-            DropWeapon();
+            gameObject.SetActive(false);
         }
 
         else if (currentHealth > maxHealth)
