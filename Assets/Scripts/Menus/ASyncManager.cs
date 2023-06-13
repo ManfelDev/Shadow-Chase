@@ -9,6 +9,7 @@ public class ASyncManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject HowToPlayScreen;
 
     public void LoadLevel(int levelToLoad)
     {
@@ -27,6 +28,18 @@ public class ASyncManager : MonoBehaviour
     public void GoFromSettingsToMainMenu()
     {
         settingsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void GoFromMainMenuToHowToPlay()
+    {
+        mainMenu.SetActive(false);
+        HowToPlayScreen.SetActive(true);
+    }
+
+    public void GoFromHowToPlayToMainMenu()
+    {
+        HowToPlayScreen.SetActive(false);
         mainMenu.SetActive(true);
     }
 
