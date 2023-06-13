@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject   player;
     [SerializeField] private AudioClip    hurtSound;
     [SerializeField] private AudioClip    deathSound;
+    [SerializeField] private GameObject   debugEnemy;
 
     private int              currentHealth;
     private WeaponsClass     currentWeapon;
@@ -18,13 +19,14 @@ public class PlayerManager : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private GameManager      gameManager;
     private GameObject       pickMeText;
+    private EnemyAlarm       alarm;
 
     // Get and set ammo
     public int          Ammo { get; set; }
     // Get player's current health
-    public int          CurrentHealth { get => currentHealth; }
+    public int          CurrentHealth { get => currentHealth; private set => currentHealth = value; }
     // Get player's max health
-    public int          MaxHealth { get => maxHealth; }
+    public int          MaxHealth { get => maxHealth; private set => maxHealth = value; }
     // Get current weapon
     public WeaponsClass CurrentWeapon 
     { 
@@ -53,6 +55,9 @@ public class PlayerManager : MonoBehaviour
 
         // Get pick me text
         pickMeText = player.transform.Find("PickMeText").gameObject;
+
+        // Get the enemy alarm state (for debugging)
+        alarm = FindObjectOfType<EnemyAlarm>();
     }
 
     private void Update()
@@ -96,17 +101,51 @@ public class PlayerManager : MonoBehaviour
 
         if (Input.GetButtonDown("Testing Key 1"))
         {
-            Debug.Log("V was pressed");
+            Debug.Log("Teleported to Spawn");
+            player.transform.position = new Vector3(-110, -30, 0);
         }
 
         if (Input.GetButtonDown("Testing Key 2"))
         {
-            Debug.Log("B was pressed");
+            Debug.Log("Teleported to Construction Checkpoint");
+            player.transform.position = new Vector3(9324, 45, 0);
         }
 
         if (Input.GetButtonDown("Testing Key 3"))
         {
-            Debug.Log("N was pressed");
+            Debug.Log("Teleported to End");
+            player.transform.position = new Vector3(13743, 50, 0);
+        }
+
+        if (Input.GetButtonDown("Testing Key 4"))
+        {
+            Debug.Log("Alarm Triggered");
+            alarm.Trigger();
+        }
+
+        if (Input.GetButtonDown("Testing Key 5"))
+        {
+            Debug.Log("Spawning Debug Enemy");
+            Vector3 spawnPosition = new Vector3(player.transform.position.x, player.transform.position.y + 40f, 0);
+            Instantiate(debugEnemy, spawnPosition, player.transform.rotation);
+        }
+
+        if (Input.GetButtonDown("Testing Key 6"))
+        {
+            if (MaxHealth < 10000000)
+            {
+                Debug.Log("GodMode activated");
+
+                MaxHealth += 10000000;
+                CurrentHealth += 10000000;
+                ChangeWeapon(new WeaponsClass(0.05f, 35, 10000000, "AK", true,
+                                    Resources.Load<Sprite>("Weapons/ak"),
+                                    Resources.Load<Sprite>("Arms/AK arms/right_arm_ak"),
+                                    Resources.Load<Sprite>("Arms/AK arms/left_arm_ak"),
+                                    Resources.Load<AudioClip>("Audio/akshot"),
+                                    Resources.Load<AudioClip>("Audio/AK empty")));
+                Ammo += 10000000;
+            }
         }
     }
 
