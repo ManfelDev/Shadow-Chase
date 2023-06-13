@@ -18,6 +18,7 @@ TagManager:
   - JumpTrigger
   - PauseTrigger
   - TurnTrigger
+  - AlarmJumpTrigger
   layers:
   - Default
   - TransparentFX

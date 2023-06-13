@@ -24,6 +24,7 @@ public class RunningManMovement : MonoBehaviour
     private Vector2           playerPosition;
     private Vector2           selfPosition;
     private bool              jumpPoint;
+    private bool              alarmJumpPoint;
     private bool              turnPoint;
     private bool              pausePoint;
     private bool              isPaused;
@@ -99,15 +100,8 @@ public class RunningManMovement : MonoBehaviour
                 speedX = oldSpeedX;
                 isPaused = false;
                 pausePoint = false;
-                ChangeAnimationState("Walk");
             }
 
-        }
-
-        // Changes the animation to idle whenever the enemy is not moving
-        if (speedX == 0)
-        {
-            ChangeAnimationState("Idle");
         }
 
         // Calculate movement
@@ -117,18 +111,18 @@ public class RunningManMovement : MonoBehaviour
         currentVelocity.x = speedX * moveSpeed;
 
         // Check if the enemy is grounded and if it reached a jumping point
-        if (onGround && jumpPoint)
-        {
-            // Calculate the velocity needed to achieve the desired jump height
-            currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
-            // Apply gravity
-            currentVelocity.y -= rb.gravityScale * Time.deltaTime;
+        if ((onGround && jumpPoint && !alarm.IsON) || (onGround && alarmJumpPoint && alarm.IsON))
+            {
+                // Calculate the velocity needed to achieve the desired jump height
+                currentVelocity.y = Mathf.Sqrt(2f * rb.gravityScale * jumpForce * rb.mass);
+                // Apply gravity
+                currentVelocity.y -= rb.gravityScale * Time.deltaTime;
 
-            jumpPoint = false;
-            lastJump = Time.time;
+                jumpPoint = false;
+                alarmJumpPoint = false;
 
-            ChangeAnimationState("Jump");
-        }
+                lastJump = Time.time;
+            }
 
         // Apply movement
         rb.velocity = currentVelocity;
@@ -172,28 +166,22 @@ public class RunningManMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 1f)
+        if (col.gameObject.tag == "JumpTrigger" && Time.time >= lastJump + 0.2f)
             jumpPoint = true;
+
+        if (col.gameObject.tag == "AlarmJumpTrigger" && Time.time >= lastJump + 0.2f)
+            alarmJumpPoint = true;
 
         if (col.gameObject.tag == "PauseTrigger" && !alarm.IsON)
             pausePoint = true;
 
-        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 1f)
+        if (col.gameObject.tag == "TurnTrigger" && Time.time >= lastTurn + 0.2f)
             turnPoint = true;
     }
 
     public int GetEnemySpeedX()
     {
         return (int)speedX;
-    }
-
-// Changes the character's animation
-    private void ChangeAnimationState(string newState)
-    {
-        if (currentState == newState) return;
-
-        animator.Play(newState);
-        currentState = newState;
     }
 
     //Draws indicators on the editor to check the ground detector

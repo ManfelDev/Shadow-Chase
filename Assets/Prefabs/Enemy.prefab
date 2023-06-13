@@ -618,7 +618,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 32, y: 32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -679,7 +679,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 32, y: 32}
-    newSize: {x: 0.32, y: 0.32}
+    newSize: {x: 32, y: 32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -725,7 +725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 8734340318480276080}
-  playerDetector: {fileID: 2868109066020347602}
   firePoint: {fileID: 1615915362912992626}
   bullet: {fileID: 9052778817499606443, guid: 41b94be5575214e1aa8355e604c84723, type: 3}
   detectionRadius: 120
@@ -743,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0427c672ab39d4db5c70f224dc5bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 70
   hurtSound: {fileID: 8300000, guid: 6f316cf5846cd554c833a042e4fa578d, type: 3}
   deathSound: {fileID: 8300000, guid: 476539fa2ba10e543ae890704b03663e, type: 3}
   weaponToDropWhenDead: {fileID: 8239158761946417686, guid: 8fc24919df086ed48937daec6634a52f, type: 3}

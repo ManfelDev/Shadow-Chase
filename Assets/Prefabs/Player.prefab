@@ -453,6 +453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puchPoint: {fileID: 428081056}
   punchRange: 3
+  punchSound: {fileID: 8300000, guid: 38c76f442c44bce4988f62462b5f897c, type: 3}
+  punchHitSound: {fileID: 8300000, guid: 5a603b8cfd80c0b4c97dfbe69e979a78, type: 3}
 --- !u!1 &4842346694540083632
 GameObject:
   m_ObjectHideFlags: 0
