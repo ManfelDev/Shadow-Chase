@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0427c672ab39d4db5c70f224dc5bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 70
   hurtSound: {fileID: 8300000, guid: 6f316cf5846cd554c833a042e4fa578d, type: 3}
   deathSound: {fileID: 8300000, guid: 476539fa2ba10e543ae890704b03663e, type: 3}
   weaponToDropWhenDead: {fileID: 8239158761946417686, guid: 8fc24919df086ed48937daec6634a52f, type: 3}
