@@ -14,7 +14,7 @@ public class Buttons : MonoBehaviour
     // Go to How to Play
     public void GoToHowToPlay()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     // Go to main menu from pause menu
