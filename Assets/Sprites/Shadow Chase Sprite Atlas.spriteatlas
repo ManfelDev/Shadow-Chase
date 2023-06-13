@@ -82,6 +82,8 @@ SpriteAtlas:
   - {fileID: 1234889514, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: -1678494800, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: 674448921, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: 462104436, guid: 500e02e5f8371754eada15619118cd25, type: 3}
+  - {fileID: 1965782724, guid: 500e02e5f8371754eada15619118cd25, type: 3}
   - {fileID: 21300000, guid: 6d6d0de51c0c3db4987e5216a622a03c, type: 3}
   - {fileID: 21300000, guid: 94d288f580f6da14083862ec22f19128, type: 3}
   - {fileID: 21300000, guid: 73aa3a0685bb24b80aea418850300ceb, type: 3}
@@ -140,6 +142,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 11de378bb014b44e5a9321b41a7eb8c6, type: 3}
   - {fileID: -829836220, guid: 82b60abbce3504ed5b38944fdc024cda, type: 3}
   - {fileID: 621435093, guid: 82b60abbce3504ed5b38944fdc024cda, type: 3}
+  - {fileID: 1823153480, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: 212316829, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: -339982917, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: -418430026, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: -540086461, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: -1190374846, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: 887391840, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
+  - {fileID: 339407125, guid: 02b1e2fbe7b598440969845ffd97377b, type: 3}
   - {fileID: 21300000, guid: d52cf21c8b8a04a0c8ea19cca5ed2cb5, type: 3}
   - {fileID: 615316381, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
   - {fileID: 164683798, guid: f3b9fc2c988819d41b0927128e6871f7, type: 3}
@@ -155,6 +165,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cee1243de17db454f8e9a777af2444e6, type: 3}
   - {fileID: 21300000, guid: 9da94e7db46f6e142b363c51d31acb66, type: 3}
   - {fileID: 21300000, guid: 38c5d6ad9e029984ab33102bf999ca1f, type: 3}
+  - {fileID: -621911834, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
+  - {fileID: -1015165482, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
+  - {fileID: -1757929218, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
+  - {fileID: 1891337376, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
+  - {fileID: -1595323575, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
+  - {fileID: 1794413492, guid: 2843fdadff47e9648ae733700e75b725, type: 3}
   - {fileID: 21300000, guid: 565683bda776a3f4aaf5e70a3463ddc0, type: 3}
   - {fileID: 21300000, guid: f8536ccdefc36ff478692938a2431dc9, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
@@ -194,6 +210,8 @@ SpriteAtlas:
   - enemy jump animation spritesheet_1
   - enemy jump animation spritesheet_2
   - enemy jump animation spritesheet_3
+  - enemy runner idle animation px_0
+  - enemy runner idle animation px_1
   - right_arm_ak
   - SettingsButton
   - MainMenuBg
@@ -252,6 +270,14 @@ SpriteAtlas:
   - box
   - animation idle_0
   - animation idle_1
+  - enemy runner walk animation_3
+  - enemy runner walk animation_2
+  - enemy runner walk animation_1
+  - enemy runner walk animation_0
+  - enemy runner walk animation_7
+  - enemy runner walk animation_6
+  - enemy runner walk animation_5
+  - enemy runner walk animation_4
   - loading screen
   - TileMapBackground_6
   - TileMapBackground_4
@@ -267,6 +293,12 @@ SpriteAtlas:
   - ak
   - right_arm_punch
   - checkpoint
+  - enemy runner jump animation_0
+  - enemy runner jump animation_1
+  - enemy runner jump animation_2
+  - enemy runner jump animation_3
+  - enemy runner jump animation_4
+  - enemy runner jump animation_5
   - left_arm_ak
   - punch
   - right_arm

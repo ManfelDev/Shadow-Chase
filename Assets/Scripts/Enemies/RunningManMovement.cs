@@ -100,22 +100,9 @@ public class RunningManMovement : MonoBehaviour
                 speedX = oldSpeedX;
                 isPaused = false;
                 pausePoint = false;
-                if (!alarm.IsON)
-                    ChangeAnimationState("Walk");
-                else ChangeAnimationState("Run");
             }
 
         }
-
-        // Changes the animation to idle whenever the enemy is not moving
-        if (speedX == 0)
-            ChangeAnimationState("Idle");
-
-        else if (speedX != 0 && alarm.IsON)
-            ChangeAnimationState("Run");
-
-        else if (speedX != 0)
-            ChangeAnimationState("Walk");
 
         // Calculate movement
         if (alarm.IsON)
@@ -135,8 +122,6 @@ public class RunningManMovement : MonoBehaviour
                 alarmJumpPoint = false;
 
                 lastJump = Time.time;
-
-                ChangeAnimationState("Jump");
             }
 
         // Apply movement
@@ -197,15 +182,6 @@ public class RunningManMovement : MonoBehaviour
     public int GetEnemySpeedX()
     {
         return (int)speedX;
-    }
-
-// Changes the character's animation
-    private void ChangeAnimationState(string newState)
-    {
-        if (currentState == newState) return;
-
-        animator.Play(newState);
-        currentState = newState;
     }
 
     //Draws indicators on the editor to check the ground detector
