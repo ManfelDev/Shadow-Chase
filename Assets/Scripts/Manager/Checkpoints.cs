@@ -27,4 +27,10 @@ public class Checkpoints : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    // Reset respawned checkpoints
+    public static void ResetRespawnedCheckpoints()
+    {
+        respawnedCheckpoints.Clear();
+    }
 }

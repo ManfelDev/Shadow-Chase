@@ -40,7 +40,7 @@ public class PauseMenu : MonoBehaviour
         EnableAllScripts(player);
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
@@ -53,7 +53,7 @@ public class PauseMenu : MonoBehaviour
         DisableAllScripts(player);
     }
 
-    void DisableAllScripts(GameObject obj)
+    public void DisableAllScripts(GameObject obj)
     {
         MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
 
@@ -73,7 +73,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void EnableAllScripts(GameObject obj)
+    public void EnableAllScripts(GameObject obj)
     {
         MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
 

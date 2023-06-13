@@ -35,4 +35,10 @@ public class GameManager : MonoBehaviour
             return lastCheckPointPosition;
         }
     }
+
+    // Reset game manager
+    public void ResetGameManager()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -268,6 +268,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f8536ccdefc36ff478692938a2431dc9, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
   - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
+  - {fileID: 21300000, guid: f007d42f94617fb4bba15d02673e3eeb, type: 3}
   - {fileID: 21300000, guid: 29ddfc6ff8ce5bb4aaa5c35d54e41108, type: 3}
   - {fileID: 21300000, guid: 9e87e0df2553da440a619145d6213c28, type: 3}
   - {fileID: 21300000, guid: 7e1df7ff2afa64702bac7ab3e04cf288, type: 3}
@@ -490,6 +491,7 @@ SpriteAtlas:
   - punch
   - right_arm
   - HP_Bar_1 (1)
+  - mission_complete
   - ResolutionText
   - detectionmark
   - PlayButton
