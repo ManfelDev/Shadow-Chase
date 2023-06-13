@@ -52,6 +52,7 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: ec057040a22094f24b75317c399e6315, type: 3}
   - {fileID: 21300000, guid: 1b4a0340409364c378352904c54db786, type: 3}
+  - {fileID: 21300000, guid: 69f2d440e8b5f5a4986c05825ff4b0fa, type: 3}
   - {fileID: -550064792, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: -424166437, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
   - {fileID: -646745207, guid: 355fe580de9759f4385e3f7cb78014be, type: 3}
@@ -75,6 +76,7 @@ SpriteAtlas:
   - {fileID: 663278760, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
   - {fileID: 76382895, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
   - {fileID: 1284880490, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
+  - {fileID: 21300000, guid: 0447c23305041ec4d8697c798fca037c, type: 3}
   - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
   - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
   - {fileID: -1088600362, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
@@ -87,6 +89,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6d6d0de51c0c3db4987e5216a622a03c, type: 3}
   - {fileID: 21300000, guid: 94d288f580f6da14083862ec22f19128, type: 3}
   - {fileID: 21300000, guid: 73aa3a0685bb24b80aea418850300ceb, type: 3}
+  - {fileID: 21300000, guid: ac6c1816a55897d45a446255212a87f9, type: 3}
   - {fileID: 21300000, guid: 73446d765c33445b69e1ab813ca860dc, type: 3}
   - {fileID: 21300000, guid: 7eecfa860855fc04d81705885f5a2e3d, type: 3}
   - {fileID: 539552260, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
@@ -107,6 +110,7 @@ SpriteAtlas:
   - {fileID: -1037350964, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
   - {fileID: -1691620868, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
   - {fileID: 2014106380, guid: 9d183df6ecc0a443bb235627c2806cdb, type: 3}
+  - {fileID: 21300000, guid: a07068275d26acb469e611af5cca44fc, type: 3}
   - {fileID: 21300000, guid: 58a80847840542f4a924a603aaa32c6f, type: 3}
   - {fileID: -251425848, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
   - {fileID: 910792054, guid: b1e1ead7f4cbe4d129f2033a06cdefdc, type: 3}
@@ -175,11 +179,13 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f8536ccdefc36ff478692938a2431dc9, type: 3}
   - {fileID: 21300000, guid: 693a2bfe050e64d788e74a364e5e23a7, type: 3}
   - {fileID: 21300000, guid: 86dfd50f75622490f8762f65eb388999, type: 3}
+  - {fileID: 21300000, guid: 29ddfc6ff8ce5bb4aaa5c35d54e41108, type: 3}
   - {fileID: 21300000, guid: 9e87e0df2553da440a619145d6213c28, type: 3}
   - {fileID: 21300000, guid: 7e1df7ff2afa64702bac7ab3e04cf288, type: 3}
   m_PackedSpriteNamesToIndex:
   - HowToPlayButton
   - MainMenuTitle
+  - NotPressed
   - explosion px_5
   - explosion px_4
   - explosion px_1
@@ -203,6 +209,7 @@ SpriteAtlas:
   - enemy run animation tileset_0
   - enemy run animation tileset_3
   - enemy run animation tileset_2
+  - FullScreenText
   - pistol
   - left_arm_enemy
   - enemy jump animation spritesheet_4
@@ -215,6 +222,7 @@ SpriteAtlas:
   - right_arm_ak
   - SettingsButton
   - MainMenuBg
+  - volumeText
   - current_weapon_1 (1)
   - QuitGamePauseMenuSelected
   - death animation px_4
@@ -235,6 +243,7 @@ SpriteAtlas:
   - animation walk_2
   - animation walk_1
   - animation walk_0
+  - Pressed
   - QuitGamePauseMenu
   - crouch walking animation_5
   - crouch walking animation_4
@@ -303,6 +312,7 @@ SpriteAtlas:
   - punch
   - right_arm
   - HP_Bar_1 (1)
+  - ResolutionText
   - detectionmark
   - PlayButton
   m_RenderDataMap: {}
