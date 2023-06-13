@@ -159,6 +159,39 @@ SpriteAtlas:
   - {fileID: -1750590428, guid: 2bca51d339db21e4ea5aa2a19a3a8e16, type: 3}
   - {fileID: -1051243182, guid: 2bca51d339db21e4ea5aa2a19a3a8e16, type: 3}
   - {fileID: 21300000, guid: ac23e464268024e72b2e5658caaf2249, type: 3}
+  - {fileID: 1730309429, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 951485458, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 206311554, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -324171858, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1110982939, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -1264453694, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1970726141, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -450047336, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -740863499, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -414801129, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -906326818, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 2080812617, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 77331981, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -203823598, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -983926980, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -276145447, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1930088485, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 975406577, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 110652331, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1708778685, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1184901219, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 707557407, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 455680135, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -1338829356, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -2038267445, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -1760857826, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: -1509339381, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 211563339, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1092963173, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1054144113, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 573567565, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 1882486284, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
+  - {fileID: 2021216315, guid: f4ffae9427faac34db8a0ef2185ce975, type: 3}
   - {fileID: -1088600362, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: 637064996, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: 1234889514, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
@@ -226,6 +259,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9e1d05885775f4c91ae0e58900aabe49, type: 3}
   - {fileID: 21300000, guid: 51a9e8887d3ae3147a22ddcd3eb64f85, type: 3}
   - {fileID: 21300000, guid: 1eeab6d815196496fb2b9b288d38a979, type: 3}
+  - {fileID: 21300000, guid: 20297ab9a86a33d4ea09377428189736, type: 3}
   - {fileID: 21300000, guid: 6a2db4c9052384707b0526c7328f1db2, type: 3}
   - {fileID: -1406578760, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
   - {fileID: 1548242419, guid: acb4dcc9710ea4bb0898381311b3427a, type: 3}
@@ -382,6 +416,39 @@ SpriteAtlas:
   - floor_0
   - floor_1
   - left_arm_enemy
+  - TileMapBackground3_30
+  - TileMapBackground3_31
+  - TileMapBackground3_32
+  - TileMapBackground3_9
+  - TileMapBackground3_8
+  - TileMapBackground3_7
+  - TileMapBackground3_6
+  - TileMapBackground3_5
+  - TileMapBackground3_4
+  - TileMapBackground3_3
+  - TileMapBackground3_2
+  - TileMapBackground3_1
+  - TileMapBackground3_0
+  - TileMapBackground3_27
+  - TileMapBackground3_26
+  - TileMapBackground3_25
+  - TileMapBackground3_24
+  - TileMapBackground3_23
+  - TileMapBackground3_22
+  - TileMapBackground3_18
+  - TileMapBackground3_21
+  - TileMapBackground3_19
+  - TileMapBackground3_20
+  - TileMapBackground3_12
+  - TileMapBackground3_13
+  - TileMapBackground3_10
+  - TileMapBackground3_29
+  - TileMapBackground3_11
+  - TileMapBackground3_28
+  - TileMapBackground3_16
+  - TileMapBackground3_17
+  - TileMapBackground3_14
+  - TileMapBackground3_15
   - enemy jump animation spritesheet_4
   - enemy jump animation spritesheet_0
   - enemy jump animation spritesheet_1
@@ -449,6 +516,7 @@ SpriteAtlas:
   - ExitButtonSelected
   - pausedText
   - explosive barrel
+  - background
   - PlayButtonSelected
   - jump animation_0
   - jump animation_1
