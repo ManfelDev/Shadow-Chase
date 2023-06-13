@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class EnemyAlarm : MonoBehaviour
 {
-    [SerializeField] private bool alarm = false;
+    [SerializeField] private bool        alarm = false;
     [SerializeField] private CanvasGroup alarmLight;
-    public bool IsON { get => alarm; }
-    private float slider;
-    private bool sliderUp;
-    private bool sliderDown;
-    private EnemyRaycast[] enemyRaycasts;
 
-    public void Trigger()
-    {
-        alarm = true;
-    }
-
-    public void SlowTriggerAll()
-    {
-        foreach (EnemyRaycast r in enemyRaycasts)
-        {
-            r.SlowTrigger();
-        }
-    }
+    public bool               IsON { get => alarm; }
+    private float             slider;
+    private bool              sliderUp;
+    private bool              sliderDown;
+    private EnemyRaycast[]    enemyRaycasts;
+    private RunningManRaycast runningManRaycast;
 
     void Start()
     {
@@ -31,6 +20,7 @@ public class EnemyAlarm : MonoBehaviour
         sliderDown = false;
         sliderUp = true;
         enemyRaycasts = FindObjectsOfType<EnemyRaycast>();
+        runningManRaycast = FindObjectOfType<RunningManRaycast>();
     }
 
     void Update()
@@ -61,5 +51,21 @@ public class EnemyAlarm : MonoBehaviour
         }
 
         else alarmLight.alpha= 0;
+    }
+
+
+    public void Trigger()
+    {
+        alarm = true;
+    }
+
+
+    public void SlowTriggerAll()
+    {
+        runningManRaycast.SlowTrigger();
+        foreach (EnemyRaycast r in enemyRaycasts)
+        {
+            r.SlowTrigger();
+        }
     }
 }
