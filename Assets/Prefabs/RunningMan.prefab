@@ -244,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 100
   countdownTimer: 3
-  countdownTicks: 0.1
+  countdownTicks: 0.5
   playerDetector: {fileID: 312927051611713581}
   suspicionIcon: {fileID: 312927050781184914}
   detectionIcon: {fileID: 312927051661218514}
