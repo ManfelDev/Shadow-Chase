@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private GameObject playerUI;
-    [SerializeField] private GameObject settingsMenuUI;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject     pauseMenuUI;
+    [SerializeField] private GameObject     playerUI;
+    [SerializeField] private GameObject     settingsMenuUI;
+    [SerializeField] private GameObject     player;
+    [SerializeField] private AudioSource    audioSource;
+    [SerializeField] private AudioClip      pauseSound;
     public static bool GameIsPaused = false; 
 
     // Update is called once per frame
@@ -15,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            audioSource.PlayOneShot(pauseSound, 1f);
             if (GameIsPaused)
             {
                 Resume();

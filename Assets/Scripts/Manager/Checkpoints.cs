@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Checkpoints : MonoBehaviour
 {
+    [SerializeField] private AudioClip checkpointSound;
+
     private static List<Vector2> respawnedCheckpoints = new List<Vector2>();
 
+    private AudioSource audioSource { get => FindObjectOfType<SoundManager>().AudioSource; }
     private GameManager gameManager;
 
     void Start()
@@ -22,6 +25,7 @@ public class Checkpoints : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            audioSource.PlayOneShot(checkpointSound, 0.5f);
             gameManager.SetLastCheckPointPosition(transform.position);
             respawnedCheckpoints.Add(transform.position);
             Destroy(gameObject);
