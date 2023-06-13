@@ -93,6 +93,21 @@ public class PlayerManager : MonoBehaviour
         {
             pickMeText.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
+        if (Input.GetButtonDown("Testing Key 1"))
+        {
+            Debug.Log("V was pressed");
+        }
+
+        if (Input.GetButtonDown("Testing Key 2"))
+        {
+            Debug.Log("B was pressed");
+        }
+
+        if (Input.GetButtonDown("Testing Key 3"))
+        {
+            Debug.Log("N was pressed");
+        }
     }
 
     public void TurnOffPlayerSprites()
