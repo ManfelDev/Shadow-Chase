@@ -3,7 +3,10 @@ guid: 333d50937dfe1ce498b558efe25e6241
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rigidBody: {instanceID: 0}
+  - thrownWeaponHit: {instanceID: 0}
+  - spriteRenderer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

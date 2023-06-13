@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform  firePoint;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject throwableWeapon;
+    [SerializeField] private AudioClip  throwWeapon;
 
     private float           lastShot;
     private PlayerManager   player;
@@ -101,6 +102,8 @@ public class PlayerShooting : MonoBehaviour
     {
         GameObject newThrowableWeapon = Instantiate(throwableWeapon, firePoint.position, firePoint.rotation);
         ThrowableWeapon throwableWeaponScript = newThrowableWeapon.GetComponent<ThrowableWeapon>();
+        audioSource.PlayOneShot(throwWeapon, 1f);
+
         if (throwableWeaponScript != null)
         {
             throwableWeaponScript.spriteRenderer.sprite = currentWeapon.WeaponSprite;

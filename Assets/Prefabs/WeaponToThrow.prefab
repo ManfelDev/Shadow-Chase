@@ -139,5 +139,7 @@ MonoBehaviour:
   destroyTime: 5
   throwSpeed: 150
   rotationSpeed: 2
+  damage: 40
   rigidBody: {fileID: 381701898748089466}
+  thrownWeaponHit: {fileID: 8300000, guid: 7a39a69d8674add4db3645ff3fb83e65, type: 3}
   spriteRenderer: {fileID: 7271387916281555703}
