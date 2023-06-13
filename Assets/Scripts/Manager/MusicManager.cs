@@ -46,7 +46,7 @@ public class MusicManager : MonoBehaviour
             PlayMusic(actionMusic);
             lastMusic = Time.time;
         }
-        else if (lastMusic + 110f < Time.time)
+        else if (!alarmed && lastMusic + 110f < Time.time)
         {
             PlayMusic(stealthMusic, 0.6f);
             lastMusic = Time.time;
