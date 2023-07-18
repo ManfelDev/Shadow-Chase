@@ -131,8 +131,9 @@ public class PlayerManager : MonoBehaviour
             Instantiate(debugEnemy, spawnPosition, player.transform.rotation);
         }
 
-        if (Input.GetButtonDown("Testing Key 6") && cheats)
+        if (Input.GetButtonDown("Testing Key 6"))
         {
+            cheats = true;
             if (MaxHealth < 10000000)
             {
                 Debug.Log("GodMode activated");

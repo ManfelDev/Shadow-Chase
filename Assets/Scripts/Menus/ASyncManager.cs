@@ -10,6 +10,7 @@ public class ASyncManager : MonoBehaviour
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject HowToPlayScreen;
+    [SerializeField] private GameObject creditsScreen;
 
     public void LoadLevel(int levelToLoad)
     {
@@ -40,6 +41,18 @@ public class ASyncManager : MonoBehaviour
     public void GoFromHowToPlayToMainMenu()
     {
         HowToPlayScreen.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void GoFromMainMenuToCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsScreen.SetActive(true);
+    }
+
+    public void GoFromCreditsToMainMenu()
+    {
+        creditsScreen.SetActive(false);
         mainMenu.SetActive(true);
     }
 
