@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject   player;
     [SerializeField] private AudioClip    hurtSound;
     [SerializeField] private AudioClip    deathSound;
+    [SerializeField] private bool         cheats = false;
     [SerializeField] private GameObject   debugEnemy;
 
     private int              currentHealth;
@@ -99,38 +100,38 @@ public class PlayerManager : MonoBehaviour
             pickMeText.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        if (Input.GetButtonDown("Testing Key 1"))
+        if (Input.GetButtonDown("Testing Key 1") && cheats)
         {
             Debug.Log("Teleported to Spawn");
             player.transform.position = new Vector3(-110, -30, 0);
         }
 
-        if (Input.GetButtonDown("Testing Key 2"))
+        if (Input.GetButtonDown("Testing Key 2") && cheats)
         {
             Debug.Log("Teleported to Construction Checkpoint");
             player.transform.position = new Vector3(9324, 45, 0);
         }
 
-        if (Input.GetButtonDown("Testing Key 3"))
+        if (Input.GetButtonDown("Testing Key 3") && cheats)
         {
             Debug.Log("Teleported to End");
             player.transform.position = new Vector3(13743, 50, 0);
         }
 
-        if (Input.GetButtonDown("Testing Key 4"))
+        if (Input.GetButtonDown("Testing Key 4") && cheats)
         {
             Debug.Log("Alarm Triggered");
             alarm.Trigger();
         }
 
-        if (Input.GetButtonDown("Testing Key 5"))
+        if (Input.GetButtonDown("Testing Key 5") && cheats)
         {
             Debug.Log("Spawning Debug Enemy");
             Vector3 spawnPosition = new Vector3(player.transform.position.x, player.transform.position.y + 40f, 0);
             Instantiate(debugEnemy, spawnPosition, player.transform.rotation);
         }
 
-        if (Input.GetButtonDown("Testing Key 6"))
+        if (Input.GetButtonDown("Testing Key 6") && cheats)
         {
             if (MaxHealth < 10000000)
             {
