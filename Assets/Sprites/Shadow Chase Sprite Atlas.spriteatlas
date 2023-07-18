@@ -154,6 +154,7 @@ SpriteAtlas:
   - {fileID: 76382895, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
   - {fileID: 1284880490, guid: dd605a1321712ce4395baecc8d9b3b21, type: 3}
   - {fileID: 21300000, guid: 0447c23305041ec4d8697c798fca037c, type: 3}
+  - {fileID: 21300000, guid: 167f62b3e11e86d488853eba877f29ec, type: 3}
   - {fileID: 21300000, guid: ecfb89b34feea944b9fa7b17a185c471, type: 3}
   - {fileID: -1096910957, guid: 2bca51d339db21e4ea5aa2a19a3a8e16, type: 3}
   - {fileID: -1750590428, guid: 2bca51d339db21e4ea5aa2a19a3a8e16, type: 3}
@@ -197,6 +198,7 @@ SpriteAtlas:
   - {fileID: 1234889514, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: -1678494800, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
   - {fileID: 674448921, guid: 17cb4b359171fb24f9dab1c081aef27e, type: 3}
+  - {fileID: 21300000, guid: 4ecfaaa5bc021e34da9d1bfd8eddeb0e, type: 3}
   - {fileID: 1434837770, guid: c67e9bc5255635845a6109dfe3f274ee, type: 3}
   - {fileID: -85782861, guid: c67e9bc5255635845a6109dfe3f274ee, type: 3}
   - {fileID: -633560846, guid: c67e9bc5255635845a6109dfe3f274ee, type: 3}
@@ -208,6 +210,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ac6c1816a55897d45a446255212a87f9, type: 3}
   - {fileID: 21300000, guid: 73446d765c33445b69e1ab813ca860dc, type: 3}
   - {fileID: 21300000, guid: 7eecfa860855fc04d81705885f5a2e3d, type: 3}
+  - {fileID: 21300000, guid: e73a14b690e139e49a2682640fbaac64, type: 3}
   - {fileID: 539552260, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
   - {fileID: 55146552, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
   - {fileID: 1297670585, guid: f583d5b6da5c3374db68e9e0aecfa4e5, type: 3}
@@ -411,6 +414,7 @@ SpriteAtlas:
   - enemy run animation tileset_3
   - enemy run animation tileset_2
   - FullScreenText
+  - CreditsButtonSelected
   - pistol
   - floor_2
   - floor_0
@@ -454,6 +458,7 @@ SpriteAtlas:
   - enemy jump animation spritesheet_1
   - enemy jump animation spritesheet_2
   - enemy jump animation spritesheet_3
+  - CreditsButton
   - wall_2
   - wall_0
   - wall_1
@@ -465,6 +470,7 @@ SpriteAtlas:
   - volumeText
   - current_weapon_1 (1)
   - QuitGamePauseMenuSelected
+  - TitleLogo
   - death animation px_4
   - death animation px_5
   - death animation px_2
